@@ -2,7 +2,7 @@
 title: ""
 image: viraj.jpg
 about:
-  template: trestles
+  template: broadside
   links:
     - icon: twitter
       text: Twitter
