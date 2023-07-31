@@ -1,0 +1,22 @@
+---
+title: ""
+image: viraj.jpg
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/ChordiyaViraj
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/virajchordiya/
+    - icon: github
+      text: Github
+      href: https://github.com/viraj-550
+page-layout: full
+title-block-banner: true
+---
+
+I’m a senior-year honors student at Georgia State University, majoring in economics and mathematics with a deep interest in financial economics. I love working with numbers, and I am intrigued by the linkages between financial markets and global macro variables. Through my math and graduate-level economics courses, I have developed solid quantitative and programming skills.
+
+Previously, I have worked as a research assistant in the Economics department at GSU, enhancing my data analysis and research skills. I was also associated with the Portfolio Management Team (PMT) at GSU as the Chief Economist. The PMT is a student-managed investment fund with an objective to outperform the S&P 500 Index on a risk-adjusted basis. This position gave me hands-on experience in analyzing macroeconomic trends and reporting them to other members.
