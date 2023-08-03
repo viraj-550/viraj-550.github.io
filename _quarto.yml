@@ -10,6 +10,8 @@ website:
     search: true
     right:
       - posts.qmd
+      - text: Projects
+        href: projects/index.qmd
       - text: "Resume"
         file: Viraj_Chordiya_Resume.pdf
       - icon: github

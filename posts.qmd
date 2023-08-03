@@ -9,5 +9,3 @@ listing:
   filter-ui: [title, date]
   fields: [image, date, title, author, reading-time]
 ---
-
-
