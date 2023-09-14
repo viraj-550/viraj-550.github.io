@@ -22,17 +22,13 @@ nocite: |
 knitr::opts_chunk$set(fig.width=12, fig.height=8) 
 ```
 
-
 ```{css, echo = FALSE}
 .justify {
   text-align: justify !important
 }
 ```
 
-
-::: {.justify}
-
-
+::: justify
 # Introduction
 
 In today's volatile financial landscape, effective portfolio management has become an indispensable tool for mitigating investment risks that simply cannot be overlooked. The role of a portfolio manager is paramount, as they navigate this complex terrain with the overarching objective of minimizing risks while maximizing returns for their clients.
@@ -43,14 +39,13 @@ The Direxion Daily S&P 500 Bull 3X Shares ETF, a 300% leveraged vehicle based on
 
 Subsequently, we perform the following analysis to construct an optimal portfolio:
 
--	__Exploring the Data__: We conduct a rigorous examination of the data to unveil any time-dependent patterns and potential volatility clustering, that provide insights into the behavior of these financial instruments.
--	__Time Series Modeling__: Employing a $AR(1) + GARCH(1,1)$ model, we seek to model the logarithmic returns of each product, providing us a deeper understanding of their inherent dynamics.
--	__Copula Analysis__: We fit t-distributions to the standardized errors of both models. To study the dependence structure of both the residues, we explore various copulas such as the t-Copula, Gaussian Copula, Gumbel Copula, Clayton Copula, and Frank Copula. The selection of the most suitable copula is based on minimizing the Akaike Information Criterion (AIC).
--	__Residual Analysis__: Rigorous evaluation of the standardized residues of our model is carried out, aiming to detect any potential serial correlation. This step involves the utilization of autocorrelation plots and weighted versions of the Ljung-Box test, ultimately confirming the appropriateness of the $AR(1) + GARCH(1,1)$ model for our dataset.
--	__VaR Forecasting__: Employing advanced numerical methods, we forecast Value-at-Risk for various portfolios comprising of SPXL and BAC. Our findings reveal that VaR is responsive to varying proportions of SPXL within the portfolio. Notably, we uncover that VaR tends to rise as the allocation to SPXL increases.
+-   **Exploring the Data**: We conduct a rigorous examination of the data to unveil any time-dependent patterns and potential volatility clustering, that provide insights into the behavior of these financial instruments.
+-   **Time Series Modeling**: Employing a $AR(1) + GARCH(1,1)$ model, we seek to model the logarithmic returns of each product, providing us a deeper understanding of their inherent dynamics.
+-   **Copula Analysis**: We fit t-distributions to the standardized errors of both models. To study the dependence structure of both the residues, we explore various copulas such as the t-Copula, Gaussian Copula, Gumbel Copula, Clayton Copula, and Frank Copula. The selection of the most suitable copula is based on minimizing the Akaike Information Criterion (AIC).
+-   **Residual Analysis**: Rigorous evaluation of the standardized residues of our model is carried out, aiming to detect any potential serial correlation. This step involves the utilization of autocorrelation plots and weighted versions of the Ljung-Box test, ultimately confirming the appropriateness of the $AR(1) + GARCH(1,1)$ model for our dataset.
+-   **VaR Forecasting**: Employing advanced numerical methods, we forecast Value-at-Risk for various portfolios comprising of SPXL and BAC. Our findings reveal that VaR is responsive to varying proportions of SPXL within the portfolio. Notably, we uncover that VaR tends to rise as the allocation to SPXL increases.
 
 In essence, our project serves as a comprehensive exploration of the dynamic interplay between these financial assets, offering valuable insights and strategies for optimizing portfolio performance while diligently managing risks in an ever-evolving financial landscape.
-
 
 ```{r warnings = FALSE, include = TRUE}
 # Importing Packages
@@ -102,7 +97,6 @@ daily_df <- na.omit(daily_df)
 
 ```
 
-
 ```{r}
 
 summary_df <- describe(daily_df, ranges = F)
@@ -111,7 +105,6 @@ summary_df$Variable <- c("SPXL", "BAC", "SPXL Returns", "BAC Returns")
 datasummary_df(summary_df,
                title = "Table 1. Summary Statistics")
 ```
-
 
 There are a total of 2517 observations in total. Prices and log returns of both the financial instruments are asymmetric. SPXL daily prices are extremely skewed to the right, while SPXL returns are extremely skewed to the left. Moreover, BAC daily prices are slightly skewed to the right while the returns are slightly skewed to the left. The excess kurtosis for the log returns of both assets show that returns are not normally distributed.
 
@@ -229,7 +222,7 @@ In order to model autocorelation and volatility clustering, we combine an AR(1) 
 
 The $AR(1) - GARCH(1,1)$ is model is as follows:
 
-$$ X_t = \mu + \phi X_{t-1} + e_t, \quad e_t =  \sigma_{t}\varepsilon_{t}, \quad \sigma^2_t = \omega + \alpha e^2_{t-1} + \beta \sigma^2_{t-1} $$ $$ \tilde X_t = \tilde \mu + \tilde \phi \tilde X_{t-1} + \tilde e_t, \quad \tilde e_t =  \tilde \sigma_{t}\tilde \varepsilon_{t}, \quad \tilde \sigma^2_t = \tilde \omega + \tilde \alpha \tilde e^2_{t-1} + \tilde \beta \tilde \sigma^2_{t-1} $$ 
+$$ X_t = \mu + \phi X_{t-1} + e_t, \quad e_t =  \sigma_{t}\varepsilon_{t}, \quad \sigma^2_t = \omega + \alpha e^2_{t-1} + \beta \sigma^2_{t-1} $$ $$ \tilde X_t = \tilde \mu + \tilde \phi \tilde X_{t-1} + \tilde e_t, \quad \tilde e_t =  \tilde \sigma_{t}\tilde \varepsilon_{t}, \quad \tilde \sigma^2_t = \tilde \omega + \tilde \alpha \tilde e^2_{t-1} + \tilde \beta \tilde \sigma^2_{t-1} $$
 
 where, $X_t$ is the daily log returns of SPXL and $\tilde X_t$ is the daily log returns of BAC.
 
@@ -383,7 +376,6 @@ show(bac_fit)
 bac_fit
 ```
 
-
 The weighted versions of the Ljung-Box test and their p-values all indicate that the estimated $AR(1) + GARCH(1,1)$ model for the conditional mean and variance is adequate for removing serial correlation from the series and squared series.
 
 ------------------------------------------------------------------------
@@ -473,7 +465,6 @@ datasummary_df(var_sample,
 ```
 
 The table reports the Value-at-Risk at 99% level for a portfolio value of \$1,000,000. It is evident from the table that as SPXL's proportion in the portfolio increases ($\rho$), the Value-at-Risk increases. These results are in line with expectations as Direxion Daily S&P 500 Bull 3X Shares is a 300% leveraged instrument based on the S&P 500 index. When $\rho = 0.2$, there is a 1% percent chance that the loss would be greater than `r as.numeric(var_sample[2,1])` the next day on a \$1,000,000 investment. Similarly, When $\rho = 0.9$, there is a 1% percent chance that the loss would be greater than `r as.numeric(var_sample[9,1])` the next day on a \$1,000,000 investment.
-
 :::
 
 # Reference

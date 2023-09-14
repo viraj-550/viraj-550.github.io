@@ -25,14 +25,12 @@ nocite: |
 }
 ```
 
-
-::: {.justify}
-
+::: justify
 # Abstract
 
-Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption. 
+Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption.
 
-The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects. 
+The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects.
 
 This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program's impact.
 
@@ -508,6 +506,6 @@ From our simulated data analysis, we find that the Smartcard intervention causes
 The Smartcard program has three major implications. Firstly, the Smartcard program will contribute to poverty reduction and promote greater social inclusion by ensuring that benefits reach their intended recipients. Secondly, reducing wait times will enhance the over- all experience of beneficiaries, leading to increased trust in the government and its services. This could have positive spillover effects, such as increased participation in other government programs and greater civic engagement. Lastly, the Smartcard intervention will serve as a template for similar welfare programs in the country or even other countries facing similar challenges of leakages, wait times, and corruption. This could have a broader impact on so- cial welfare delivery systems, leading to reduced ineﬀiciencies and corruption in government services.
 
 In conclusion, the successful implementation of the Smartcard intervention would have significant implications for the delivery of social welfare programs, poverty reduction, and contribute towards good governance.
-
 :::
+
 # Reference
