@@ -233,12 +233,6 @@ div.csl-indent {
       
     </div>
     
-  <div>
-    <div class="abstract">
-      <div class="abstract-title">Abstract</div>
-      Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption. The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects. This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program’s impact.
-    </div>
-  </div>
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
@@ -248,7 +242,28 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reference" id="toc-reference" class="nav-link active" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#program-theory-and-implementation" id="toc-program-theory-and-implementation" class="nav-link" data-scroll-target="#program-theory-and-implementation">Program Theory and Implementation</a>
+  <ul class="collapse">
+  <li><a href="#program-theory-and-impact-theory-graph" id="toc-program-theory-and-impact-theory-graph" class="nav-link" data-scroll-target="#program-theory-and-impact-theory-graph">Program Theory and Impact Theory Graph</a></li>
+  </ul></li>
+  <li><a href="#data-and-analysis" id="toc-data-and-analysis" class="nav-link" data-scroll-target="#data-and-analysis">Data and Analysis</a>
+  <ul class="collapse">
+  <li><a href="#identification-strategy" id="toc-identification-strategy" class="nav-link" data-scroll-target="#identification-strategy">Identification Strategy</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  </ul></li>
+  <li><a href="#synthetic-analysis" id="toc-synthetic-analysis" class="nav-link" data-scroll-target="#synthetic-analysis">Synthetic Analysis</a>
+  <ul class="collapse">
+  <li><a href="#sls-estimation" id="toc-sls-estimation" class="nav-link" data-scroll-target="#sls-estimation">2SLS Estimation</a></li>
+  <li><a href="#robustness-checks" id="toc-robustness-checks" class="nav-link" data-scroll-target="#robustness-checks">Robustness Checks</a>
+  <ul class="collapse">
+  <li><a href="#instrument-validity" id="toc-instrument-validity" class="nav-link" data-scroll-target="#instrument-validity">Instrument Validity</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusion-and-implications" id="toc-conclusion-and-implications" class="nav-link" data-scroll-target="#conclusion-and-implications">Conclusion and Implications</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
     </div>
@@ -265,14 +280,21 @@ div.csl-indent {
 }
 </style>
 </div>
-<div class="justify">
+<section id="abstract" class="level1 justify">
+<h1>Abstract</h1>
+<p>Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption.</p>
+<p>The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects.</p>
+<p>This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program’s impact.</p>
+</section>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<div class="justify">
 <p>Developing countries allocate a significant portion of their annual budget to social assistance programs, but most of these funds fail to reach their intended recipients due to inefficiencies resulting from leakages and corruption. In 2016, India allocated $70 billion to social assistance programs (Govt. of India 2017), but historical estimates suggest that around 51% of these funds were lost due to inadequate delivery systems (Imbert, Clement, and John Papp. 2016; Govt of India 2005). One potential solution to improve assistance delivery is the implementation of digital payment systems that directly deposit government funds into the beneficiaries’ bank accounts, thereby reducing bureaucracy. To enhance the system’s security, biometric authentication can be employed.</p>
 <p>In 2006, the state government of Andhra Pradesh (GoAP) introduced the Smartcard system, a large-scale biometric payments system, to enhance the delivery of two major social welfare programs: the National Rural Employment Guarantee Scheme (NREGS) and Social Security Pensions (SSP). NREGS guarantees 100 days of wage employment per year to every rural household, while SSP provides payments to elderly and disabled individuals below the poverty line. However, due to implementation issues, the program was initially shut down. In 2010, J-PAL South Asia partnered with GoAP and relaunched the program in eight districts of Andhra Pradesh. The objective was to evaluate the effectiveness of the Smartcard system by running a large-scale randomized evaluation involving 8,000 households. The program aimed to improve governance by reducing corruption and enhancing efficiency using biometric authentication and secure digital payment systems. This initiative increased access to governmental benefits for citizens, and reduced costs associated with manual processes and fraud.</p>
 <p>Building upon this previous work, our pre-registered study proposes to expand the biometric smartcard program introduced by Andhra Pradesh to three other Indian states using synthetic data. The expanded program aims to fully implement the biometric smartcard payment system in these states, specifically targeting the NREGS welfare program. Our plan involves equipping all panchayats (village councils) in the three states with payment technology and converting local Point of Service (PoS) locations into Smartcard facilities where all payments will be processed through the Smartcard system. If beneficiaries are not enrolled in the program, they will continue to receive payments in cash, similar to the previous system. Workers can enroll in the program, register their biometric information, and receive new Smartcards at designated stations. The PoS devices will store the biometric information of all enrolled workers locally, facilitating transaction verification without internet access.</p>
 <p>The primary goal of this paper is to evaluate the impact of the Smartcard program on governance. Good governance ensures the efficient and equitable delivery of governmental processes, promoting public welfare. We anticipate a reduction in leakages, corruption, and wait times for the program’s beneficiaries. These improvements are expected to enhance overall efficiency, increase earnings, and foster greater trust in government welfare measures.</p>
 <p>To evaluate the program’s impact on system leakages, wait times, and corruption, we employ an instrumental variable design. Our study involves randomly selecting 500 panchayats from the three states as a representative sample. Following program implementation, we randomly select 250 out of the 500 sample panchayats as the promotion locations. All households previously enrolled in the NREGS program will receive a promotion and information on enrolling in the Smartcard program. Subsequently, we conduct weekly surveys in all 500 panchayats over four weeks, gathering data on personal characteristics, leakages, wait times, and corruption events. By utilizing randomized promotion as a valid instrument, we find that the Smartcard intervention leads to a reduction in leakages, wait times and corruption.</p>
+</div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_2ecac4b6e4a803ce3afbe9565bba0f81">
 <details open="">
 <summary>Code</summary>
@@ -301,6 +323,7 @@ div.csl-indent {
 <h1>Program Theory and Implementation</h1>
 <section id="program-theory-and-impact-theory-graph" class="level2">
 <h2 class="anchored" data-anchor-id="program-theory-and-impact-theory-graph">Program Theory and Impact Theory Graph</h2>
+<div class="justify">
 <p>The program theory is that biometric authentication and secure payment systems can improve governance by reducing leakages in the delivery systems and reducing payment delays without adversely affecting program access.</p>
 <p>The theory, based on previous research (World Bank 2003; Pritchett 2010, Reinikka and Svensson 2004; Programme Evaluation Organisation 2005; Niehaus and Sukhtankar 2013b) assumes that corruption and leakages are prevalent in government services in developing countries, leading to ineﬀiciencies in assistance delivery systems. By implementing biometric authentication and secure payment systems, the government can ensure that the correct individuals receive the correct payments and services. The Smartcards intervention has a two-fold effect. First, it changes the institutions responsible for managing the funds by eliminating a few intermediaries and moves the point of payment closer to the recipient. Second, it introduces biometric authentication which facilities transparency in the system by providing a secure, tamperproof record of who has received services and payments. This can help to reduce corruption and increase accountability.</p>
 <p>Similar to Muralidharan et al.&nbsp;2016, we consider two main dimensions of impact: payment logistics, and leakages. We also consider multiple scenarios surrounding each dimension. First, the payment logistics could improve or worsen. It could naturally improve the system by moving the point of payment closer to the village, or the program could slow down the process due to technical problems like malfunctioning authentication devices or absence of technical staff. Improving payment logistics will affect the wait times of beneficiaries to access the funds. Secondly, the program could reduce or fail to reduce leakages. Theoretically, smartcards should reduce payments to ghost recipients and forbid oﬀicials to collect payments in the name of real beneficiaries as the beneficiaries must be present to pass the biometric test. But there could be technical loopholes in the payment architecture that could disprove the claim of an absolute secure system. Moreover, the assistance programs’ access could improve or suffer. In case of NREGS, local oﬀicers decide projects and generate employment. Eliminating opportunities to seek rent may disincentivize oﬀicials and they might reduce access. On the other hand, the NREGS funds would directly go towards to the development projects that were originally intended thus creating rural assets and generating more employment.</p>
@@ -310,7 +333,6 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Smartcard Program Impact Theory Graph</figcaption><p></p>
 </figure>
 </div>
-</section>
 <section id="logic-model" class="level2">
 <h2 class="anchored" data-anchor-id="logic-model">Logic model</h2>
 <div class="quarto-figure quarto-figure-center">
@@ -363,7 +385,6 @@ div.csl-indent {
 </ul>
 <div style="page-break-after: always;"></div>
 </section>
-</section>
 <section id="outcome-and-causation" class="level1">
 <h1>Outcome and Causation</h1>
 <section id="main-outcome" class="level2">
@@ -403,6 +424,9 @@ div.csl-indent {
 <li><p>Feasible measurement: Conduct a small-scale randomized promotion of the smartcard program and measure the number of corruption incidences and average corruption value.</p></li>
 <li><p>Measurement of program effect: As the randomized promotion is a valid instrument, the feasible measures would reflect the local average treatment effect of the smartcard program.</p></li>
 </ul>
+</section>
+</section>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 </section>
@@ -410,6 +434,7 @@ div.csl-indent {
 <h1>Data and Analysis</h1>
 <section id="identification-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="identification-strategy">Identification Strategy</h2>
+<div class="justify">
 <p>Similar to Muralidharan et al.&nbsp;2016, we assert causal claims that the Smartcard intervention will lead to reduced leakages, wait times, and corruption for beneficiary households. In earlier leakage-prone systems, the funds were released by the government and flowed through multiple intermediaries to reach the beneficiary. But in the new Smartcard system, the worker can directly receive funds with just a single third-party processing all the transactions. This leads to fewer leakages in the system as people cannot game it by withdrawing money in the name of ghost recipients. Moreover, oﬀicers have fewer chances to engage in corruption as funds are digitally transferred to the end user’s bank account. Further, the Smartcard intervention will improve payment logistics by reducing wait times and delays in payment collection. Smartcard holders will not be bothered by cash shortages at the PoS as money would be directly deposited into their accounts. Finally, the biometric cards would aid in quicker verifications at the PoS and reduce wait times in queues.</p>
 <p>A host of household-level characteristics influence enrollment into the Smartcard program, reduction in leakages, wait times and corruption events. Some of the observable covariates include location, family size, household literacy rate, religion, assets, and others. Controlling for these covariates is a possible solution, but it does not paint the full causal picture. The NREGS program has a universal access and hence it is fair to provide universal access to the Smartcard program that facilitates the NREGS welfare payments. In this scenario, we suspect that households that enroll into the Smartcard intervention are fundamentally different than the households that do not enroll. For instance, poor households with fewer job opportunities or literate households would be more likely to enroll into the program. There exists a host of household and geographic characteristics that influence enrollment into the program and the outcomes. The universal nature of the program leads to self-selection bias. Additionally, the unobserved household and governmental characteristics lead to omitted variable bias. To tackle these challenges, we introduce the instrumental variable design by using randomized promotion as an instrument. Randomized promotion design closes all the backdoors and provides a local average treatment effect for the compliers that enroll in the Smartcard program after receiving the promotion.</p>
 <p>The instrumental variable approach isolates the causal effect of the program on the outcome by using the variation in the treatment induced by the instrument. By comparing the outcomes of households who received treatment through the instrument with those who did not receive treatment through the instrument, we can estimate the causal effect of the program on the outcomes of choice.</p>
@@ -422,6 +447,7 @@ div.csl-indent {
 \text{Outcome}_i =  \beta_{0_i} + \beta_i \hat{\text{Smartcard}} + \gamma_i X + \epsilon_i\]</span></p>
 <p>Where <span class="math display">\[\text{Outcome }_i = \{\text{Leakage}, \text{Queue Wait Time }, \text{Payment Delay}, \text{Corruption} \}\]</span></p>
 <p>Overall, the instrumental variable approach using randomized promotion provides a rigorous and credible method for estimating the causal effects of the smartcard program on the outcomes of interest, while also addressing potential issues of selection bias and endogeneity.</p>
+</div>
 <p>A DAG for the outcome is as follows:</p>
 <div class="cell" data-hash="index_cache/html/DAG_04a74cfc3362ddac649d00395be5112c">
 <details open="">
@@ -474,7 +500,7 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="hypotheses" class="level2">
+<section id="hypotheses" class="level2 justify">
 <h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
 <p>We formulate the following hypothesis and test it in the subsequent sections:</p>
 <p><span class="math inline">\(\textbf{H1}\)</span>: The Smartcard program <strong>causes</strong> leakages to decrease.</p>
@@ -484,7 +510,9 @@ div.csl-indent {
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
+<div class="justify">
 <p>We propose to use a mix of administrative and survey data to estimate the causal link between the program and the outcomes of interest. We plan to conduct weekly survey for a 4-week period to measure the household level weekly payments received, time spent (in minutes) at the PoS, days between work is completed and payment is received, and corruption incidences. We will compare the weekly payments received to the official disbursement data to estimate the household level leakage in the system, the amount lost in inefficiencies or corruptions. Alongside, we will collect data on household characteristics like number of children, number of females in the household, household literacy rate, religion, assets like farmland, and household head age and gender.</p>
+</div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-3_4002053a2c89feb22e94be04582b2a49">
 <details open="">
 <summary>Code</summary>
@@ -913,13 +941,17 @@ div.csl-indent {
 
 </div>
 </div>
+<div class="justify">
 <p>We can see that the smartcard intervention causes a decrease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households received payment 3 days earlier, on average, as compared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at 1% level. These results reinforce our expectations that the smartcard intervention would negatively affect leakage, wait times and corruption faced by the rural workers.</p>
+</div>
 </section>
 <section id="robustness-checks" class="level2">
 <h2 class="anchored" data-anchor-id="robustness-checks">Robustness Checks</h2>
 <section id="instrument-validity" class="level3">
 <h3 class="anchored" data-anchor-id="instrument-validity">Instrument Validity</h3>
+<div class="justify">
 <p>Based on the first stage model, we see that there is a strong relationship between the instrument (randomized promotion) and Smartcard enrollment. The randomized promotion is positively correlated with Smartcard enrollment. Moreover, the joint F-statistic of the model is 8608 with a p-value less than 0.01. We can reject the hypothesis that the instrument is weak. We can conclude that the instrument is relevant. Since the promotion panchayats are selected through a randomized process, the instrument is not correlated with any observable or unobservable characteristics of households or location. The instrument satisfies exogeneity. Lastly, there is a clear causal mechanism between the randomized promotion and the outcomes of interest. A promotion can only cause leakages, wait times, and corruption to increase or decrease only if a household enrolls into the Smartcard program after receiving the promotion. Hence, the instrument satisfies exclusion.</p>
+</div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_29e67a43c13b5749f0dfc4c48456da2a">
 <details open="">
 <summary>Code</summary>
@@ -1052,11 +1084,12 @@ div.csl-indent {
 </section>
 <section id="conclusion-and-implications" class="level1">
 <h1>Conclusion and Implications</h1>
+<div class="justify">
 <p>From our simulated data analysis, we find that the Smartcard intervention causes a de- crease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households receive payment 3 days earlier, on average, as com- pared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at a 1% level. These results reinforce our expectations that the Smartcard intervention would negatively affect leakage, wait times and corruption faced by rural workers.</p>
 <p>The Smartcard program has three major implications. Firstly, the Smartcard program will contribute to poverty reduction and promote greater social inclusion by ensuring that benefits reach their intended recipients. Secondly, reducing wait times will enhance the over- all experience of beneficiaries, leading to increased trust in the government and its services. This could have positive spillover effects, such as increased participation in other government programs and greater civic engagement. Lastly, the Smartcard intervention will serve as a template for similar welfare programs in the country or even other countries facing similar challenges of leakages, wait times, and corruption. This could have a broader impact on so- cial welfare delivery systems, leading to reduced ineﬀiciencies and corruption in government services.</p>
 <p>In conclusion, the successful implementation of the Smartcard intervention would have significant implications for the delivery of social welfare programs, poverty reduction, and contribute towards good governance.</p>
-</section>
 </div>
+</section>
 <section id="reference" class="level1">
 
 
@@ -1298,499 +1331,515 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co">  cache: true</span></span>
 <span id="cb7-15"><a href="#cb7-15"></a><span class="co">  warning: false</span></span>
 <span id="cb7-16"><a href="#cb7-16"></a><span class="an">categories:</span><span class="co"> [Econometrics, IV, Policy Evaulation, Synthetic Data, R]</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="an">abstract:</span><span class="co"> "Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption. The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects. This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program's impact."</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="an">bibliography:</span><span class="co"> ["reference.bib"]</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="an">nocite:</span><span class="co"> |</span></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="co">  @*</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">---</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="in">```{css, echo = FALSE}</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="op">.</span><span class="fu">justify</span> <span class="op">{</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a>  text<span class="op">-</span>align<span class="op">:</span> justify <span class="op">!</span>important</span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="op">}</span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="in">```</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="an">bibliography:</span><span class="co"> ["reference.bib"]</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="an">nocite:</span><span class="co"> |</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">  @*</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">---</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="in">```{css, echo = FALSE}</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="op">.</span><span class="fu">justify</span> <span class="op">{</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>  text<span class="op">-</span>align<span class="op">:</span> justify <span class="op">!</span>important</span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="op">}</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="in">```</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a></span>
+<span id="cb7-28"><a href="#cb7-28"></a>::: justify</span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="fu"># Abstract</span></span>
 <span id="cb7-30"><a href="#cb7-30"></a></span>
-<span id="cb7-31"><a href="#cb7-31"></a>::: {.justify}</span>
+<span id="cb7-31"><a href="#cb7-31"></a>Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption.</span>
 <span id="cb7-32"><a href="#cb7-32"></a></span>
-<span id="cb7-33"><a href="#cb7-33"></a></span>
+<span id="cb7-33"><a href="#cb7-33"></a>The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects.</span>
 <span id="cb7-34"><a href="#cb7-34"></a></span>
-<span id="cb7-35"><a href="#cb7-35"></a><span class="fu"># Introduction</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a>This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program's impact.</span>
 <span id="cb7-36"><a href="#cb7-36"></a></span>
-<span id="cb7-37"><a href="#cb7-37"></a>Developing countries allocate a significant portion of their annual budget to social assistance programs, but most of these funds fail to reach their intended recipients due to inefficiencies resulting from leakages and corruption. In 2016, India allocated \$70 billion to social assistance programs (Govt. of India 2017), but historical estimates suggest that around 51% of these funds were lost due to inadequate delivery systems (Imbert, Clement, and John Papp. 2016; Govt of India 2005). One potential solution to improve assistance delivery is the implementation of digital payment systems that directly deposit government funds into the beneficiaries' bank accounts, thereby reducing bureaucracy. To enhance the system's security, biometric authentication can be employed.</span>
+<span id="cb7-37"><a href="#cb7-37"></a>:::</span>
 <span id="cb7-38"><a href="#cb7-38"></a></span>
-<span id="cb7-39"><a href="#cb7-39"></a>In 2006, the state government of Andhra Pradesh (GoAP) introduced the Smartcard system, a large-scale biometric payments system, to enhance the delivery of two major social welfare programs: the National Rural Employment Guarantee Scheme (NREGS) and Social Security Pensions (SSP). NREGS guarantees 100 days of wage employment per year to every rural household, while SSP provides payments to elderly and disabled individuals below the poverty line. However, due to implementation issues, the program was initially shut down. In 2010, J-PAL South Asia partnered with GoAP and relaunched the program in eight districts of Andhra Pradesh. The objective was to evaluate the effectiveness of the Smartcard system by running a large-scale randomized evaluation involving 8,000 households. The program aimed to improve governance by reducing corruption and enhancing efficiency using biometric authentication and secure digital payment systems. This initiative increased access to governmental benefits for citizens, and reduced costs associated with manual processes and fraud.</span>
+<span id="cb7-39"><a href="#cb7-39"></a><span class="fu"># Introduction</span></span>
 <span id="cb7-40"><a href="#cb7-40"></a></span>
-<span id="cb7-41"><a href="#cb7-41"></a>Building upon this previous work, our pre-registered study proposes to expand the biometric smartcard program introduced by Andhra Pradesh to three other Indian states using synthetic data. The expanded program aims to fully implement the biometric smartcard payment system in these states, specifically targeting the NREGS welfare program. Our plan involves equipping all panchayats (village councils) in the three states with payment technology and converting local Point of Service (PoS) locations into Smartcard facilities where all payments will be processed through the Smartcard system. If beneficiaries are not enrolled in the program, they will continue to receive payments in cash, similar to the previous system. Workers can enroll in the program, register their biometric information, and receive new Smartcards at designated stations. The PoS devices will store the biometric information of all enrolled workers locally, facilitating transaction verification without internet access.</span>
-<span id="cb7-42"><a href="#cb7-42"></a></span>
-<span id="cb7-43"><a href="#cb7-43"></a>The primary goal of this paper is to evaluate the impact of the Smartcard program on governance. Good governance ensures the efficient and equitable delivery of governmental processes, promoting public welfare. We anticipate a reduction in leakages, corruption, and wait times for the program's beneficiaries. These improvements are expected to enhance overall efficiency, increase earnings, and foster greater trust in government welfare measures.</span>
-<span id="cb7-44"><a href="#cb7-44"></a></span>
-<span id="cb7-45"><a href="#cb7-45"></a>To evaluate the program's impact on system leakages, wait times, and corruption, we employ an instrumental variable design. Our study involves randomly selecting 500 panchayats from the three states as a representative sample. Following program implementation, we randomly select 250 out of the 500 sample panchayats as the promotion locations. All households previously enrolled in the NREGS program will receive a promotion and information on enrolling in the Smartcard program. Subsequently, we conduct weekly surveys in all 500 panchayats over four weeks, gathering data on personal characteristics, leakages, wait times, and corruption events. By utilizing randomized promotion as a valid instrument, we find that the Smartcard intervention leads to a reduction in leakages, wait times and corruption.</span>
-<span id="cb7-46"><a href="#cb7-46"></a></span>
-<span id="cb7-47"><a href="#cb7-47"></a><span class="in">```{r setup, include = FALSE}</span></span>
-<span id="cb7-48"><a href="#cb7-48"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-49"><a href="#cb7-49"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-50"><a href="#cb7-50"></a><span class="in">```</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a>::: justify</span>
+<span id="cb7-42"><a href="#cb7-42"></a>Developing countries allocate a significant portion of their annual budget to social assistance programs, but most of these funds fail to reach their intended recipients due to inefficiencies resulting from leakages and corruption. In 2016, India allocated \$70 billion to social assistance programs (Govt. of India 2017), but historical estimates suggest that around 51% of these funds were lost due to inadequate delivery systems (Imbert, Clement, and John Papp. 2016; Govt of India 2005). One potential solution to improve assistance delivery is the implementation of digital payment systems that directly deposit government funds into the beneficiaries' bank accounts, thereby reducing bureaucracy. To enhance the system's security, biometric authentication can be employed.</span>
+<span id="cb7-43"><a href="#cb7-43"></a></span>
+<span id="cb7-44"><a href="#cb7-44"></a>In 2006, the state government of Andhra Pradesh (GoAP) introduced the Smartcard system, a large-scale biometric payments system, to enhance the delivery of two major social welfare programs: the National Rural Employment Guarantee Scheme (NREGS) and Social Security Pensions (SSP). NREGS guarantees 100 days of wage employment per year to every rural household, while SSP provides payments to elderly and disabled individuals below the poverty line. However, due to implementation issues, the program was initially shut down. In 2010, J-PAL South Asia partnered with GoAP and relaunched the program in eight districts of Andhra Pradesh. The objective was to evaluate the effectiveness of the Smartcard system by running a large-scale randomized evaluation involving 8,000 households. The program aimed to improve governance by reducing corruption and enhancing efficiency using biometric authentication and secure digital payment systems. This initiative increased access to governmental benefits for citizens, and reduced costs associated with manual processes and fraud.</span>
+<span id="cb7-45"><a href="#cb7-45"></a></span>
+<span id="cb7-46"><a href="#cb7-46"></a>Building upon this previous work, our pre-registered study proposes to expand the biometric smartcard program introduced by Andhra Pradesh to three other Indian states using synthetic data. The expanded program aims to fully implement the biometric smartcard payment system in these states, specifically targeting the NREGS welfare program. Our plan involves equipping all panchayats (village councils) in the three states with payment technology and converting local Point of Service (PoS) locations into Smartcard facilities where all payments will be processed through the Smartcard system. If beneficiaries are not enrolled in the program, they will continue to receive payments in cash, similar to the previous system. Workers can enroll in the program, register their biometric information, and receive new Smartcards at designated stations. The PoS devices will store the biometric information of all enrolled workers locally, facilitating transaction verification without internet access.</span>
+<span id="cb7-47"><a href="#cb7-47"></a></span>
+<span id="cb7-48"><a href="#cb7-48"></a>The primary goal of this paper is to evaluate the impact of the Smartcard program on governance. Good governance ensures the efficient and equitable delivery of governmental processes, promoting public welfare. We anticipate a reduction in leakages, corruption, and wait times for the program's beneficiaries. These improvements are expected to enhance overall efficiency, increase earnings, and foster greater trust in government welfare measures.</span>
+<span id="cb7-49"><a href="#cb7-49"></a></span>
+<span id="cb7-50"><a href="#cb7-50"></a>To evaluate the program's impact on system leakages, wait times, and corruption, we employ an instrumental variable design. Our study involves randomly selecting 500 panchayats from the three states as a representative sample. Following program implementation, we randomly select 250 out of the 500 sample panchayats as the promotion locations. All households previously enrolled in the NREGS program will receive a promotion and information on enrolling in the Smartcard program. Subsequently, we conduct weekly surveys in all 500 panchayats over four weeks, gathering data on personal characteristics, leakages, wait times, and corruption events. By utilizing randomized promotion as a valid instrument, we find that the Smartcard intervention leads to a reduction in leakages, wait times and corruption.</span>
 <span id="cb7-51"><a href="#cb7-51"></a></span>
-<span id="cb7-52"><a href="#cb7-52"></a><span class="in">```{r warning=FALSE}</span></span>
-<span id="cb7-53"><a href="#cb7-53"></a><span class="co"># import packages</span></span>
-<span id="cb7-54"><a href="#cb7-54"></a></span>
-<span id="cb7-55"><a href="#cb7-55"></a><span class="fu">library</span>(haven)</span>
-<span id="cb7-56"><a href="#cb7-56"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-57"><a href="#cb7-57"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb7-58"><a href="#cb7-58"></a><span class="fu">library</span>(fitdistrplus)</span>
-<span id="cb7-59"><a href="#cb7-59"></a><span class="fu">library</span>(cascsim) <span class="co">#truncated gamma distribution</span></span>
-<span id="cb7-60"><a href="#cb7-60"></a><span class="fu">library</span>(EnvStats) <span class="co">#truncated log-normal distribution</span></span>
-<span id="cb7-61"><a href="#cb7-61"></a><span class="fu">library</span>(psych) </span>
-<span id="cb7-62"><a href="#cb7-62"></a><span class="fu">library</span>(truncnorm)</span>
-<span id="cb7-63"><a href="#cb7-63"></a><span class="fu">library</span>(scales)</span>
-<span id="cb7-64"><a href="#cb7-64"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb7-65"><a href="#cb7-65"></a><span class="fu">library</span>(estimatr)</span>
-<span id="cb7-66"><a href="#cb7-66"></a><span class="fu">library</span>(ggdag)</span>
-<span id="cb7-67"><a href="#cb7-67"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb7-68"><a href="#cb7-68"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb7-69"><a href="#cb7-69"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb7-70"><a href="#cb7-70"></a><span class="fu">library</span>(lfe)</span>
-<span id="cb7-71"><a href="#cb7-71"></a><span class="in">```</span></span>
-<span id="cb7-72"><a href="#cb7-72"></a></span>
-<span id="cb7-73"><a href="#cb7-73"></a><span class="fu"># Program Theory and Implementation</span></span>
-<span id="cb7-74"><a href="#cb7-74"></a></span>
-<span id="cb7-75"><a href="#cb7-75"></a><span class="fu">## Program Theory and Impact Theory Graph</span></span>
-<span id="cb7-76"><a href="#cb7-76"></a></span>
-<span id="cb7-77"><a href="#cb7-77"></a>The program theory is that biometric authentication and secure payment systems can improve governance by reducing leakages in the delivery systems and reducing payment delays without adversely affecting program access.</span>
-<span id="cb7-78"><a href="#cb7-78"></a></span>
-<span id="cb7-79"><a href="#cb7-79"></a>The theory, based on previous research (World Bank 2003; Pritchett 2010, Reinikka and Svensson 2004; Programme Evaluation Organisation 2005; Niehaus and Sukhtankar 2013b) assumes that corruption and leakages are prevalent in government services in developing countries, leading to ineﬀiciencies in assistance delivery systems. By implementing biometric authentication and secure payment systems, the government can ensure that the correct individuals receive the correct payments and services. The Smartcards intervention has a two-fold effect. First, it changes the institutions responsible for managing the funds by eliminating a few intermediaries and moves the point of payment closer to the recipient. Second, it introduces biometric authentication which facilities transparency in the system by providing a secure, tamperproof record of who has received services and payments. This can help to reduce corruption and increase accountability.</span>
-<span id="cb7-80"><a href="#cb7-80"></a></span>
-<span id="cb7-81"><a href="#cb7-81"></a>Similar to Muralidharan et al. 2016, we consider two main dimensions of impact: payment logistics, and leakages. We also consider multiple scenarios surrounding each dimension. First, the payment logistics could improve or worsen. It could naturally improve the system by moving the point of payment closer to the village, or the program could slow down the process due to technical problems like malfunctioning authentication devices or absence of technical staff. Improving payment logistics will affect the wait times of beneficiaries to access the funds. Secondly, the program could reduce or fail to reduce leakages. Theoretically, smartcards should reduce payments to ghost recipients and forbid oﬀicials to collect payments in the name of real beneficiaries as the beneficiaries must be present to pass the biometric test. But there could be technical loopholes in the payment architecture that could disprove the claim of an absolute secure system. Moreover, the assistance programs' access could improve or suffer. In case of NREGS, local oﬀicers decide projects and generate employment. Eliminating opportunities to seek rent may disincentivize oﬀicials and they might reduce access. On the other hand, the NREGS funds would directly go towards to the development projects that were originally intended thus creating rural assets and generating more employment.</span>
-<span id="cb7-82"><a href="#cb7-82"></a></span>
-<span id="cb7-83"><a href="#cb7-83"></a><span class="al">![Smartcard Program Impact Theory Graph](./Impact_Theory.png)</span></span>
-<span id="cb7-84"><a href="#cb7-84"></a></span>
-<span id="cb7-85"><a href="#cb7-85"></a><span class="fu">## Logic model</span></span>
-<span id="cb7-86"><a href="#cb7-86"></a></span>
-<span id="cb7-87"><a href="#cb7-87"></a><span class="al">![Smartcard Program Logic Model](./Logic_Model.png)</span></span>
-<span id="cb7-88"><a href="#cb7-88"></a></span>
-<span id="cb7-89"><a href="#cb7-89"></a><span class="ss">1.  </span>Inputs:</span>
-<span id="cb7-90"><a href="#cb7-90"></a></span>
-<span id="cb7-91"><a href="#cb7-91"></a><span class="ss">-   </span>Federal and state assistance funds: These funds are required to finance the implementation of the Smartcard intervention as well as NGREGS transfer payments.</span>
-<span id="cb7-92"><a href="#cb7-92"></a><span class="ss">-   </span>Biometric authentication technology: This technology is required to verify the identity of beneficiaries and ensure that payments are disbursed to the correct individuals.</span>
-<span id="cb7-93"><a href="#cb7-93"></a><span class="ss">-   </span>Banks: Banks are required to help manage the payment system and ensure that payments are securely and efficiently disbursed to beneficiaries.</span>
-<span id="cb7-94"><a href="#cb7-94"></a><span class="ss">-   </span>Secure payment systems: Secure payment systems are required to ensure that payments are not lost or stolen during the disbursement process.</span>
-<span id="cb7-95"><a href="#cb7-95"></a><span class="ss">-   </span>Smartcards: Smartcards are required to store the payment information of beneficiaries and facilitate the payment process.</span>
-<span id="cb7-96"><a href="#cb7-96"></a><span class="ss">-   </span>Technical staff: Trained staff are required to collect and manage beneficiary information, conduct stress tests, and implement the payment system effectively and efficiently.</span>
-<span id="cb7-97"><a href="#cb7-97"></a><span class="ss">-   </span>Survey support staff: Survey staff are required to conduct randomized promotion and conduct weekly surveys to collect information on variables of interest.</span>
-<span id="cb7-98"><a href="#cb7-98"></a></span>
-<span id="cb7-99"><a href="#cb7-99"></a><span class="ss">2.  </span>Activities:</span>
-<span id="cb7-100"><a href="#cb7-100"></a></span>
-<span id="cb7-101"><a href="#cb7-101"></a><span class="ss">-   </span>Training staff for data collection and management of payment systems effectively and efficiently</span>
-<span id="cb7-102"><a href="#cb7-102"></a><span class="ss">-   </span>Collecting beneficiary personal and biometric information to verify individuals.</span>
-<span id="cb7-103"><a href="#cb7-103"></a><span class="ss">-   </span>Conducting stress tests on the digital payment system to ensure its smooth functioning.</span>
-<span id="cb7-104"><a href="#cb7-104"></a><span class="ss">-   </span>Implementation of secure payment systems to disburse payments to the correct individuals:</span>
-<span id="cb7-105"><a href="#cb7-105"></a><span class="ss">-   </span>Conducting door-to-door random promotions and provide information about the program.</span>
-<span id="cb7-106"><a href="#cb7-106"></a><span class="ss">-   </span>Conducting weekly surveys to collect data.</span>
+<span id="cb7-52"><a href="#cb7-52"></a>:::</span>
+<span id="cb7-53"><a href="#cb7-53"></a></span>
+<span id="cb7-54"><a href="#cb7-54"></a><span class="in">```{r setup, include = FALSE}</span></span>
+<span id="cb7-55"><a href="#cb7-55"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-56"><a href="#cb7-56"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-57"><a href="#cb7-57"></a><span class="in">```</span></span>
+<span id="cb7-58"><a href="#cb7-58"></a></span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a><span class="co"># import packages</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a></span>
+<span id="cb7-62"><a href="#cb7-62"></a><span class="fu">library</span>(haven)</span>
+<span id="cb7-63"><a href="#cb7-63"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-64"><a href="#cb7-64"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-65"><a href="#cb7-65"></a><span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb7-66"><a href="#cb7-66"></a><span class="fu">library</span>(cascsim) <span class="co">#truncated gamma distribution</span></span>
+<span id="cb7-67"><a href="#cb7-67"></a><span class="fu">library</span>(EnvStats) <span class="co">#truncated log-normal distribution</span></span>
+<span id="cb7-68"><a href="#cb7-68"></a><span class="fu">library</span>(psych) </span>
+<span id="cb7-69"><a href="#cb7-69"></a><span class="fu">library</span>(truncnorm)</span>
+<span id="cb7-70"><a href="#cb7-70"></a><span class="fu">library</span>(scales)</span>
+<span id="cb7-71"><a href="#cb7-71"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb7-72"><a href="#cb7-72"></a><span class="fu">library</span>(estimatr)</span>
+<span id="cb7-73"><a href="#cb7-73"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb7-74"><a href="#cb7-74"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb7-75"><a href="#cb7-75"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb7-76"><a href="#cb7-76"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb7-77"><a href="#cb7-77"></a><span class="fu">library</span>(lfe)</span>
+<span id="cb7-78"><a href="#cb7-78"></a><span class="in">```</span></span>
+<span id="cb7-79"><a href="#cb7-79"></a></span>
+<span id="cb7-80"><a href="#cb7-80"></a><span class="fu"># Program Theory and Implementation</span></span>
+<span id="cb7-81"><a href="#cb7-81"></a></span>
+<span id="cb7-82"><a href="#cb7-82"></a><span class="fu">## Program Theory and Impact Theory Graph</span></span>
+<span id="cb7-83"><a href="#cb7-83"></a></span>
+<span id="cb7-84"><a href="#cb7-84"></a>::: justify</span>
+<span id="cb7-85"><a href="#cb7-85"></a></span>
+<span id="cb7-86"><a href="#cb7-86"></a>The program theory is that biometric authentication and secure payment systems can improve governance by reducing leakages in the delivery systems and reducing payment delays without adversely affecting program access.</span>
+<span id="cb7-87"><a href="#cb7-87"></a></span>
+<span id="cb7-88"><a href="#cb7-88"></a>The theory, based on previous research (World Bank 2003; Pritchett 2010, Reinikka and Svensson 2004; Programme Evaluation Organisation 2005; Niehaus and Sukhtankar 2013b) assumes that corruption and leakages are prevalent in government services in developing countries, leading to ineﬀiciencies in assistance delivery systems. By implementing biometric authentication and secure payment systems, the government can ensure that the correct individuals receive the correct payments and services. The Smartcards intervention has a two-fold effect. First, it changes the institutions responsible for managing the funds by eliminating a few intermediaries and moves the point of payment closer to the recipient. Second, it introduces biometric authentication which facilities transparency in the system by providing a secure, tamperproof record of who has received services and payments. This can help to reduce corruption and increase accountability.</span>
+<span id="cb7-89"><a href="#cb7-89"></a></span>
+<span id="cb7-90"><a href="#cb7-90"></a>Similar to Muralidharan et al. 2016, we consider two main dimensions of impact: payment logistics, and leakages. We also consider multiple scenarios surrounding each dimension. First, the payment logistics could improve or worsen. It could naturally improve the system by moving the point of payment closer to the village, or the program could slow down the process due to technical problems like malfunctioning authentication devices or absence of technical staff. Improving payment logistics will affect the wait times of beneficiaries to access the funds. Secondly, the program could reduce or fail to reduce leakages. Theoretically, smartcards should reduce payments to ghost recipients and forbid oﬀicials to collect payments in the name of real beneficiaries as the beneficiaries must be present to pass the biometric test. But there could be technical loopholes in the payment architecture that could disprove the claim of an absolute secure system. Moreover, the assistance programs' access could improve or suffer. In case of NREGS, local oﬀicers decide projects and generate employment. Eliminating opportunities to seek rent may disincentivize oﬀicials and they might reduce access. On the other hand, the NREGS funds would directly go towards to the development projects that were originally intended thus creating rural assets and generating more employment.</span>
+<span id="cb7-91"><a href="#cb7-91"></a></span>
+<span id="cb7-92"><a href="#cb7-92"></a><span class="al">![Smartcard Program Impact Theory Graph](./Impact_Theory.png)</span></span>
+<span id="cb7-93"><a href="#cb7-93"></a></span>
+<span id="cb7-94"><a href="#cb7-94"></a><span class="fu">## Logic model</span></span>
+<span id="cb7-95"><a href="#cb7-95"></a></span>
+<span id="cb7-96"><a href="#cb7-96"></a><span class="al">![Smartcard Program Logic Model](./Logic_Model.png)</span></span>
+<span id="cb7-97"><a href="#cb7-97"></a></span>
+<span id="cb7-98"><a href="#cb7-98"></a><span class="ss">1.  </span>Inputs:</span>
+<span id="cb7-99"><a href="#cb7-99"></a></span>
+<span id="cb7-100"><a href="#cb7-100"></a><span class="ss">-   </span>Federal and state assistance funds: These funds are required to finance the implementation of the Smartcard intervention as well as NGREGS transfer payments.</span>
+<span id="cb7-101"><a href="#cb7-101"></a><span class="ss">-   </span>Biometric authentication technology: This technology is required to verify the identity of beneficiaries and ensure that payments are disbursed to the correct individuals.</span>
+<span id="cb7-102"><a href="#cb7-102"></a><span class="ss">-   </span>Banks: Banks are required to help manage the payment system and ensure that payments are securely and efficiently disbursed to beneficiaries.</span>
+<span id="cb7-103"><a href="#cb7-103"></a><span class="ss">-   </span>Secure payment systems: Secure payment systems are required to ensure that payments are not lost or stolen during the disbursement process.</span>
+<span id="cb7-104"><a href="#cb7-104"></a><span class="ss">-   </span>Smartcards: Smartcards are required to store the payment information of beneficiaries and facilitate the payment process.</span>
+<span id="cb7-105"><a href="#cb7-105"></a><span class="ss">-   </span>Technical staff: Trained staff are required to collect and manage beneficiary information, conduct stress tests, and implement the payment system effectively and efficiently.</span>
+<span id="cb7-106"><a href="#cb7-106"></a><span class="ss">-   </span>Survey support staff: Survey staff are required to conduct randomized promotion and conduct weekly surveys to collect information on variables of interest.</span>
 <span id="cb7-107"><a href="#cb7-107"></a></span>
-<span id="cb7-108"><a href="#cb7-108"></a><span class="ss">3.  </span>Outputs:</span>
+<span id="cb7-108"><a href="#cb7-108"></a><span class="ss">2.  </span>Activities:</span>
 <span id="cb7-109"><a href="#cb7-109"></a></span>
-<span id="cb7-110"><a href="#cb7-110"></a><span class="ss">-   </span>Number of people using Smartcard technology:</span>
-<span id="cb7-111"><a href="#cb7-111"></a><span class="ss">-   </span>Percentage change in average wait times at payment centers.</span>
-<span id="cb7-112"><a href="#cb7-112"></a><span class="ss">-   </span>Amount of money credited for every beneficiary and payment type.</span>
-<span id="cb7-113"><a href="#cb7-113"></a><span class="ss">-   </span>Amount of money saved: The amount of money saved is a measure of the program's efficiency and cost-effectiveness.</span>
-<span id="cb7-114"><a href="#cb7-114"></a><span class="ss">-   </span>Change in leakages and corruption in the system:</span>
-<span id="cb7-115"><a href="#cb7-115"></a></span>
-<span id="cb7-116"><a href="#cb7-116"></a><span class="ss">4.  </span>Outcomes:</span>
-<span id="cb7-117"><a href="#cb7-117"></a></span>
-<span id="cb7-118"><a href="#cb7-118"></a><span class="ss">-   </span>Reduced wait times: The Smartcard intervention is designed to reduce wait times at payment centers and payment delays which can save time and reduce the burden on beneficiaries.</span>
-<span id="cb7-119"><a href="#cb7-119"></a><span class="ss">-   </span>Increased earnings for the beneficiaries: The Smartcard intervention is designed to improve the delivery of funds for welfare programs, which can increase the earnings of beneficiaries.</span>
-<span id="cb7-120"><a href="#cb7-120"></a><span class="ss">-   </span>Increased efficiency: The Smartcard program will deliver reduce leakage, ensuring beneficiaries receive more funds in less time without allocating more budget to NREGS.</span>
-<span id="cb7-121"><a href="#cb7-121"></a><span class="ss">-   </span>Improved trust in government services: The Smartcard intervention is designed to improve the delivery of funds for welfare programs and ensure transparency in the payment system, which can improve trust in government.</span>
-<span id="cb7-122"><a href="#cb7-122"></a></span>
-<span id="cb7-123"><a href="#cb7-123"></a>\newpage</span>
+<span id="cb7-110"><a href="#cb7-110"></a><span class="ss">-   </span>Training staff for data collection and management of payment systems effectively and efficiently</span>
+<span id="cb7-111"><a href="#cb7-111"></a><span class="ss">-   </span>Collecting beneficiary personal and biometric information to verify individuals.</span>
+<span id="cb7-112"><a href="#cb7-112"></a><span class="ss">-   </span>Conducting stress tests on the digital payment system to ensure its smooth functioning.</span>
+<span id="cb7-113"><a href="#cb7-113"></a><span class="ss">-   </span>Implementation of secure payment systems to disburse payments to the correct individuals:</span>
+<span id="cb7-114"><a href="#cb7-114"></a><span class="ss">-   </span>Conducting door-to-door random promotions and provide information about the program.</span>
+<span id="cb7-115"><a href="#cb7-115"></a><span class="ss">-   </span>Conducting weekly surveys to collect data.</span>
+<span id="cb7-116"><a href="#cb7-116"></a></span>
+<span id="cb7-117"><a href="#cb7-117"></a><span class="ss">3.  </span>Outputs:</span>
+<span id="cb7-118"><a href="#cb7-118"></a></span>
+<span id="cb7-119"><a href="#cb7-119"></a><span class="ss">-   </span>Number of people using Smartcard technology:</span>
+<span id="cb7-120"><a href="#cb7-120"></a><span class="ss">-   </span>Percentage change in average wait times at payment centers.</span>
+<span id="cb7-121"><a href="#cb7-121"></a><span class="ss">-   </span>Amount of money credited for every beneficiary and payment type.</span>
+<span id="cb7-122"><a href="#cb7-122"></a><span class="ss">-   </span>Amount of money saved: The amount of money saved is a measure of the program's efficiency and cost-effectiveness.</span>
+<span id="cb7-123"><a href="#cb7-123"></a><span class="ss">-   </span>Change in leakages and corruption in the system:</span>
 <span id="cb7-124"><a href="#cb7-124"></a></span>
-<span id="cb7-125"><a href="#cb7-125"></a><span class="fu"># Outcome and Causation</span></span>
+<span id="cb7-125"><a href="#cb7-125"></a><span class="ss">4.  </span>Outcomes:</span>
 <span id="cb7-126"><a href="#cb7-126"></a></span>
-<span id="cb7-127"><a href="#cb7-127"></a><span class="fu">## Main outcome</span></span>
-<span id="cb7-128"><a href="#cb7-128"></a></span>
-<span id="cb7-129"><a href="#cb7-129"></a>The goal of this paper is to evaluate the smartcard program's effect on governance. Good governance is critical to achieving the goals of development. Moreover, strong governance ensures the efficiency and smoothness of governmental processes in achieving goals directed towards public welfare. It means that the government can deliver what they promised to the public in a fair and efficient way. We expect the smartcard intervention to reduce leakages, corruption and wait times for the beneficiaries. This will lead to improved efficiency, increased earnings and greater trust in government welfare measures.</span>
-<span id="cb7-130"><a href="#cb7-130"></a></span>
-<span id="cb7-131"><a href="#cb7-131"></a><span class="fu">## Measurement</span></span>
-<span id="cb7-132"><a href="#cb7-132"></a></span>
-<span id="cb7-133"><a href="#cb7-133"></a>Outcome: Better Governance</span>
-<span id="cb7-134"><a href="#cb7-134"></a></span>
-<span id="cb7-135"><a href="#cb7-135"></a><span class="ss">-   </span>Improved wait times</span>
-<span id="cb7-136"><a href="#cb7-136"></a></span>
-<span id="cb7-137"><a href="#cb7-137"></a><span class="ss">-   </span>Reduction in corruption and abuse of power</span>
-<span id="cb7-138"><a href="#cb7-138"></a></span>
-<span id="cb7-139"><a href="#cb7-139"></a><span class="ss">-   </span>Reduction in leakages in the payment system</span>
-<span id="cb7-140"><a href="#cb7-140"></a></span>
-<span id="cb7-141"><a href="#cb7-141"></a><span class="ss">-   </span>Better implementation of governmental plans or improved effectiveness</span>
-<span id="cb7-142"><a href="#cb7-142"></a></span>
-<span id="cb7-143"><a href="#cb7-143"></a><span class="ss">-   </span>Increased transparency</span>
-<span id="cb7-144"><a href="#cb7-144"></a></span>
-<span id="cb7-145"><a href="#cb7-145"></a><span class="ss">-   </span>Budget management</span>
-<span id="cb7-146"><a href="#cb7-146"></a></span>
-<span id="cb7-147"><a href="#cb7-147"></a>We think that the most important attributes of better governance are reduced wait times to access promised goods or services, reduction in leakages, and reduction in corruption and abuse of power. These aspects can be best quantified by observational and survey data. Leakages and delays in payments, crucial aspects of governance, should be the focus of the evaluation study. Corruption is also an important aspect of good governance, but it is our opinion that study participants might not be completely transparent about corruption related experiences. Budget management is subject to political ideology and economic situation. On the other hand, transparency can be diﬀicult to measure.</span>
-<span id="cb7-148"><a href="#cb7-148"></a></span>
-<span id="cb7-149"><a href="#cb7-149"></a>**Attribute 1: Reduction in Leakages**</span>
-<span id="cb7-150"><a href="#cb7-150"></a></span>
-<span id="cb7-151"><a href="#cb7-151"></a><span class="ss">-   </span>Measurable definition: Change in money value allocated and the money value actually received per person. Money value here is the rupee (or dollar) value actually received by the beneficiary. In other projects, money value can be the dollar value of the services received.</span>
-<span id="cb7-152"><a href="#cb7-152"></a></span>
-<span id="cb7-153"><a href="#cb7-153"></a><span class="ss">-   </span>Ideal measurement: Difference between the actual official amount of money allocated and the actual money received by the beneficiary.</span>
-<span id="cb7-154"><a href="#cb7-154"></a></span>
-<span id="cb7-155"><a href="#cb7-155"></a><span class="ss">-   </span>Feasible measurement: Difference between the muster-roll recorded amount of money allocated to the beneficiary and the money received by beneficiary based on surveys. Officials can manipulate muster rolls to under record work and pocket the difference. In an ideal world, we cannot know the true allocated value.</span>
-<span id="cb7-156"><a href="#cb7-156"></a></span>
-<span id="cb7-157"><a href="#cb7-157"></a><span class="ss">-   </span>Measurement of program effect: If the promotion of the smartcard program is randomized, the leakage amount will reflect the local average treatment effect of the program on the compliers.</span>
-<span id="cb7-158"><a href="#cb7-158"></a></span>
-<span id="cb7-159"><a href="#cb7-159"></a>**Attribute 2: Reduction in Wait Time**</span>
-<span id="cb7-160"><a href="#cb7-160"></a></span>
-<span id="cb7-161"><a href="#cb7-161"></a><span class="ss">-   </span>Measurable definition: Number of days between completing and work and receiving the payment. Moreover, number of minutes spent at the point of service (PoS) to collect the amount.</span>
-<span id="cb7-162"><a href="#cb7-162"></a></span>
-<span id="cb7-163"><a href="#cb7-163"></a><span class="ss">-   </span>Ideal measurement: In an ideal setting, conduct a randomized trial on the entire population. Post treatment, survey all the people and measure the wait times people in each group experienced before receiving their full promised amount of money.</span>
-<span id="cb7-164"><a href="#cb7-164"></a></span>
-<span id="cb7-165"><a href="#cb7-165"></a><span class="ss">-   </span>Feasible measurement: Conduct baseline surveys before rolling out the smartcard program and randomizing promotions and conducting endline surveys after the intervention to record the wait times of people.</span>
-<span id="cb7-166"><a href="#cb7-166"></a></span>
-<span id="cb7-167"><a href="#cb7-167"></a><span class="ss">-   </span>Measurement of program effect: Similar leakages, if the promotion is random, wait times would be the local average treatment effect of the smartcard program.</span>
-<span id="cb7-168"><a href="#cb7-168"></a></span>
-<span id="cb7-169"><a href="#cb7-169"></a>**Attribute 3: Reduction in Corruption and Abuse of Power**</span>
-<span id="cb7-170"><a href="#cb7-170"></a></span>
-<span id="cb7-171"><a href="#cb7-171"></a><span class="ss">-   </span>Measurable definition: Change in number of corruption incidences and average money value of corruption.</span>
-<span id="cb7-172"><a href="#cb7-172"></a></span>
-<span id="cb7-173"><a href="#cb7-173"></a><span class="ss">-   </span>Ideal measurement: In an ideal world, conduct a randomized trial on the entire population and measure the corruption incidences and per capita corruption amount for both the groups. The difference in these two parameters would be the program effect.</span>
-<span id="cb7-174"><a href="#cb7-174"></a></span>
-<span id="cb7-175"><a href="#cb7-175"></a><span class="ss">-   </span>Feasible measurement: Conduct a small-scale randomized promotion of the smartcard program and measure the number of corruption incidences and average corruption value.</span>
-<span id="cb7-176"><a href="#cb7-176"></a></span>
-<span id="cb7-177"><a href="#cb7-177"></a><span class="ss">-   </span>Measurement of program effect: As the randomized promotion is a valid instrument, the feasible measures would reflect the local average treatment effect of the smartcard program.</span>
-<span id="cb7-178"><a href="#cb7-178"></a></span>
-<span id="cb7-179"><a href="#cb7-179"></a>\newpage</span>
-<span id="cb7-180"><a href="#cb7-180"></a></span>
-<span id="cb7-181"><a href="#cb7-181"></a><span class="fu"># Data and Analysis</span></span>
-<span id="cb7-182"><a href="#cb7-182"></a></span>
-<span id="cb7-183"><a href="#cb7-183"></a><span class="fu">## Identification Strategy</span></span>
-<span id="cb7-184"><a href="#cb7-184"></a></span>
-<span id="cb7-185"><a href="#cb7-185"></a>Similar to Muralidharan et al. 2016, we assert causal claims that the Smartcard intervention will lead to reduced leakages, wait times, and corruption for beneficiary households. In earlier leakage-prone systems, the funds were released by the government and flowed through multiple intermediaries to reach the beneficiary. But in the new Smartcard system, the worker can directly receive funds with just a single third-party processing all the transactions. This leads to fewer leakages in the system as people cannot game it by withdrawing money in the name of ghost recipients. Moreover, oﬀicers have fewer chances to engage in corruption as funds are digitally transferred to the end user's bank account. Further, the Smartcard intervention will improve payment logistics by reducing wait times and delays in payment collection. Smartcard holders will not be bothered by cash shortages at the PoS as money would be directly deposited into their accounts. Finally, the biometric cards would aid in quicker verifications at the PoS and reduce wait times in queues.</span>
-<span id="cb7-186"><a href="#cb7-186"></a></span>
-<span id="cb7-187"><a href="#cb7-187"></a>A host of household-level characteristics influence enrollment into the Smartcard program, reduction in leakages, wait times and corruption events. Some of the observable covariates include location, family size, household literacy rate, religion, assets, and others. Controlling for these covariates is a possible solution, but it does not paint the full causal picture. The NREGS program has a universal access and hence it is fair to provide universal access to the Smartcard program that facilitates the NREGS welfare payments. In this scenario, we suspect that households that enroll into the Smartcard intervention are fundamentally different than the households that do not enroll. For instance, poor households with fewer job opportunities or literate households would be more likely to enroll into the program. There exists a host of household and geographic characteristics that influence enrollment into the program and the outcomes. The universal nature of the program leads to self-selection bias. Additionally, the unobserved household and governmental characteristics lead to omitted variable bias. To tackle these challenges, we introduce the instrumental variable design by using randomized promotion as an instrument. Randomized promotion design closes all the backdoors and provides a local average treatment effect for the compliers that enroll in the Smartcard program after receiving the promotion.</span>
-<span id="cb7-188"><a href="#cb7-188"></a></span>
-<span id="cb7-189"><a href="#cb7-189"></a>The instrumental variable approach isolates the causal effect of the program on the outcome by using the variation in the treatment induced by the instrument. By comparing the outcomes of households who received treatment through the instrument with those who did not receive treatment through the instrument, we can estimate the causal effect of the program on the outcomes of choice.</span>
-<span id="cb7-190"><a href="#cb7-190"></a></span>
-<span id="cb7-191"><a href="#cb7-191"></a>Specifically, the randomized promotion ensures that the distribution of observable and unobservable characteristics between the treatment and control groups is balanced, reducing the potential for selection bias. Furthermore, the instrumental variable approach addresses endogeneity by focusing on the exogenous variation in the randomized promotion, rather than the endogenous relationship between the program and outcomes, thus isolating the causal effect of the program on the outcomes of interest. This approach allows us to obtain an unbiased estimate of the causal effect of the program, even in the presence of selection bias and endogeneity.</span>
-<span id="cb7-192"><a href="#cb7-192"></a></span>
-<span id="cb7-193"><a href="#cb7-193"></a>Our identification strategy takes the form of two-staged least squares (2SLS) instrumental variable. In the first stage, we estimate the effect of randomized promotion on the endogenous smartcard enrollment. Hence, we estimate:</span>
+<span id="cb7-127"><a href="#cb7-127"></a><span class="ss">-   </span>Reduced wait times: The Smartcard intervention is designed to reduce wait times at payment centers and payment delays which can save time and reduce the burden on beneficiaries.</span>
+<span id="cb7-128"><a href="#cb7-128"></a><span class="ss">-   </span>Increased earnings for the beneficiaries: The Smartcard intervention is designed to improve the delivery of funds for welfare programs, which can increase the earnings of beneficiaries.</span>
+<span id="cb7-129"><a href="#cb7-129"></a><span class="ss">-   </span>Increased efficiency: The Smartcard program will deliver reduce leakage, ensuring beneficiaries receive more funds in less time without allocating more budget to NREGS.</span>
+<span id="cb7-130"><a href="#cb7-130"></a><span class="ss">-   </span>Improved trust in government services: The Smartcard intervention is designed to improve the delivery of funds for welfare programs and ensure transparency in the payment system, which can improve trust in government.</span>
+<span id="cb7-131"><a href="#cb7-131"></a></span>
+<span id="cb7-132"><a href="#cb7-132"></a>\newpage</span>
+<span id="cb7-133"><a href="#cb7-133"></a></span>
+<span id="cb7-134"><a href="#cb7-134"></a><span class="fu"># Outcome and Causation</span></span>
+<span id="cb7-135"><a href="#cb7-135"></a></span>
+<span id="cb7-136"><a href="#cb7-136"></a><span class="fu">## Main outcome</span></span>
+<span id="cb7-137"><a href="#cb7-137"></a></span>
+<span id="cb7-138"><a href="#cb7-138"></a>The goal of this paper is to evaluate the smartcard program's effect on governance. Good governance is critical to achieving the goals of development. Moreover, strong governance ensures the efficiency and smoothness of governmental processes in achieving goals directed towards public welfare. It means that the government can deliver what they promised to the public in a fair and efficient way. We expect the smartcard intervention to reduce leakages, corruption and wait times for the beneficiaries. This will lead to improved efficiency, increased earnings and greater trust in government welfare measures.</span>
+<span id="cb7-139"><a href="#cb7-139"></a></span>
+<span id="cb7-140"><a href="#cb7-140"></a><span class="fu">## Measurement</span></span>
+<span id="cb7-141"><a href="#cb7-141"></a></span>
+<span id="cb7-142"><a href="#cb7-142"></a>Outcome: Better Governance</span>
+<span id="cb7-143"><a href="#cb7-143"></a></span>
+<span id="cb7-144"><a href="#cb7-144"></a><span class="ss">-   </span>Improved wait times</span>
+<span id="cb7-145"><a href="#cb7-145"></a></span>
+<span id="cb7-146"><a href="#cb7-146"></a><span class="ss">-   </span>Reduction in corruption and abuse of power</span>
+<span id="cb7-147"><a href="#cb7-147"></a></span>
+<span id="cb7-148"><a href="#cb7-148"></a><span class="ss">-   </span>Reduction in leakages in the payment system</span>
+<span id="cb7-149"><a href="#cb7-149"></a></span>
+<span id="cb7-150"><a href="#cb7-150"></a><span class="ss">-   </span>Better implementation of governmental plans or improved effectiveness</span>
+<span id="cb7-151"><a href="#cb7-151"></a></span>
+<span id="cb7-152"><a href="#cb7-152"></a><span class="ss">-   </span>Increased transparency</span>
+<span id="cb7-153"><a href="#cb7-153"></a></span>
+<span id="cb7-154"><a href="#cb7-154"></a><span class="ss">-   </span>Budget management</span>
+<span id="cb7-155"><a href="#cb7-155"></a></span>
+<span id="cb7-156"><a href="#cb7-156"></a>We think that the most important attributes of better governance are reduced wait times to access promised goods or services, reduction in leakages, and reduction in corruption and abuse of power. These aspects can be best quantified by observational and survey data. Leakages and delays in payments, crucial aspects of governance, should be the focus of the evaluation study. Corruption is also an important aspect of good governance, but it is our opinion that study participants might not be completely transparent about corruption related experiences. Budget management is subject to political ideology and economic situation. On the other hand, transparency can be diﬀicult to measure.</span>
+<span id="cb7-157"><a href="#cb7-157"></a></span>
+<span id="cb7-158"><a href="#cb7-158"></a>**Attribute 1: Reduction in Leakages**</span>
+<span id="cb7-159"><a href="#cb7-159"></a></span>
+<span id="cb7-160"><a href="#cb7-160"></a><span class="ss">-   </span>Measurable definition: Change in money value allocated and the money value actually received per person. Money value here is the rupee (or dollar) value actually received by the beneficiary. In other projects, money value can be the dollar value of the services received.</span>
+<span id="cb7-161"><a href="#cb7-161"></a></span>
+<span id="cb7-162"><a href="#cb7-162"></a><span class="ss">-   </span>Ideal measurement: Difference between the actual official amount of money allocated and the actual money received by the beneficiary.</span>
+<span id="cb7-163"><a href="#cb7-163"></a></span>
+<span id="cb7-164"><a href="#cb7-164"></a><span class="ss">-   </span>Feasible measurement: Difference between the muster-roll recorded amount of money allocated to the beneficiary and the money received by beneficiary based on surveys. Officials can manipulate muster rolls to under record work and pocket the difference. In an ideal world, we cannot know the true allocated value.</span>
+<span id="cb7-165"><a href="#cb7-165"></a></span>
+<span id="cb7-166"><a href="#cb7-166"></a><span class="ss">-   </span>Measurement of program effect: If the promotion of the smartcard program is randomized, the leakage amount will reflect the local average treatment effect of the program on the compliers.</span>
+<span id="cb7-167"><a href="#cb7-167"></a></span>
+<span id="cb7-168"><a href="#cb7-168"></a>**Attribute 2: Reduction in Wait Time**</span>
+<span id="cb7-169"><a href="#cb7-169"></a></span>
+<span id="cb7-170"><a href="#cb7-170"></a><span class="ss">-   </span>Measurable definition: Number of days between completing and work and receiving the payment. Moreover, number of minutes spent at the point of service (PoS) to collect the amount.</span>
+<span id="cb7-171"><a href="#cb7-171"></a></span>
+<span id="cb7-172"><a href="#cb7-172"></a><span class="ss">-   </span>Ideal measurement: In an ideal setting, conduct a randomized trial on the entire population. Post treatment, survey all the people and measure the wait times people in each group experienced before receiving their full promised amount of money.</span>
+<span id="cb7-173"><a href="#cb7-173"></a></span>
+<span id="cb7-174"><a href="#cb7-174"></a><span class="ss">-   </span>Feasible measurement: Conduct baseline surveys before rolling out the smartcard program and randomizing promotions and conducting endline surveys after the intervention to record the wait times of people.</span>
+<span id="cb7-175"><a href="#cb7-175"></a></span>
+<span id="cb7-176"><a href="#cb7-176"></a><span class="ss">-   </span>Measurement of program effect: Similar leakages, if the promotion is random, wait times would be the local average treatment effect of the smartcard program.</span>
+<span id="cb7-177"><a href="#cb7-177"></a></span>
+<span id="cb7-178"><a href="#cb7-178"></a>**Attribute 3: Reduction in Corruption and Abuse of Power**</span>
+<span id="cb7-179"><a href="#cb7-179"></a></span>
+<span id="cb7-180"><a href="#cb7-180"></a><span class="ss">-   </span>Measurable definition: Change in number of corruption incidences and average money value of corruption.</span>
+<span id="cb7-181"><a href="#cb7-181"></a></span>
+<span id="cb7-182"><a href="#cb7-182"></a><span class="ss">-   </span>Ideal measurement: In an ideal world, conduct a randomized trial on the entire population and measure the corruption incidences and per capita corruption amount for both the groups. The difference in these two parameters would be the program effect.</span>
+<span id="cb7-183"><a href="#cb7-183"></a></span>
+<span id="cb7-184"><a href="#cb7-184"></a><span class="ss">-   </span>Feasible measurement: Conduct a small-scale randomized promotion of the smartcard program and measure the number of corruption incidences and average corruption value.</span>
+<span id="cb7-185"><a href="#cb7-185"></a></span>
+<span id="cb7-186"><a href="#cb7-186"></a><span class="ss">-   </span>Measurement of program effect: As the randomized promotion is a valid instrument, the feasible measures would reflect the local average treatment effect of the smartcard program.</span>
+<span id="cb7-187"><a href="#cb7-187"></a>:::</span>
+<span id="cb7-188"><a href="#cb7-188"></a>\newpage</span>
+<span id="cb7-189"><a href="#cb7-189"></a></span>
+<span id="cb7-190"><a href="#cb7-190"></a><span class="fu"># Data and Analysis</span></span>
+<span id="cb7-191"><a href="#cb7-191"></a></span>
+<span id="cb7-192"><a href="#cb7-192"></a><span class="fu">## Identification Strategy</span></span>
+<span id="cb7-193"><a href="#cb7-193"></a>::: justify</span>
 <span id="cb7-194"><a href="#cb7-194"></a></span>
-<span id="cb7-195"><a href="#cb7-195"></a>$$</span>
-<span id="cb7-196"><a href="#cb7-196"></a>\text{Smartcard}= \beta_{0} + \beta \text{Promotion} + \gamma X + u</span>
-<span id="cb7-197"><a href="#cb7-197"></a>$$ where $\text{Smartcard}$ is a binary indicator of whether a household enrolled into the program, and $X$ is a vector of covariates.</span>
+<span id="cb7-195"><a href="#cb7-195"></a>Similar to Muralidharan et al. 2016, we assert causal claims that the Smartcard intervention will lead to reduced leakages, wait times, and corruption for beneficiary households. In earlier leakage-prone systems, the funds were released by the government and flowed through multiple intermediaries to reach the beneficiary. But in the new Smartcard system, the worker can directly receive funds with just a single third-party processing all the transactions. This leads to fewer leakages in the system as people cannot game it by withdrawing money in the name of ghost recipients. Moreover, oﬀicers have fewer chances to engage in corruption as funds are digitally transferred to the end user's bank account. Further, the Smartcard intervention will improve payment logistics by reducing wait times and delays in payment collection. Smartcard holders will not be bothered by cash shortages at the PoS as money would be directly deposited into their accounts. Finally, the biometric cards would aid in quicker verifications at the PoS and reduce wait times in queues.</span>
+<span id="cb7-196"><a href="#cb7-196"></a></span>
+<span id="cb7-197"><a href="#cb7-197"></a>A host of household-level characteristics influence enrollment into the Smartcard program, reduction in leakages, wait times and corruption events. Some of the observable covariates include location, family size, household literacy rate, religion, assets, and others. Controlling for these covariates is a possible solution, but it does not paint the full causal picture. The NREGS program has a universal access and hence it is fair to provide universal access to the Smartcard program that facilitates the NREGS welfare payments. In this scenario, we suspect that households that enroll into the Smartcard intervention are fundamentally different than the households that do not enroll. For instance, poor households with fewer job opportunities or literate households would be more likely to enroll into the program. There exists a host of household and geographic characteristics that influence enrollment into the program and the outcomes. The universal nature of the program leads to self-selection bias. Additionally, the unobserved household and governmental characteristics lead to omitted variable bias. To tackle these challenges, we introduce the instrumental variable design by using randomized promotion as an instrument. Randomized promotion design closes all the backdoors and provides a local average treatment effect for the compliers that enroll in the Smartcard program after receiving the promotion.</span>
 <span id="cb7-198"><a href="#cb7-198"></a></span>
-<span id="cb7-199"><a href="#cb7-199"></a>The general form of the second stage least squares is as follows: $$</span>
-<span id="cb7-200"><a href="#cb7-200"></a>\text{Outcome}_i =  \beta_{0_i} + \beta_i \hat{\text{Smartcard}} + \gamma_i X + \epsilon_i$$</span>
-<span id="cb7-201"><a href="#cb7-201"></a></span>
-<span id="cb7-202"><a href="#cb7-202"></a>Where $$\text{Outcome }_i = <span class="sc">\{</span>\text{Leakage}, \text{Queue Wait Time }, \text{Payment Delay}, \text{Corruption} <span class="sc">\}</span>$$</span>
-<span id="cb7-203"><a href="#cb7-203"></a></span>
-<span id="cb7-204"><a href="#cb7-204"></a>Overall, the instrumental variable approach using randomized promotion provides a rigorous and credible method for estimating the causal effects of the smartcard program on the outcomes of interest, while also addressing potential issues of selection bias and endogeneity.</span>
-<span id="cb7-205"><a href="#cb7-205"></a></span>
-<span id="cb7-206"><a href="#cb7-206"></a>A DAG for the outcome is as follows:</span>
-<span id="cb7-207"><a href="#cb7-207"></a></span>
-<span id="cb7-208"><a href="#cb7-208"></a><span class="in">```{r DAG}</span></span>
-<span id="cb7-209"><a href="#cb7-209"></a><span class="co"># Outcome_i DAG</span></span>
-<span id="cb7-210"><a href="#cb7-210"></a></span>
-<span id="cb7-211"><a href="#cb7-211"></a>iv_dag <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag {</span></span>
-<span id="cb7-212"><a href="#cb7-212"></a><span class="st">bb="-1.129,-1.666,1.129,1.666"</span></span>
-<span id="cb7-213"><a href="#cb7-213"></a><span class="st">"# Children" [pos="-0.100,-0.416"]</span></span>
-<span id="cb7-214"><a href="#cb7-214"></a><span class="st">"# Female Members" [pos="-0.295,-0.335"]</span></span>
-<span id="cb7-215"><a href="#cb7-215"></a><span class="st">"Household Has Farm" [pos="0.258,-0.469"]</span></span>
-<span id="cb7-216"><a href="#cb7-216"></a><span class="st">"Household Head (HH) Age" [pos="0.440,1.076"]</span></span>
-<span id="cb7-217"><a href="#cb7-217"></a><span class="st">"Household Head (HH) Gender" [pos="0.690,0.902"]</span></span>
-<span id="cb7-218"><a href="#cb7-218"></a><span class="st">"Household Literacy Rate" [pos="0.805,-0.106"]</span></span>
-<span id="cb7-219"><a href="#cb7-219"></a><span class="st">"Random Promotion (IV)" [pos="-1.005,0.524"]</span></span>
-<span id="cb7-220"><a href="#cb7-220"></a><span class="st">Hindu [pos="-0.187,0.991"]</span></span>
-<span id="cb7-221"><a href="#cb7-221"></a><span class="st">Outcome_i [outcome,pos="0.896,0.466"]</span></span>
-<span id="cb7-222"><a href="#cb7-222"></a><span class="st">Location [pos="-0.483,-0.189"]</span></span>
-<span id="cb7-223"><a href="#cb7-223"></a><span class="st">Muslim [pos="0.130,1.169"]</span></span>
-<span id="cb7-224"><a href="#cb7-224"></a><span class="st">Smartcard [exposure,pos="-0.689,0.514"]</span></span>
-<span id="cb7-225"><a href="#cb7-225"></a><span class="st">"# Children" -&gt; Outcome_i</span></span>
-<span id="cb7-226"><a href="#cb7-226"></a><span class="st">"# Children" -&gt; Smartcard</span></span>
-<span id="cb7-227"><a href="#cb7-227"></a><span class="st">"# Female Members" -&gt; Outcome_i</span></span>
-<span id="cb7-228"><a href="#cb7-228"></a><span class="st">"# Female Members" -&gt; Smartcard</span></span>
-<span id="cb7-229"><a href="#cb7-229"></a><span class="st">"Household Has Farm" -&gt; Smartcard</span></span>
-<span id="cb7-230"><a href="#cb7-230"></a><span class="st">"Household Head (HH) Age" -&gt; Outcome_i</span></span>
-<span id="cb7-231"><a href="#cb7-231"></a><span class="st">"Household Head (HH) Age" -&gt; Smartcard</span></span>
-<span id="cb7-232"><a href="#cb7-232"></a><span class="st">"Household Head (HH) Gender" -&gt; Outcome_i</span></span>
-<span id="cb7-233"><a href="#cb7-233"></a><span class="st">"Household Head (HH) Gender" -&gt; Smartcard</span></span>
-<span id="cb7-234"><a href="#cb7-234"></a><span class="st">"Household Literacy Rate" -&gt; Outcome_i</span></span>
-<span id="cb7-235"><a href="#cb7-235"></a><span class="st">"Household Literacy Rate" -&gt; Smartcard</span></span>
-<span id="cb7-236"><a href="#cb7-236"></a><span class="st">"Random Promotion (IV)" -&gt; Smartcard</span></span>
-<span id="cb7-237"><a href="#cb7-237"></a><span class="st">Hindu -&gt; Outcome_i</span></span>
-<span id="cb7-238"><a href="#cb7-238"></a><span class="st">Hindu -&gt; Smartcard</span></span>
-<span id="cb7-239"><a href="#cb7-239"></a><span class="st">Location -&gt; Outcome_i</span></span>
-<span id="cb7-240"><a href="#cb7-240"></a><span class="st">Location -&gt; Smartcard</span></span>
-<span id="cb7-241"><a href="#cb7-241"></a><span class="st">Muslim -&gt; Outcome_i</span></span>
-<span id="cb7-242"><a href="#cb7-242"></a><span class="st">Muslim -&gt; Smartcard</span></span>
-<span id="cb7-243"><a href="#cb7-243"></a><span class="st">Smartcard -&gt; Outcome_i</span></span>
-<span id="cb7-244"><a href="#cb7-244"></a><span class="st">}</span></span>
-<span id="cb7-245"><a href="#cb7-245"></a></span>
-<span id="cb7-246"><a href="#cb7-246"></a><span class="st">'</span>)</span>
-<span id="cb7-247"><a href="#cb7-247"></a></span>
-<span id="cb7-248"><a href="#cb7-248"></a><span class="fu">ggdag_status</span>(iv_dag,  <span class="at">text =</span> <span class="cn">FALSE</span>, <span class="at">use_labels =</span> <span class="st">"name"</span>) <span class="sc">+</span></span>
-<span id="cb7-249"><a href="#cb7-249"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>, <span class="at">color =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb7-250"><a href="#cb7-250"></a>  <span class="fu">theme_dag</span>()</span>
-<span id="cb7-251"><a href="#cb7-251"></a><span class="in">```</span></span>
-<span id="cb7-252"><a href="#cb7-252"></a></span>
-<span id="cb7-253"><a href="#cb7-253"></a><span class="fu">## Hypotheses</span></span>
-<span id="cb7-254"><a href="#cb7-254"></a></span>
-<span id="cb7-255"><a href="#cb7-255"></a>We formulate the following hypothesis and test it in the subsequent sections:</span>
-<span id="cb7-256"><a href="#cb7-256"></a></span>
-<span id="cb7-257"><a href="#cb7-257"></a>$\textbf{H1}$: The Smartcard program **causes** leakages to decrease.</span>
-<span id="cb7-258"><a href="#cb7-258"></a></span>
-<span id="cb7-259"><a href="#cb7-259"></a>$\textbf{H2}$: The Smartcard program **causes** payment delays (in number of days to receive payment) to decrease.</span>
-<span id="cb7-260"><a href="#cb7-260"></a></span>
-<span id="cb7-261"><a href="#cb7-261"></a>$\textbf{H3}$: The Smartcard program **causes** waiting time in queue (in minutes) to decrease.</span>
-<span id="cb7-262"><a href="#cb7-262"></a></span>
-<span id="cb7-263"><a href="#cb7-263"></a>$\textbf{H4}$: The Smartcard program **reduces** incidences of corruption.</span>
-<span id="cb7-264"><a href="#cb7-264"></a></span>
-<span id="cb7-265"><a href="#cb7-265"></a><span class="fu">## Data</span></span>
+<span id="cb7-199"><a href="#cb7-199"></a>The instrumental variable approach isolates the causal effect of the program on the outcome by using the variation in the treatment induced by the instrument. By comparing the outcomes of households who received treatment through the instrument with those who did not receive treatment through the instrument, we can estimate the causal effect of the program on the outcomes of choice.</span>
+<span id="cb7-200"><a href="#cb7-200"></a></span>
+<span id="cb7-201"><a href="#cb7-201"></a>Specifically, the randomized promotion ensures that the distribution of observable and unobservable characteristics between the treatment and control groups is balanced, reducing the potential for selection bias. Furthermore, the instrumental variable approach addresses endogeneity by focusing on the exogenous variation in the randomized promotion, rather than the endogenous relationship between the program and outcomes, thus isolating the causal effect of the program on the outcomes of interest. This approach allows us to obtain an unbiased estimate of the causal effect of the program, even in the presence of selection bias and endogeneity.</span>
+<span id="cb7-202"><a href="#cb7-202"></a></span>
+<span id="cb7-203"><a href="#cb7-203"></a>Our identification strategy takes the form of two-staged least squares (2SLS) instrumental variable. In the first stage, we estimate the effect of randomized promotion on the endogenous smartcard enrollment. Hence, we estimate:</span>
+<span id="cb7-204"><a href="#cb7-204"></a></span>
+<span id="cb7-205"><a href="#cb7-205"></a>$$</span>
+<span id="cb7-206"><a href="#cb7-206"></a>\text{Smartcard}= \beta_{0} + \beta \text{Promotion} + \gamma X + u</span>
+<span id="cb7-207"><a href="#cb7-207"></a>$$ where $\text{Smartcard}$ is a binary indicator of whether a household enrolled into the program, and $X$ is a vector of covariates.</span>
+<span id="cb7-208"><a href="#cb7-208"></a></span>
+<span id="cb7-209"><a href="#cb7-209"></a>The general form of the second stage least squares is as follows: $$</span>
+<span id="cb7-210"><a href="#cb7-210"></a>\text{Outcome}_i =  \beta_{0_i} + \beta_i \hat{\text{Smartcard}} + \gamma_i X + \epsilon_i$$</span>
+<span id="cb7-211"><a href="#cb7-211"></a></span>
+<span id="cb7-212"><a href="#cb7-212"></a>Where $$\text{Outcome }_i = <span class="sc">\{</span>\text{Leakage}, \text{Queue Wait Time }, \text{Payment Delay}, \text{Corruption} <span class="sc">\}</span>$$</span>
+<span id="cb7-213"><a href="#cb7-213"></a></span>
+<span id="cb7-214"><a href="#cb7-214"></a>Overall, the instrumental variable approach using randomized promotion provides a rigorous and credible method for estimating the causal effects of the smartcard program on the outcomes of interest, while also addressing potential issues of selection bias and endogeneity.</span>
+<span id="cb7-215"><a href="#cb7-215"></a></span>
+<span id="cb7-216"><a href="#cb7-216"></a>:::</span>
+<span id="cb7-217"><a href="#cb7-217"></a></span>
+<span id="cb7-218"><a href="#cb7-218"></a>A DAG for the outcome is as follows:</span>
+<span id="cb7-219"><a href="#cb7-219"></a></span>
+<span id="cb7-220"><a href="#cb7-220"></a><span class="in">```{r DAG}</span></span>
+<span id="cb7-221"><a href="#cb7-221"></a><span class="co"># Outcome_i DAG</span></span>
+<span id="cb7-222"><a href="#cb7-222"></a></span>
+<span id="cb7-223"><a href="#cb7-223"></a>iv_dag <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag {</span></span>
+<span id="cb7-224"><a href="#cb7-224"></a><span class="st">bb="-1.129,-1.666,1.129,1.666"</span></span>
+<span id="cb7-225"><a href="#cb7-225"></a><span class="st">"# Children" [pos="-0.100,-0.416"]</span></span>
+<span id="cb7-226"><a href="#cb7-226"></a><span class="st">"# Female Members" [pos="-0.295,-0.335"]</span></span>
+<span id="cb7-227"><a href="#cb7-227"></a><span class="st">"Household Has Farm" [pos="0.258,-0.469"]</span></span>
+<span id="cb7-228"><a href="#cb7-228"></a><span class="st">"Household Head (HH) Age" [pos="0.440,1.076"]</span></span>
+<span id="cb7-229"><a href="#cb7-229"></a><span class="st">"Household Head (HH) Gender" [pos="0.690,0.902"]</span></span>
+<span id="cb7-230"><a href="#cb7-230"></a><span class="st">"Household Literacy Rate" [pos="0.805,-0.106"]</span></span>
+<span id="cb7-231"><a href="#cb7-231"></a><span class="st">"Random Promotion (IV)" [pos="-1.005,0.524"]</span></span>
+<span id="cb7-232"><a href="#cb7-232"></a><span class="st">Hindu [pos="-0.187,0.991"]</span></span>
+<span id="cb7-233"><a href="#cb7-233"></a><span class="st">Outcome_i [outcome,pos="0.896,0.466"]</span></span>
+<span id="cb7-234"><a href="#cb7-234"></a><span class="st">Location [pos="-0.483,-0.189"]</span></span>
+<span id="cb7-235"><a href="#cb7-235"></a><span class="st">Muslim [pos="0.130,1.169"]</span></span>
+<span id="cb7-236"><a href="#cb7-236"></a><span class="st">Smartcard [exposure,pos="-0.689,0.514"]</span></span>
+<span id="cb7-237"><a href="#cb7-237"></a><span class="st">"# Children" -&gt; Outcome_i</span></span>
+<span id="cb7-238"><a href="#cb7-238"></a><span class="st">"# Children" -&gt; Smartcard</span></span>
+<span id="cb7-239"><a href="#cb7-239"></a><span class="st">"# Female Members" -&gt; Outcome_i</span></span>
+<span id="cb7-240"><a href="#cb7-240"></a><span class="st">"# Female Members" -&gt; Smartcard</span></span>
+<span id="cb7-241"><a href="#cb7-241"></a><span class="st">"Household Has Farm" -&gt; Smartcard</span></span>
+<span id="cb7-242"><a href="#cb7-242"></a><span class="st">"Household Head (HH) Age" -&gt; Outcome_i</span></span>
+<span id="cb7-243"><a href="#cb7-243"></a><span class="st">"Household Head (HH) Age" -&gt; Smartcard</span></span>
+<span id="cb7-244"><a href="#cb7-244"></a><span class="st">"Household Head (HH) Gender" -&gt; Outcome_i</span></span>
+<span id="cb7-245"><a href="#cb7-245"></a><span class="st">"Household Head (HH) Gender" -&gt; Smartcard</span></span>
+<span id="cb7-246"><a href="#cb7-246"></a><span class="st">"Household Literacy Rate" -&gt; Outcome_i</span></span>
+<span id="cb7-247"><a href="#cb7-247"></a><span class="st">"Household Literacy Rate" -&gt; Smartcard</span></span>
+<span id="cb7-248"><a href="#cb7-248"></a><span class="st">"Random Promotion (IV)" -&gt; Smartcard</span></span>
+<span id="cb7-249"><a href="#cb7-249"></a><span class="st">Hindu -&gt; Outcome_i</span></span>
+<span id="cb7-250"><a href="#cb7-250"></a><span class="st">Hindu -&gt; Smartcard</span></span>
+<span id="cb7-251"><a href="#cb7-251"></a><span class="st">Location -&gt; Outcome_i</span></span>
+<span id="cb7-252"><a href="#cb7-252"></a><span class="st">Location -&gt; Smartcard</span></span>
+<span id="cb7-253"><a href="#cb7-253"></a><span class="st">Muslim -&gt; Outcome_i</span></span>
+<span id="cb7-254"><a href="#cb7-254"></a><span class="st">Muslim -&gt; Smartcard</span></span>
+<span id="cb7-255"><a href="#cb7-255"></a><span class="st">Smartcard -&gt; Outcome_i</span></span>
+<span id="cb7-256"><a href="#cb7-256"></a><span class="st">}</span></span>
+<span id="cb7-257"><a href="#cb7-257"></a></span>
+<span id="cb7-258"><a href="#cb7-258"></a><span class="st">'</span>)</span>
+<span id="cb7-259"><a href="#cb7-259"></a></span>
+<span id="cb7-260"><a href="#cb7-260"></a><span class="fu">ggdag_status</span>(iv_dag,  <span class="at">text =</span> <span class="cn">FALSE</span>, <span class="at">use_labels =</span> <span class="st">"name"</span>) <span class="sc">+</span></span>
+<span id="cb7-261"><a href="#cb7-261"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>, <span class="at">color =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb7-262"><a href="#cb7-262"></a>  <span class="fu">theme_dag</span>()</span>
+<span id="cb7-263"><a href="#cb7-263"></a><span class="in">```</span></span>
+<span id="cb7-264"><a href="#cb7-264"></a>::: justify</span>
+<span id="cb7-265"><a href="#cb7-265"></a><span class="fu">## Hypotheses</span></span>
 <span id="cb7-266"><a href="#cb7-266"></a></span>
-<span id="cb7-267"><a href="#cb7-267"></a>We propose to use a mix of administrative and survey data to estimate the causal link between the program and the outcomes of interest. We plan to conduct weekly survey for a 4-week period to measure the household level weekly payments received, time spent (in minutes) at the PoS, days between work is completed and payment is received, and corruption incidences. We will compare the weekly payments received to the official disbursement data to estimate the household level leakage in the system, the amount lost in inefficiencies or corruptions. Alongside, we will collect data on household characteristics like number of children, number of females in the household, household literacy rate, religion, assets like farmland, and household head age and gender.</span>
+<span id="cb7-267"><a href="#cb7-267"></a>We formulate the following hypothesis and test it in the subsequent sections:</span>
 <span id="cb7-268"><a href="#cb7-268"></a></span>
-<span id="cb7-271"><a href="#cb7-271"></a><span class="in">```{r}</span></span>
-<span id="cb7-272"><a href="#cb7-272"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb7-273"><a href="#cb7-273"></a></span>
-<span id="cb7-274"><a href="#cb7-274"></a>n_household <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
-<span id="cb7-275"><a href="#cb7-275"></a>n_panchayats <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb7-276"><a href="#cb7-276"></a>iv_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb7-277"><a href="#cb7-277"></a>  <span class="at">household_ID =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span>n_household),</span>
-<span id="cb7-278"><a href="#cb7-278"></a>  <span class="at">panchayat_ID =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n_panchayats, n_household, <span class="at">replace =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb7-279"><a href="#cb7-279"></a>  <span class="at">state_ID =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, n_household, <span class="at">replace =</span> <span class="cn">TRUE</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb7-280"><a href="#cb7-280"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-281"><a href="#cb7-281"></a>  <span class="at">off_week_1 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">500</span>), </span>
-<span id="cb7-282"><a href="#cb7-282"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
-<span id="cb7-283"><a href="#cb7-283"></a>  <span class="at">off_week_2 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
-<span id="cb7-284"><a href="#cb7-284"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
-<span id="cb7-285"><a href="#cb7-285"></a>  <span class="at">off_week_3 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
-<span id="cb7-286"><a href="#cb7-286"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
-<span id="cb7-287"><a href="#cb7-287"></a>  <span class="at">off_week_4 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">400</span>), </span>
-<span id="cb7-288"><a href="#cb7-288"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
-<span id="cb7-289"><a href="#cb7-289"></a>  <span class="at">week_1 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
-<span id="cb7-290"><a href="#cb7-290"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>),</span>
-<span id="cb7-291"><a href="#cb7-291"></a>  <span class="at">week_2 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">400</span>), </span>
-<span id="cb7-292"><a href="#cb7-292"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3400</span>),</span>
-<span id="cb7-293"><a href="#cb7-293"></a>  <span class="at">week_3 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">375</span>), </span>
-<span id="cb7-294"><a href="#cb7-294"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>),</span>
-<span id="cb7-295"><a href="#cb7-295"></a>  <span class="at">week_4 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">350</span>),</span>
-<span id="cb7-296"><a href="#cb7-296"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-297"><a href="#cb7-297"></a>  </span>
-<span id="cb7-298"><a href="#cb7-298"></a>  <span class="fu">mutate</span>(<span class="at">off_total_amount =</span> off_week_1 <span class="sc">+</span> off_week_2 <span class="sc">+</span> off_week_3 <span class="sc">+</span> off_week_4 <span class="sc">+</span></span>
-<span id="cb7-299"><a href="#cb7-299"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb7-300"><a href="#cb7-300"></a>         <span class="at">total_amount =</span> week_1 <span class="sc">+</span> week_2 <span class="sc">+</span> week_3 <span class="sc">+</span> week_4 <span class="sc">+</span> <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb7-301"><a href="#cb7-301"></a>         <span class="at">leakage_base =</span> off_total_amount <span class="sc">-</span> total_amount) </span>
-<span id="cb7-302"><a href="#cb7-302"></a>  </span>
-<span id="cb7-303"><a href="#cb7-303"></a>promotion_panchayats <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n_panchayats, <span class="fu">round</span>(n_panchayats <span class="sc">/</span> <span class="dv">2</span>), <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb7-304"><a href="#cb7-304"></a></span>
-<span id="cb7-305"><a href="#cb7-305"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-306"><a href="#cb7-306"></a>  <span class="co"># Randomized Promotion</span></span>
-<span id="cb7-307"><a href="#cb7-307"></a>  <span class="fu">mutate</span>(<span class="at">promotion =</span> <span class="fu">ifelse</span>(panchayat_ID <span class="sc">%in%</span> promotion_panchayats, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-308"><a href="#cb7-308"></a>  <span class="co"># Potential Confounders</span></span>
-<span id="cb7-309"><a href="#cb7-309"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> panchayat_ID,</span>
-<span id="cb7-310"><a href="#cb7-310"></a>         <span class="at">num_members =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">20</span>, </span>
-<span id="cb7-311"><a href="#cb7-311"></a>                                  <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
-<span id="cb7-312"><a href="#cb7-312"></a>         <span class="at">farm =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
-<span id="cb7-313"><a href="#cb7-313"></a>         <span class="at">children =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">10</span>, </span>
-<span id="cb7-314"><a href="#cb7-314"></a>                                  <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
-<span id="cb7-315"><a href="#cb7-315"></a>         <span class="at">household_literacy_rate =</span> <span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, </span>
-<span id="cb7-316"><a href="#cb7-316"></a>                                              <span class="at">mean =</span> <span class="fl">0.5</span>, <span class="at">sd =</span> <span class="fl">0.2</span>),</span>
-<span id="cb7-317"><a href="#cb7-317"></a>         <span class="at">female_member =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">10</span>, </span>
-<span id="cb7-318"><a href="#cb7-318"></a>                                  <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
-<span id="cb7-319"><a href="#cb7-319"></a>         <span class="at">hindu =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.8</span>),</span>
-<span id="cb7-320"><a href="#cb7-320"></a>         <span class="at">muslim =</span> <span class="fu">ifelse</span>(hindu <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>)),</span>
-<span id="cb7-321"><a href="#cb7-321"></a>         <span class="at">other_religion =</span> <span class="fu">ifelse</span>(hindu <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> muslim <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb7-322"><a href="#cb7-322"></a>         <span class="at">hh_age =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">18</span>, <span class="at">b =</span> <span class="dv">80</span>, </span>
-<span id="cb7-323"><a href="#cb7-323"></a>                                  <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">10</span>)),</span>
-<span id="cb7-324"><a href="#cb7-324"></a>         <span class="at">hh_male =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.9</span>)</span>
-<span id="cb7-325"><a href="#cb7-325"></a>         ) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-326"><a href="#cb7-326"></a>  <span class="fu">mutate</span>(<span class="at">promotion_effect =</span> promotion <span class="sc">*</span> <span class="dv">6</span>,</span>
-<span id="cb7-327"><a href="#cb7-327"></a>         <span class="co"># Agricultural Locations</span></span>
-<span id="cb7-328"><a href="#cb7-328"></a>         <span class="at">farm_effect =</span> <span class="sc">-</span><span class="fl">0.09</span> <span class="sc">*</span> farm,</span>
-<span id="cb7-329"><a href="#cb7-329"></a>         <span class="at">children_effect =</span> <span class="fl">0.03</span> <span class="sc">*</span> children,</span>
-<span id="cb7-330"><a href="#cb7-330"></a>         <span class="at">literacy_effect =</span> <span class="sc">-</span> <span class="fl">0.01</span> <span class="sc">*</span> household_literacy_rate,</span>
-<span id="cb7-331"><a href="#cb7-331"></a>         <span class="at">female_effect =</span> <span class="fl">0.02</span> <span class="sc">*</span> female_member,</span>
-<span id="cb7-332"><a href="#cb7-332"></a>         <span class="at">hindu_effect =</span> <span class="fl">0.03</span> <span class="sc">*</span> hindu,</span>
-<span id="cb7-333"><a href="#cb7-333"></a>         <span class="at">muslim_effect =</span> <span class="fu">ifelse</span>(location <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>), <span class="fl">0.005</span> <span class="sc">*</span> muslim, <span class="sc">-</span><span class="fl">0.01</span> <span class="sc">*</span> muslim),</span>
-<span id="cb7-334"><a href="#cb7-334"></a>         <span class="at">other_effect =</span> <span class="sc">-</span> <span class="fl">0.02</span> <span class="sc">*</span> other_religion,</span>
-<span id="cb7-335"><a href="#cb7-335"></a>         <span class="at">hh_age_effect =</span> <span class="fl">0.02</span> <span class="sc">*</span> hh_age,</span>
-<span id="cb7-336"><a href="#cb7-336"></a>         <span class="at">hh_male_effect =</span> <span class="fl">0.04</span> <span class="sc">*</span> hh_male,</span>
-<span id="cb7-337"><a href="#cb7-337"></a>         <span class="at">smartcard_score =</span> <span class="dv">0</span> <span class="sc">+</span> promotion_effect <span class="sc">+</span> </span>
-<span id="cb7-338"><a href="#cb7-338"></a>           farm_effect <span class="sc">+</span> children_effect <span class="sc">+</span></span>
-<span id="cb7-339"><a href="#cb7-339"></a>           literacy_effect <span class="sc">+</span> female_effect <span class="sc">+</span> hindu_effect <span class="sc">+</span> </span>
-<span id="cb7-340"><a href="#cb7-340"></a>           muslim_effect <span class="sc">+</span> other_effect <span class="sc">+</span> hh_age_effect <span class="sc">+</span> hh_male_effect <span class="sc">+</span></span>
-<span id="cb7-341"><a href="#cb7-341"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="fl">0.2</span>),</span>
-<span id="cb7-342"><a href="#cb7-342"></a>         <span class="at">smartcard_probability =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(smartcard_score, <span class="at">to =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>)),</span>
-<span id="cb7-343"><a href="#cb7-343"></a>         <span class="at">smartcard =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, smartcard_probability)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-344"><a href="#cb7-344"></a>  <span class="fu">mutate</span>(<span class="at">smartcard_leakage_effect =</span> <span class="sc">-</span> <span class="dv">60</span> <span class="sc">*</span> smartcard)</span>
-<span id="cb7-345"><a href="#cb7-345"></a></span>
-<span id="cb7-346"><a href="#cb7-346"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-347"><a href="#cb7-347"></a>  <span class="fu">mutate</span>(<span class="at">leakage =</span> leakage_base <span class="sc">+</span> smartcard_leakage_effect <span class="sc">+</span> <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> children_effect) <span class="sc">+</span></span>
-<span id="cb7-348"><a href="#cb7-348"></a>           <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> farm_effect) <span class="sc">+</span></span>
-<span id="cb7-349"><a href="#cb7-349"></a>           (<span class="dv">100</span> <span class="sc">*</span>literacy_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> female_effect) <span class="sc">+</span> </span>
-<span id="cb7-350"><a href="#cb7-350"></a>           (<span class="dv">100</span> <span class="sc">*</span> hindu_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> muslim_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> other_effect) <span class="sc">+</span> </span>
-<span id="cb7-351"><a href="#cb7-351"></a>           (<span class="dv">100</span> <span class="sc">*</span> hh_age_effect) <span class="sc">+</span> (hh_male_effect) <span class="sc">+</span></span>
-<span id="cb7-352"><a href="#cb7-352"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-353"><a href="#cb7-353"></a>  <span class="fu">mutate</span>(<span class="at">leakage_difference =</span> leakage <span class="sc">-</span> leakage_base) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-354"><a href="#cb7-354"></a>  <span class="fu">mutate</span>(<span class="at">leakage_percetage =</span> <span class="fu">rescale</span>(leakage<span class="sc">/</span>off_total_amount, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)))</span>
-<span id="cb7-355"><a href="#cb7-355"></a></span>
-<span id="cb7-356"><a href="#cb7-356"></a></span>
-<span id="cb7-357"><a href="#cb7-357"></a><span class="co"># Time to Payment</span></span>
-<span id="cb7-358"><a href="#cb7-358"></a></span>
-<span id="cb7-359"><a href="#cb7-359"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-360"><a href="#cb7-360"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-361"><a href="#cb7-361"></a>    </span>
-<span id="cb7-362"><a href="#cb7-362"></a>    <span class="at">week_1_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
-<span id="cb7-363"><a href="#cb7-363"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb7-364"><a href="#cb7-364"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
-<span id="cb7-365"><a href="#cb7-365"></a>    <span class="at">week_2_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
-<span id="cb7-366"><a href="#cb7-366"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb7-367"><a href="#cb7-367"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
-<span id="cb7-368"><a href="#cb7-368"></a>    <span class="at">week_3_ttp =</span><span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
-<span id="cb7-369"><a href="#cb7-369"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb7-370"><a href="#cb7-370"></a>                            <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
-<span id="cb7-371"><a href="#cb7-371"></a>    <span class="at">week_4_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
-<span id="cb7-372"><a href="#cb7-372"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb7-373"><a href="#cb7-373"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
-<span id="cb7-374"><a href="#cb7-374"></a>    <span class="at">avg_ttp =</span> (week_1_ttp <span class="sc">+</span> week_2_ttp <span class="sc">+</span> week_3_ttp <span class="sc">+</span> week_4_ttp)<span class="sc">/</span> <span class="dv">4</span></span>
-<span id="cb7-375"><a href="#cb7-375"></a>  )</span>
-<span id="cb7-376"><a href="#cb7-376"></a></span>
-<span id="cb7-377"><a href="#cb7-377"></a>iv_data <span class="ot">&lt;-</span> iv_data<span class="sc">%&gt;%</span> </span>
-<span id="cb7-378"><a href="#cb7-378"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-379"><a href="#cb7-379"></a>    <span class="at">week_1_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
-<span id="cb7-380"><a href="#cb7-380"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
-<span id="cb7-381"><a href="#cb7-381"></a>    <span class="at">week_2_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
-<span id="cb7-382"><a href="#cb7-382"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
-<span id="cb7-383"><a href="#cb7-383"></a>    <span class="at">week_3_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
-<span id="cb7-384"><a href="#cb7-384"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
-<span id="cb7-385"><a href="#cb7-385"></a>    <span class="at">week_4_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
-<span id="cb7-386"><a href="#cb7-386"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
-<span id="cb7-387"><a href="#cb7-387"></a>    <span class="at">avg_dbp =</span> (week_1_dbp<span class="sc">+</span> week_2_dbp<span class="sc">+</span> week_3_dbp<span class="sc">+</span> week_4_dbp) <span class="sc">/</span> <span class="dv">4</span></span>
-<span id="cb7-388"><a href="#cb7-388"></a>  )</span>
-<span id="cb7-389"><a href="#cb7-389"></a></span>
-<span id="cb7-390"><a href="#cb7-390"></a><span class="co"># Corruption</span></span>
+<span id="cb7-269"><a href="#cb7-269"></a>$\textbf{H1}$: The Smartcard program **causes** leakages to decrease.</span>
+<span id="cb7-270"><a href="#cb7-270"></a></span>
+<span id="cb7-271"><a href="#cb7-271"></a>$\textbf{H2}$: The Smartcard program **causes** payment delays (in number of days to receive payment) to decrease.</span>
+<span id="cb7-272"><a href="#cb7-272"></a></span>
+<span id="cb7-273"><a href="#cb7-273"></a>$\textbf{H3}$: The Smartcard program **causes** waiting time in queue (in minutes) to decrease.</span>
+<span id="cb7-274"><a href="#cb7-274"></a></span>
+<span id="cb7-275"><a href="#cb7-275"></a>$\textbf{H4}$: The Smartcard program **reduces** incidences of corruption.</span>
+<span id="cb7-276"><a href="#cb7-276"></a></span>
+<span id="cb7-277"><a href="#cb7-277"></a>:::</span>
+<span id="cb7-278"><a href="#cb7-278"></a><span class="fu">## Data</span></span>
+<span id="cb7-279"><a href="#cb7-279"></a></span>
+<span id="cb7-280"><a href="#cb7-280"></a>::: justify</span>
+<span id="cb7-281"><a href="#cb7-281"></a>We propose to use a mix of administrative and survey data to estimate the causal link between the program and the outcomes of interest. We plan to conduct weekly survey for a 4-week period to measure the household level weekly payments received, time spent (in minutes) at the PoS, days between work is completed and payment is received, and corruption incidences. We will compare the weekly payments received to the official disbursement data to estimate the household level leakage in the system, the amount lost in inefficiencies or corruptions. Alongside, we will collect data on household characteristics like number of children, number of females in the household, household literacy rate, religion, assets like farmland, and household head age and gender.</span>
+<span id="cb7-282"><a href="#cb7-282"></a></span>
+<span id="cb7-283"><a href="#cb7-283"></a>:::</span>
+<span id="cb7-286"><a href="#cb7-286"></a><span class="in">```{r}</span></span>
+<span id="cb7-287"><a href="#cb7-287"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb7-288"><a href="#cb7-288"></a></span>
+<span id="cb7-289"><a href="#cb7-289"></a>n_household <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb7-290"><a href="#cb7-290"></a>n_panchayats <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb7-291"><a href="#cb7-291"></a>iv_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-292"><a href="#cb7-292"></a>  <span class="at">household_ID =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span>n_household),</span>
+<span id="cb7-293"><a href="#cb7-293"></a>  <span class="at">panchayat_ID =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n_panchayats, n_household, <span class="at">replace =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb7-294"><a href="#cb7-294"></a>  <span class="at">state_ID =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, n_household, <span class="at">replace =</span> <span class="cn">TRUE</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-295"><a href="#cb7-295"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-296"><a href="#cb7-296"></a>  <span class="at">off_week_1 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">500</span>), </span>
+<span id="cb7-297"><a href="#cb7-297"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
+<span id="cb7-298"><a href="#cb7-298"></a>  <span class="at">off_week_2 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
+<span id="cb7-299"><a href="#cb7-299"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
+<span id="cb7-300"><a href="#cb7-300"></a>  <span class="at">off_week_3 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
+<span id="cb7-301"><a href="#cb7-301"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
+<span id="cb7-302"><a href="#cb7-302"></a>  <span class="at">off_week_4 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">400</span>), </span>
+<span id="cb7-303"><a href="#cb7-303"></a>                              <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">4000</span>),</span>
+<span id="cb7-304"><a href="#cb7-304"></a>  <span class="at">week_1 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">450</span>), </span>
+<span id="cb7-305"><a href="#cb7-305"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>),</span>
+<span id="cb7-306"><a href="#cb7-306"></a>  <span class="at">week_2 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">400</span>), </span>
+<span id="cb7-307"><a href="#cb7-307"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3400</span>),</span>
+<span id="cb7-308"><a href="#cb7-308"></a>  <span class="at">week_3 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">375</span>), </span>
+<span id="cb7-309"><a href="#cb7-309"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>),</span>
+<span id="cb7-310"><a href="#cb7-310"></a>  <span class="at">week_4 =</span> <span class="fu">rlnormTrunc</span>(n_household, <span class="at">meanlog =</span> <span class="fu">log</span>(<span class="dv">350</span>),</span>
+<span id="cb7-311"><a href="#cb7-311"></a>                          <span class="at">sdlog =</span><span class="fl">0.6</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">3000</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-312"><a href="#cb7-312"></a>  </span>
+<span id="cb7-313"><a href="#cb7-313"></a>  <span class="fu">mutate</span>(<span class="at">off_total_amount =</span> off_week_1 <span class="sc">+</span> off_week_2 <span class="sc">+</span> off_week_3 <span class="sc">+</span> off_week_4 <span class="sc">+</span></span>
+<span id="cb7-314"><a href="#cb7-314"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb7-315"><a href="#cb7-315"></a>         <span class="at">total_amount =</span> week_1 <span class="sc">+</span> week_2 <span class="sc">+</span> week_3 <span class="sc">+</span> week_4 <span class="sc">+</span> <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb7-316"><a href="#cb7-316"></a>         <span class="at">leakage_base =</span> off_total_amount <span class="sc">-</span> total_amount) </span>
+<span id="cb7-317"><a href="#cb7-317"></a>  </span>
+<span id="cb7-318"><a href="#cb7-318"></a>promotion_panchayats <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n_panchayats, <span class="fu">round</span>(n_panchayats <span class="sc">/</span> <span class="dv">2</span>), <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-319"><a href="#cb7-319"></a></span>
+<span id="cb7-320"><a href="#cb7-320"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-321"><a href="#cb7-321"></a>  <span class="co"># Randomized Promotion</span></span>
+<span id="cb7-322"><a href="#cb7-322"></a>  <span class="fu">mutate</span>(<span class="at">promotion =</span> <span class="fu">ifelse</span>(panchayat_ID <span class="sc">%in%</span> promotion_panchayats, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-323"><a href="#cb7-323"></a>  <span class="co"># Potential Confounders</span></span>
+<span id="cb7-324"><a href="#cb7-324"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> panchayat_ID,</span>
+<span id="cb7-325"><a href="#cb7-325"></a>         <span class="at">num_members =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">20</span>, </span>
+<span id="cb7-326"><a href="#cb7-326"></a>                                  <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
+<span id="cb7-327"><a href="#cb7-327"></a>         <span class="at">farm =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
+<span id="cb7-328"><a href="#cb7-328"></a>         <span class="at">children =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">10</span>, </span>
+<span id="cb7-329"><a href="#cb7-329"></a>                                  <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
+<span id="cb7-330"><a href="#cb7-330"></a>         <span class="at">household_literacy_rate =</span> <span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, </span>
+<span id="cb7-331"><a href="#cb7-331"></a>                                              <span class="at">mean =</span> <span class="fl">0.5</span>, <span class="at">sd =</span> <span class="fl">0.2</span>),</span>
+<span id="cb7-332"><a href="#cb7-332"></a>         <span class="at">female_member =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">10</span>, </span>
+<span id="cb7-333"><a href="#cb7-333"></a>                                  <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span>)),</span>
+<span id="cb7-334"><a href="#cb7-334"></a>         <span class="at">hindu =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.8</span>),</span>
+<span id="cb7-335"><a href="#cb7-335"></a>         <span class="at">muslim =</span> <span class="fu">ifelse</span>(hindu <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.1</span>)),</span>
+<span id="cb7-336"><a href="#cb7-336"></a>         <span class="at">other_religion =</span> <span class="fu">ifelse</span>(hindu <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> muslim <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb7-337"><a href="#cb7-337"></a>         <span class="at">hh_age =</span> <span class="fu">round</span>(<span class="fu">rtruncnorm</span>(n_household, <span class="at">a =</span> <span class="dv">18</span>, <span class="at">b =</span> <span class="dv">80</span>, </span>
+<span id="cb7-338"><a href="#cb7-338"></a>                                  <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">10</span>)),</span>
+<span id="cb7-339"><a href="#cb7-339"></a>         <span class="at">hh_male =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, <span class="fl">0.9</span>)</span>
+<span id="cb7-340"><a href="#cb7-340"></a>         ) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-341"><a href="#cb7-341"></a>  <span class="fu">mutate</span>(<span class="at">promotion_effect =</span> promotion <span class="sc">*</span> <span class="dv">6</span>,</span>
+<span id="cb7-342"><a href="#cb7-342"></a>         <span class="co"># Agricultural Locations</span></span>
+<span id="cb7-343"><a href="#cb7-343"></a>         <span class="at">farm_effect =</span> <span class="sc">-</span><span class="fl">0.09</span> <span class="sc">*</span> farm,</span>
+<span id="cb7-344"><a href="#cb7-344"></a>         <span class="at">children_effect =</span> <span class="fl">0.03</span> <span class="sc">*</span> children,</span>
+<span id="cb7-345"><a href="#cb7-345"></a>         <span class="at">literacy_effect =</span> <span class="sc">-</span> <span class="fl">0.01</span> <span class="sc">*</span> household_literacy_rate,</span>
+<span id="cb7-346"><a href="#cb7-346"></a>         <span class="at">female_effect =</span> <span class="fl">0.02</span> <span class="sc">*</span> female_member,</span>
+<span id="cb7-347"><a href="#cb7-347"></a>         <span class="at">hindu_effect =</span> <span class="fl">0.03</span> <span class="sc">*</span> hindu,</span>
+<span id="cb7-348"><a href="#cb7-348"></a>         <span class="at">muslim_effect =</span> <span class="fu">ifelse</span>(location <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>), <span class="fl">0.005</span> <span class="sc">*</span> muslim, <span class="sc">-</span><span class="fl">0.01</span> <span class="sc">*</span> muslim),</span>
+<span id="cb7-349"><a href="#cb7-349"></a>         <span class="at">other_effect =</span> <span class="sc">-</span> <span class="fl">0.02</span> <span class="sc">*</span> other_religion,</span>
+<span id="cb7-350"><a href="#cb7-350"></a>         <span class="at">hh_age_effect =</span> <span class="fl">0.02</span> <span class="sc">*</span> hh_age,</span>
+<span id="cb7-351"><a href="#cb7-351"></a>         <span class="at">hh_male_effect =</span> <span class="fl">0.04</span> <span class="sc">*</span> hh_male,</span>
+<span id="cb7-352"><a href="#cb7-352"></a>         <span class="at">smartcard_score =</span> <span class="dv">0</span> <span class="sc">+</span> promotion_effect <span class="sc">+</span> </span>
+<span id="cb7-353"><a href="#cb7-353"></a>           farm_effect <span class="sc">+</span> children_effect <span class="sc">+</span></span>
+<span id="cb7-354"><a href="#cb7-354"></a>           literacy_effect <span class="sc">+</span> female_effect <span class="sc">+</span> hindu_effect <span class="sc">+</span> </span>
+<span id="cb7-355"><a href="#cb7-355"></a>           muslim_effect <span class="sc">+</span> other_effect <span class="sc">+</span> hh_age_effect <span class="sc">+</span> hh_male_effect <span class="sc">+</span></span>
+<span id="cb7-356"><a href="#cb7-356"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="fl">0.2</span>),</span>
+<span id="cb7-357"><a href="#cb7-357"></a>         <span class="at">smartcard_probability =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(smartcard_score, <span class="at">to =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>)),</span>
+<span id="cb7-358"><a href="#cb7-358"></a>         <span class="at">smartcard =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, smartcard_probability)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-359"><a href="#cb7-359"></a>  <span class="fu">mutate</span>(<span class="at">smartcard_leakage_effect =</span> <span class="sc">-</span> <span class="dv">60</span> <span class="sc">*</span> smartcard)</span>
+<span id="cb7-360"><a href="#cb7-360"></a></span>
+<span id="cb7-361"><a href="#cb7-361"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-362"><a href="#cb7-362"></a>  <span class="fu">mutate</span>(<span class="at">leakage =</span> leakage_base <span class="sc">+</span> smartcard_leakage_effect <span class="sc">+</span> <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> children_effect) <span class="sc">+</span></span>
+<span id="cb7-363"><a href="#cb7-363"></a>           <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> farm_effect) <span class="sc">+</span></span>
+<span id="cb7-364"><a href="#cb7-364"></a>           (<span class="dv">100</span> <span class="sc">*</span>literacy_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> female_effect) <span class="sc">+</span> </span>
+<span id="cb7-365"><a href="#cb7-365"></a>           (<span class="dv">100</span> <span class="sc">*</span> hindu_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> muslim_effect) <span class="sc">+</span> (<span class="dv">100</span> <span class="sc">*</span> other_effect) <span class="sc">+</span> </span>
+<span id="cb7-366"><a href="#cb7-366"></a>           (<span class="dv">100</span> <span class="sc">*</span> hh_age_effect) <span class="sc">+</span> (hh_male_effect) <span class="sc">+</span></span>
+<span id="cb7-367"><a href="#cb7-367"></a>           <span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">20</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-368"><a href="#cb7-368"></a>  <span class="fu">mutate</span>(<span class="at">leakage_difference =</span> leakage <span class="sc">-</span> leakage_base) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-369"><a href="#cb7-369"></a>  <span class="fu">mutate</span>(<span class="at">leakage_percetage =</span> <span class="fu">rescale</span>(leakage<span class="sc">/</span>off_total_amount, <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)))</span>
+<span id="cb7-370"><a href="#cb7-370"></a></span>
+<span id="cb7-371"><a href="#cb7-371"></a></span>
+<span id="cb7-372"><a href="#cb7-372"></a><span class="co"># Time to Payment</span></span>
+<span id="cb7-373"><a href="#cb7-373"></a></span>
+<span id="cb7-374"><a href="#cb7-374"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-375"><a href="#cb7-375"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-376"><a href="#cb7-376"></a>    </span>
+<span id="cb7-377"><a href="#cb7-377"></a>    <span class="at">week_1_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
+<span id="cb7-378"><a href="#cb7-378"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb7-379"><a href="#cb7-379"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
+<span id="cb7-380"><a href="#cb7-380"></a>    <span class="at">week_2_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
+<span id="cb7-381"><a href="#cb7-381"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb7-382"><a href="#cb7-382"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
+<span id="cb7-383"><a href="#cb7-383"></a>    <span class="at">week_3_ttp =</span><span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
+<span id="cb7-384"><a href="#cb7-384"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb7-385"><a href="#cb7-385"></a>                            <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
+<span id="cb7-386"><a href="#cb7-386"></a>    <span class="at">week_4_ttp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">6</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>),</span>
+<span id="cb7-387"><a href="#cb7-387"></a>                           <span class="fu">round</span>(<span class="fu">rbeta</span>(n_household, <span class="dv">7</span>, <span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb7-388"><a href="#cb7-388"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">0</span>, <span class="dv">5</span>)),</span>
+<span id="cb7-389"><a href="#cb7-389"></a>    <span class="at">avg_ttp =</span> (week_1_ttp <span class="sc">+</span> week_2_ttp <span class="sc">+</span> week_3_ttp <span class="sc">+</span> week_4_ttp)<span class="sc">/</span> <span class="dv">4</span></span>
+<span id="cb7-390"><a href="#cb7-390"></a>  )</span>
 <span id="cb7-391"><a href="#cb7-391"></a></span>
-<span id="cb7-392"><a href="#cb7-392"></a><span class="co"># Did you pay bribe? Yes/No</span></span>
-<span id="cb7-393"><a href="#cb7-393"></a></span>
-<span id="cb7-394"><a href="#cb7-394"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-395"><a href="#cb7-395"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-396"><a href="#cb7-396"></a>    <span class="at">smartcard_bribe_effect =</span> <span class="sc">-</span><span class="fl">0.2</span> <span class="sc">*</span> smartcard,</span>
-<span id="cb7-397"><a href="#cb7-397"></a>    <span class="at">bribe_score =</span> <span class="fu">rbeta</span>(n_household, <span class="dv">4</span>, <span class="dv">6</span>),</span>
-<span id="cb7-398"><a href="#cb7-398"></a>    <span class="at">bribe_probability =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(bribe_score <span class="sc">+</span> smartcard_bribe_effect <span class="sc">+</span> </span>
-<span id="cb7-399"><a href="#cb7-399"></a>                                  <span class="fu">rnorm</span>(n_household, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.01</span>), <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
-<span id="cb7-400"><a href="#cb7-400"></a>    <span class="at">week_1_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
-<span id="cb7-401"><a href="#cb7-401"></a>    <span class="at">week_2_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
-<span id="cb7-402"><a href="#cb7-402"></a>    <span class="at">week_3_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
-<span id="cb7-403"><a href="#cb7-403"></a>    <span class="at">week_4_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
-<span id="cb7-404"><a href="#cb7-404"></a>    <span class="at">bribe_incidence =</span> (week_1_bribe <span class="sc">+</span> week_2_bribe <span class="sc">+</span>week_3_bribe <span class="sc">+</span> week_4_bribe)</span>
-<span id="cb7-405"><a href="#cb7-405"></a>  )</span>
+<span id="cb7-392"><a href="#cb7-392"></a>iv_data <span class="ot">&lt;-</span> iv_data<span class="sc">%&gt;%</span> </span>
+<span id="cb7-393"><a href="#cb7-393"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-394"><a href="#cb7-394"></a>    <span class="at">week_1_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
+<span id="cb7-395"><a href="#cb7-395"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
+<span id="cb7-396"><a href="#cb7-396"></a>    <span class="at">week_2_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
+<span id="cb7-397"><a href="#cb7-397"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
+<span id="cb7-398"><a href="#cb7-398"></a>    <span class="at">week_3_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
+<span id="cb7-399"><a href="#cb7-399"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
+<span id="cb7-400"><a href="#cb7-400"></a>    <span class="at">week_4_dbp =</span> <span class="fu">ifelse</span>(smartcard <span class="sc">==</span> <span class="dv">1</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">10</span>, <span class="dv">2</span>)),</span>
+<span id="cb7-401"><a href="#cb7-401"></a>                          <span class="fu">round</span>(<span class="fu">rnorm</span>(n_household, <span class="dv">13</span>, <span class="dv">2</span>))),</span>
+<span id="cb7-402"><a href="#cb7-402"></a>    <span class="at">avg_dbp =</span> (week_1_dbp<span class="sc">+</span> week_2_dbp<span class="sc">+</span> week_3_dbp<span class="sc">+</span> week_4_dbp) <span class="sc">/</span> <span class="dv">4</span></span>
+<span id="cb7-403"><a href="#cb7-403"></a>  )</span>
+<span id="cb7-404"><a href="#cb7-404"></a></span>
+<span id="cb7-405"><a href="#cb7-405"></a><span class="co"># Corruption</span></span>
 <span id="cb7-406"><a href="#cb7-406"></a></span>
-<span id="cb7-407"><a href="#cb7-407"></a></span>
-<span id="cb7-408"><a href="#cb7-408"></a>iv_data_csv <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
-<span id="cb7-409"><a href="#cb7-409"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(household_ID, panchayat_ID, state_ID, promotion, num_members, farm, children, female_member, household_literacy_rate, hh_age, hh_male, hindu, muslim, other_religion,  off_week_1, off_week_2, off_week_3, off_week_4, off_total_amount, week_1, week_2, week_3, week_4, total_amount, leakage, week_1_ttp, week_2_ttp,week_3_ttp,week_4_ttp, avg_ttp, week_1_dbp,</span>
-<span id="cb7-410"><a href="#cb7-410"></a>                week_2_dbp, week_3_dbp, week_4_dbp, avg_dbp,</span>
-<span id="cb7-411"><a href="#cb7-411"></a>                week_1_bribe, week_2_bribe, week_3_bribe, week_4_bribe, bribe_incidence)</span>
-<span id="cb7-412"><a href="#cb7-412"></a></span>
-<span id="cb7-413"><a href="#cb7-413"></a><span class="fu">write_csv</span>(iv_data_csv, <span class="st">"./data/smartcard_data.csv"</span>)</span>
-<span id="cb7-414"><a href="#cb7-414"></a><span class="in">```</span></span>
-<span id="cb7-415"><a href="#cb7-415"></a></span>
-<span id="cb7-416"><a href="#cb7-416"></a><span class="fu"># Synthetic Analysis</span></span>
-<span id="cb7-417"><a href="#cb7-417"></a></span>
-<span id="cb7-418"><a href="#cb7-418"></a>\newpage</span>
-<span id="cb7-419"><a href="#cb7-419"></a></span>
-<span id="cb7-420"><a href="#cb7-420"></a><span class="fu">## 2SLS Estimation</span></span>
+<span id="cb7-407"><a href="#cb7-407"></a><span class="co"># Did you pay bribe? Yes/No</span></span>
+<span id="cb7-408"><a href="#cb7-408"></a></span>
+<span id="cb7-409"><a href="#cb7-409"></a>iv_data <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-410"><a href="#cb7-410"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-411"><a href="#cb7-411"></a>    <span class="at">smartcard_bribe_effect =</span> <span class="sc">-</span><span class="fl">0.2</span> <span class="sc">*</span> smartcard,</span>
+<span id="cb7-412"><a href="#cb7-412"></a>    <span class="at">bribe_score =</span> <span class="fu">rbeta</span>(n_household, <span class="dv">4</span>, <span class="dv">6</span>),</span>
+<span id="cb7-413"><a href="#cb7-413"></a>    <span class="at">bribe_probability =</span> scales<span class="sc">::</span><span class="fu">rescale</span>(bribe_score <span class="sc">+</span> smartcard_bribe_effect <span class="sc">+</span> </span>
+<span id="cb7-414"><a href="#cb7-414"></a>                                  <span class="fu">rnorm</span>(n_household, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.01</span>), <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)),</span>
+<span id="cb7-415"><a href="#cb7-415"></a>    <span class="at">week_1_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
+<span id="cb7-416"><a href="#cb7-416"></a>    <span class="at">week_2_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
+<span id="cb7-417"><a href="#cb7-417"></a>    <span class="at">week_3_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
+<span id="cb7-418"><a href="#cb7-418"></a>    <span class="at">week_4_bribe =</span> <span class="fu">rbinom</span>(n_household, <span class="dv">1</span>, bribe_probability),</span>
+<span id="cb7-419"><a href="#cb7-419"></a>    <span class="at">bribe_incidence =</span> (week_1_bribe <span class="sc">+</span> week_2_bribe <span class="sc">+</span>week_3_bribe <span class="sc">+</span> week_4_bribe)</span>
+<span id="cb7-420"><a href="#cb7-420"></a>  )</span>
 <span id="cb7-421"><a href="#cb7-421"></a></span>
-<span id="cb7-424"><a href="#cb7-424"></a><span class="in">```{r}</span></span>
-<span id="cb7-425"><a href="#cb7-425"></a>leakage_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(leakage <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-426"><a href="#cb7-426"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-427"><a href="#cb7-427"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
-<span id="cb7-428"><a href="#cb7-428"></a>                        promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-429"><a href="#cb7-429"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-430"><a href="#cb7-430"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
-<span id="cb7-431"><a href="#cb7-431"></a>                        <span class="at">data =</span> iv_data,</span>
-<span id="cb7-432"><a href="#cb7-432"></a>                        <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-433"><a href="#cb7-433"></a></span>
-<span id="cb7-434"><a href="#cb7-434"></a>ttp_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(avg_ttp <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-435"><a href="#cb7-435"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-436"><a href="#cb7-436"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male</span>
-<span id="cb7-437"><a href="#cb7-437"></a>                      <span class="sc">|</span> promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-438"><a href="#cb7-438"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-439"><a href="#cb7-439"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male , </span>
-<span id="cb7-440"><a href="#cb7-440"></a>                      <span class="at">data =</span> iv_data,</span>
-<span id="cb7-441"><a href="#cb7-441"></a>                      <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-442"><a href="#cb7-442"></a></span>
-<span id="cb7-443"><a href="#cb7-443"></a>dbp_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(avg_dbp <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-422"><a href="#cb7-422"></a></span>
+<span id="cb7-423"><a href="#cb7-423"></a>iv_data_csv <span class="ot">&lt;-</span> iv_data <span class="sc">%&gt;%</span> </span>
+<span id="cb7-424"><a href="#cb7-424"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(household_ID, panchayat_ID, state_ID, promotion, num_members, farm, children, female_member, household_literacy_rate, hh_age, hh_male, hindu, muslim, other_religion,  off_week_1, off_week_2, off_week_3, off_week_4, off_total_amount, week_1, week_2, week_3, week_4, total_amount, leakage, week_1_ttp, week_2_ttp,week_3_ttp,week_4_ttp, avg_ttp, week_1_dbp,</span>
+<span id="cb7-425"><a href="#cb7-425"></a>                week_2_dbp, week_3_dbp, week_4_dbp, avg_dbp,</span>
+<span id="cb7-426"><a href="#cb7-426"></a>                week_1_bribe, week_2_bribe, week_3_bribe, week_4_bribe, bribe_incidence)</span>
+<span id="cb7-427"><a href="#cb7-427"></a></span>
+<span id="cb7-428"><a href="#cb7-428"></a><span class="fu">write_csv</span>(iv_data_csv, <span class="st">"./data/smartcard_data.csv"</span>)</span>
+<span id="cb7-429"><a href="#cb7-429"></a><span class="in">```</span></span>
+<span id="cb7-430"><a href="#cb7-430"></a></span>
+<span id="cb7-431"><a href="#cb7-431"></a><span class="fu"># Synthetic Analysis</span></span>
+<span id="cb7-432"><a href="#cb7-432"></a></span>
+<span id="cb7-433"><a href="#cb7-433"></a>\newpage</span>
+<span id="cb7-434"><a href="#cb7-434"></a></span>
+<span id="cb7-435"><a href="#cb7-435"></a><span class="fu">## 2SLS Estimation</span></span>
+<span id="cb7-436"><a href="#cb7-436"></a></span>
+<span id="cb7-439"><a href="#cb7-439"></a><span class="in">```{r}</span></span>
+<span id="cb7-440"><a href="#cb7-440"></a>leakage_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(leakage <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-441"><a href="#cb7-441"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-442"><a href="#cb7-442"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
+<span id="cb7-443"><a href="#cb7-443"></a>                        promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
 <span id="cb7-444"><a href="#cb7-444"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-445"><a href="#cb7-445"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
-<span id="cb7-446"><a href="#cb7-446"></a>                        promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-447"><a href="#cb7-447"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-448"><a href="#cb7-448"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
-<span id="cb7-449"><a href="#cb7-449"></a>                      <span class="at">data =</span> iv_data,</span>
-<span id="cb7-450"><a href="#cb7-450"></a>                      <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-451"><a href="#cb7-451"></a></span>
-<span id="cb7-452"><a href="#cb7-452"></a>bribe_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(bribe_incidence <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-445"><a href="#cb7-445"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
+<span id="cb7-446"><a href="#cb7-446"></a>                        <span class="at">data =</span> iv_data,</span>
+<span id="cb7-447"><a href="#cb7-447"></a>                        <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-448"><a href="#cb7-448"></a></span>
+<span id="cb7-449"><a href="#cb7-449"></a>ttp_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(avg_ttp <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-450"><a href="#cb7-450"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-451"><a href="#cb7-451"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male</span>
+<span id="cb7-452"><a href="#cb7-452"></a>                      <span class="sc">|</span> promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
 <span id="cb7-453"><a href="#cb7-453"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-454"><a href="#cb7-454"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
-<span id="cb7-455"><a href="#cb7-455"></a>                          promotion<span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-456"><a href="#cb7-456"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-457"><a href="#cb7-457"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
-<span id="cb7-458"><a href="#cb7-458"></a>                        <span class="at">data =</span> iv_data,</span>
-<span id="cb7-459"><a href="#cb7-459"></a>                        <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-460"><a href="#cb7-460"></a><span class="in">```</span></span>
-<span id="cb7-461"><a href="#cb7-461"></a></span>
-<span id="cb7-462"><a href="#cb7-462"></a><span class="in">```{r final-table}</span></span>
-<span id="cb7-463"><a href="#cb7-463"></a></span>
-<span id="cb7-464"><a href="#cb7-464"></a><span class="co"># Robustness Checks</span></span>
-<span id="cb7-465"><a href="#cb7-465"></a></span>
-<span id="cb7-466"><a href="#cb7-466"></a>endo_row <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Wu-Hausman Test"</span>, leakage_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], ttp_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], dbp_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], bribe_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>])</span>
-<span id="cb7-467"><a href="#cb7-467"></a></span>
-<span id="cb7-468"><a href="#cb7-468"></a></span>
-<span id="cb7-469"><a href="#cb7-469"></a>relevance_row <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Weak Instruments Test"</span>, leakage_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], ttp_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], dbp_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], bribe_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>])</span>
-<span id="cb7-470"><a href="#cb7-470"></a></span>
-<span id="cb7-471"><a href="#cb7-471"></a><span class="fu">colnames</span>(relevance_row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Test"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
-<span id="cb7-472"><a href="#cb7-472"></a><span class="fu">colnames</span>(endo_row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Test"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
-<span id="cb7-473"><a href="#cb7-473"></a>diagnostics_tibble <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">data.frame</span>(relevance_row), <span class="fu">data.frame</span>(endo_row))</span>
-<span id="cb7-474"><a href="#cb7-474"></a></span>
-<span id="cb7-475"><a href="#cb7-475"></a></span>
-<span id="cb7-476"><a href="#cb7-476"></a><span class="co"># Final Table with Robustness Checks</span></span>
-<span id="cb7-477"><a href="#cb7-477"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"Leakage"</span> <span class="ot">=</span> leakage_iv_c, <span class="st">"Wait Time (Queue)"</span> <span class="ot">=</span> ttp_iv_c, </span>
-<span id="cb7-478"><a href="#cb7-478"></a>                  <span class="st">"Payment Delay"</span> <span class="ot">=</span> dbp_iv_c, <span class="st">"Corruption"</span> <span class="ot">=</span> bribe_iv_c),</span>
-<span id="cb7-479"><a href="#cb7-479"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-480"><a href="#cb7-480"></a>             <span class="at">vcov =</span> vcov,</span>
-<span id="cb7-481"><a href="#cb7-481"></a>             <span class="at">metrics =</span> <span class="st">"all"</span>,</span>
-<span id="cb7-482"><a href="#cb7-482"></a>             <span class="at">add_rows =</span> diagnostics_tibble,</span>
-<span id="cb7-483"><a href="#cb7-483"></a>             <span class="at">title =</span> <span class="st">"Instrumental Variables Estimation"</span>)</span>
-<span id="cb7-484"><a href="#cb7-484"></a></span>
-<span id="cb7-485"><a href="#cb7-485"></a><span class="in">```</span></span>
-<span id="cb7-486"><a href="#cb7-486"></a></span>
-<span id="cb7-487"><a href="#cb7-487"></a>We can see that the smartcard intervention causes a decrease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households received payment 3 days earlier, on average, as compared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at 1% level. These results reinforce our expectations that the smartcard intervention would negatively affect leakage, wait times and corruption faced by the rural workers.</span>
-<span id="cb7-488"><a href="#cb7-488"></a></span>
-<span id="cb7-489"><a href="#cb7-489"></a><span class="fu">## Robustness Checks</span></span>
+<span id="cb7-454"><a href="#cb7-454"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male , </span>
+<span id="cb7-455"><a href="#cb7-455"></a>                      <span class="at">data =</span> iv_data,</span>
+<span id="cb7-456"><a href="#cb7-456"></a>                      <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-457"><a href="#cb7-457"></a></span>
+<span id="cb7-458"><a href="#cb7-458"></a>dbp_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(avg_dbp <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-459"><a href="#cb7-459"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-460"><a href="#cb7-460"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
+<span id="cb7-461"><a href="#cb7-461"></a>                        promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-462"><a href="#cb7-462"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-463"><a href="#cb7-463"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
+<span id="cb7-464"><a href="#cb7-464"></a>                      <span class="at">data =</span> iv_data,</span>
+<span id="cb7-465"><a href="#cb7-465"></a>                      <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-466"><a href="#cb7-466"></a></span>
+<span id="cb7-467"><a href="#cb7-467"></a>bribe_iv_c <span class="ot">&lt;-</span> <span class="fu">iv_robust</span>(bribe_incidence <span class="sc">~</span> smartcard <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-468"><a href="#cb7-468"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-469"><a href="#cb7-469"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male<span class="sc">|</span> </span>
+<span id="cb7-470"><a href="#cb7-470"></a>                          promotion<span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-471"><a href="#cb7-471"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-472"><a href="#cb7-472"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
+<span id="cb7-473"><a href="#cb7-473"></a>                        <span class="at">data =</span> iv_data,</span>
+<span id="cb7-474"><a href="#cb7-474"></a>                        <span class="at">diagnostics =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-475"><a href="#cb7-475"></a><span class="in">```</span></span>
+<span id="cb7-476"><a href="#cb7-476"></a></span>
+<span id="cb7-477"><a href="#cb7-477"></a><span class="in">```{r final-table}</span></span>
+<span id="cb7-478"><a href="#cb7-478"></a></span>
+<span id="cb7-479"><a href="#cb7-479"></a><span class="co"># Robustness Checks</span></span>
+<span id="cb7-480"><a href="#cb7-480"></a></span>
+<span id="cb7-481"><a href="#cb7-481"></a>endo_row <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Wu-Hausman Test"</span>, leakage_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], ttp_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], dbp_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>], bribe_iv_c<span class="sc">$</span>diagnostic_endogeneity_test[<span class="st">"value"</span>])</span>
+<span id="cb7-482"><a href="#cb7-482"></a></span>
+<span id="cb7-483"><a href="#cb7-483"></a></span>
+<span id="cb7-484"><a href="#cb7-484"></a>relevance_row <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Weak Instruments Test"</span>, leakage_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], ttp_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], dbp_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>], bribe_iv_c<span class="sc">$</span>diagnostic_first_stage_fstatistic[<span class="st">"value"</span>])</span>
+<span id="cb7-485"><a href="#cb7-485"></a></span>
+<span id="cb7-486"><a href="#cb7-486"></a><span class="fu">colnames</span>(relevance_row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Test"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
+<span id="cb7-487"><a href="#cb7-487"></a><span class="fu">colnames</span>(endo_row) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Test"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
+<span id="cb7-488"><a href="#cb7-488"></a>diagnostics_tibble <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">data.frame</span>(relevance_row), <span class="fu">data.frame</span>(endo_row))</span>
+<span id="cb7-489"><a href="#cb7-489"></a></span>
 <span id="cb7-490"><a href="#cb7-490"></a></span>
-<span id="cb7-491"><a href="#cb7-491"></a><span class="fu">### Instrument Validity</span></span>
-<span id="cb7-492"><a href="#cb7-492"></a></span>
-<span id="cb7-493"><a href="#cb7-493"></a>Based on the first stage model, we see that there is a strong relationship between the instrument (randomized promotion) and Smartcard enrollment. The randomized promotion is positively correlated with Smartcard enrollment. Moreover, the joint F-statistic of the model is 8608 with a p-value less than 0.01. We can reject the hypothesis that the instrument is weak. We can conclude that the instrument is relevant. Since the promotion panchayats are selected through a randomized process, the instrument is not correlated with any observable or unobservable characteristics of households or location. The instrument satisfies exogeneity. Lastly, there is a clear causal mechanism between the randomized promotion and the outcomes of interest. A promotion can only cause leakages, wait times, and corruption to increase or decrease only if a household enrolls into the Smartcard program after receiving the promotion. Hence, the instrument satisfies exclusion.</span>
-<span id="cb7-494"><a href="#cb7-494"></a></span>
-<span id="cb7-495"><a href="#cb7-495"></a><span class="in">```{r warning=FALSE}</span></span>
-<span id="cb7-496"><a href="#cb7-496"></a>relevance_check <span class="ot">&lt;-</span> <span class="fu">lm</span>(smartcard <span class="sc">~</span>  promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
-<span id="cb7-497"><a href="#cb7-497"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
-<span id="cb7-498"><a href="#cb7-498"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
-<span id="cb7-499"><a href="#cb7-499"></a>                      <span class="at">data =</span> iv_data)</span>
-<span id="cb7-500"><a href="#cb7-500"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"First Stage IV"</span> <span class="ot">=</span> relevance_check),</span>
-<span id="cb7-501"><a href="#cb7-501"></a>             <span class="at">stars =</span> T)</span>
-<span id="cb7-502"><a href="#cb7-502"></a><span class="in">```</span></span>
-<span id="cb7-503"><a href="#cb7-503"></a></span>
-<span id="cb7-504"><a href="#cb7-504"></a><span class="fu"># Conclusion and Implications</span></span>
-<span id="cb7-505"><a href="#cb7-505"></a></span>
-<span id="cb7-506"><a href="#cb7-506"></a>From our simulated data analysis, we find that the Smartcard intervention causes a de- crease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households receive payment 3 days earlier, on average, as com- pared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at a 1% level. These results reinforce our expectations that the Smartcard intervention would negatively affect leakage, wait times and corruption faced by rural workers.</span>
-<span id="cb7-507"><a href="#cb7-507"></a></span>
-<span id="cb7-508"><a href="#cb7-508"></a>The Smartcard program has three major implications. Firstly, the Smartcard program will contribute to poverty reduction and promote greater social inclusion by ensuring that benefits reach their intended recipients. Secondly, reducing wait times will enhance the over- all experience of beneficiaries, leading to increased trust in the government and its services. This could have positive spillover effects, such as increased participation in other government programs and greater civic engagement. Lastly, the Smartcard intervention will serve as a template for similar welfare programs in the country or even other countries facing similar challenges of leakages, wait times, and corruption. This could have a broader impact on so- cial welfare delivery systems, leading to reduced ineﬀiciencies and corruption in government services.</span>
-<span id="cb7-509"><a href="#cb7-509"></a></span>
-<span id="cb7-510"><a href="#cb7-510"></a>In conclusion, the successful implementation of the Smartcard intervention would have significant implications for the delivery of social welfare programs, poverty reduction, and contribute towards good governance.</span>
-<span id="cb7-511"><a href="#cb7-511"></a></span>
-<span id="cb7-512"><a href="#cb7-512"></a>:::</span>
-<span id="cb7-513"><a href="#cb7-513"></a><span class="fu"># Reference</span></span>
+<span id="cb7-491"><a href="#cb7-491"></a><span class="co"># Final Table with Robustness Checks</span></span>
+<span id="cb7-492"><a href="#cb7-492"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"Leakage"</span> <span class="ot">=</span> leakage_iv_c, <span class="st">"Wait Time (Queue)"</span> <span class="ot">=</span> ttp_iv_c, </span>
+<span id="cb7-493"><a href="#cb7-493"></a>                  <span class="st">"Payment Delay"</span> <span class="ot">=</span> dbp_iv_c, <span class="st">"Corruption"</span> <span class="ot">=</span> bribe_iv_c),</span>
+<span id="cb7-494"><a href="#cb7-494"></a>             <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-495"><a href="#cb7-495"></a>             <span class="at">vcov =</span> vcov,</span>
+<span id="cb7-496"><a href="#cb7-496"></a>             <span class="at">metrics =</span> <span class="st">"all"</span>,</span>
+<span id="cb7-497"><a href="#cb7-497"></a>             <span class="at">add_rows =</span> diagnostics_tibble,</span>
+<span id="cb7-498"><a href="#cb7-498"></a>             <span class="at">title =</span> <span class="st">"Instrumental Variables Estimation"</span>)</span>
+<span id="cb7-499"><a href="#cb7-499"></a></span>
+<span id="cb7-500"><a href="#cb7-500"></a><span class="in">```</span></span>
+<span id="cb7-501"><a href="#cb7-501"></a></span>
+<span id="cb7-502"><a href="#cb7-502"></a>::: justify</span>
+<span id="cb7-503"><a href="#cb7-503"></a>We can see that the smartcard intervention causes a decrease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households received payment 3 days earlier, on average, as compared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at 1% level. These results reinforce our expectations that the smartcard intervention would negatively affect leakage, wait times and corruption faced by the rural workers.</span>
+<span id="cb7-504"><a href="#cb7-504"></a>:::</span>
+<span id="cb7-505"><a href="#cb7-505"></a><span class="fu">## Robustness Checks</span></span>
+<span id="cb7-506"><a href="#cb7-506"></a></span>
+<span id="cb7-507"><a href="#cb7-507"></a><span class="fu">### Instrument Validity</span></span>
+<span id="cb7-508"><a href="#cb7-508"></a>::: justify</span>
+<span id="cb7-509"><a href="#cb7-509"></a>Based on the first stage model, we see that there is a strong relationship between the instrument (randomized promotion) and Smartcard enrollment. The randomized promotion is positively correlated with Smartcard enrollment. Moreover, the joint F-statistic of the model is 8608 with a p-value less than 0.01. We can reject the hypothesis that the instrument is weak. We can conclude that the instrument is relevant. Since the promotion panchayats are selected through a randomized process, the instrument is not correlated with any observable or unobservable characteristics of households or location. The instrument satisfies exogeneity. Lastly, there is a clear causal mechanism between the randomized promotion and the outcomes of interest. A promotion can only cause leakages, wait times, and corruption to increase or decrease only if a household enrolls into the Smartcard program after receiving the promotion. Hence, the instrument satisfies exclusion.</span>
+<span id="cb7-510"><a href="#cb7-510"></a></span>
+<span id="cb7-511"><a href="#cb7-511"></a>:::</span>
+<span id="cb7-512"><a href="#cb7-512"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb7-513"><a href="#cb7-513"></a>relevance_check <span class="ot">&lt;-</span> <span class="fu">lm</span>(smartcard <span class="sc">~</span>  promotion <span class="sc">+</span> farm <span class="sc">+</span> children <span class="sc">+</span></span>
+<span id="cb7-514"><a href="#cb7-514"></a>                        household_literacy_rate <span class="sc">+</span> female_member <span class="sc">+</span> hindu <span class="sc">+</span> </span>
+<span id="cb7-515"><a href="#cb7-515"></a>                        muslim <span class="sc">+</span> other_religion <span class="sc">+</span> hh_age <span class="sc">+</span> hh_male, </span>
+<span id="cb7-516"><a href="#cb7-516"></a>                      <span class="at">data =</span> iv_data)</span>
+<span id="cb7-517"><a href="#cb7-517"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(<span class="st">"First Stage IV"</span> <span class="ot">=</span> relevance_check),</span>
+<span id="cb7-518"><a href="#cb7-518"></a>             <span class="at">stars =</span> T)</span>
+<span id="cb7-519"><a href="#cb7-519"></a><span class="in">```</span></span>
+<span id="cb7-520"><a href="#cb7-520"></a></span>
+<span id="cb7-521"><a href="#cb7-521"></a><span class="fu"># Conclusion and Implications</span></span>
+<span id="cb7-522"><a href="#cb7-522"></a>::: justify</span>
+<span id="cb7-523"><a href="#cb7-523"></a>From our simulated data analysis, we find that the Smartcard intervention causes a de- crease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households receive payment 3 days earlier, on average, as com- pared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at a 1% level. These results reinforce our expectations that the Smartcard intervention would negatively affect leakage, wait times and corruption faced by rural workers.</span>
+<span id="cb7-524"><a href="#cb7-524"></a></span>
+<span id="cb7-525"><a href="#cb7-525"></a>The Smartcard program has three major implications. Firstly, the Smartcard program will contribute to poverty reduction and promote greater social inclusion by ensuring that benefits reach their intended recipients. Secondly, reducing wait times will enhance the over- all experience of beneficiaries, leading to increased trust in the government and its services. This could have positive spillover effects, such as increased participation in other government programs and greater civic engagement. Lastly, the Smartcard intervention will serve as a template for similar welfare programs in the country or even other countries facing similar challenges of leakages, wait times, and corruption. This could have a broader impact on so- cial welfare delivery systems, leading to reduced ineﬀiciencies and corruption in government services.</span>
+<span id="cb7-526"><a href="#cb7-526"></a></span>
+<span id="cb7-527"><a href="#cb7-527"></a>In conclusion, the successful implementation of the Smartcard intervention would have significant implications for the delivery of social welfare programs, poverty reduction, and contribute towards good governance.</span>
+<span id="cb7-528"><a href="#cb7-528"></a>:::</span>
+<span id="cb7-529"><a href="#cb7-529"></a><span class="fu"># Reference</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
