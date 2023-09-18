@@ -17,18 +17,11 @@ page-layout: full
 title-block-banner: true
 ---
 
-```{css echo = FALSE}
-.justify {
-  text-align: justify !important
-}
-```
-
-::: {.justify}
 # Bio
 
-As a graduate student pursuing a Master of Arts in Economics at Georgia State University, I am fascinated with data's potential to uncover hidden patterns and drive decision-making. My journey in academia has equipped me with robust quantitative and programming skills, cultivated through graduate-level coursework in machine learning, econometrics, microeconomics and more. 
+As a graduate student pursuing a Master of Arts in Economics at Georgia State University, I am fascinated with data's potential to uncover hidden patterns and drive decision-making. My journey in academia has equipped me with robust quantitative and programming skills, cultivated through graduate-level coursework in machine learning, econometrics, microeconomics and more.
 
-My academic journey is complemented by practical research experience. As a Research Assistant at the Economics Department, I contributed significantly to a resume audit field experiment. I expedited the process by designing a dynamic salary scraper in Python and employed advanced techniques for data processing and classification. Additionally, as a Research Assistant at the Center for States and Local Finance (CSLF) at GSU, I developed and implemented data cleaning and matching algorithms, ensuring data accuracy and integrity. In my role as the Chief Economist for the Portfolio Management Group (PMG) at GSU, I harnessed Bloomberg Terminal to conduct comprehensive macroeconomic analyses, providing valuable insights to our investment strategies. 
+My academic journey is complemented by practical research experience. As a Research Assistant at the Economics Department, I contributed significantly to a resume audit field experiment. I expedited the process by designing a dynamic salary scraper in Python and employed advanced techniques for data processing and classification. Additionally, as a Research Assistant at the Center for States and Local Finance (CSLF) at GSU, I developed and implemented data cleaning and matching algorithms, ensuring data accuracy and integrity. In my role as the Chief Economist for the Portfolio Management Group (PMG) at GSU, I harnessed Bloomberg Terminal to conduct comprehensive macroeconomic analyses, providing valuable insights to our investment strategies.
 
 With a passion for economics, strong analytical skills, and a solid foundation in quantitative methodologies, I'm excited to embark on a career that allows me to apply my knowledge to real-world challenges. I'm actively seeking opportunities that will leverage my academic and practical expertise in economics and data science. Let's connect and explore how I can bring value to your team.
-:::
+
