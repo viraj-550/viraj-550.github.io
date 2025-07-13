@@ -1,0 +1,33 @@
+---
+title: "Thin Markets, Thick Premiums"
+author: "Viraj Chordiya"
+date: "2025-07-04"
+image: "output/bond_issuance_amt_heatmap.png"
+links:
+  - name: PDF
+    url: "https://papers.ssrn.com"
+  - name: SSRN
+    url: "https://papers.ssrn.com"
+  - name: Data & Code
+    url: "https://github.com/viraj-550"
+---
+
+## Abstract
+
+This research examines the relationship between market liquidity and insurance premium pricing in specialized insurance markets. Using a comprehensive dataset of insurance transactions, I analyze how thin markets contribute to higher premiums and explore the implications for market efficiency and regulatory policy.
+
+## Quick Links
+
+::: {.research-links}
+[📄 Paper (PDF)](https://papers.ssrn.com){.btn .btn-outline-primary .btn-sm target="_blank"}
+[📊 SSRN](https://papers.ssrn.com){.btn .btn-outline-secondary .btn-sm target="_blank"}
+[💻 Data & Code](https://github.com/viraj-550){.btn .btn-outline-success .btn-sm target="_blank"}
+:::
+
+## Methodology
+
+This is a post with executable code.
+
+```{r}
+1 + 1
+```

@@ -8,19 +8,33 @@ website:
   navbar:
     background: primary
     search: true
-    right:
-      #- posts.qmd
+    left:
+      - text: Research
+        href: research.qmd
       - text: Projects
         href: projects.qmd
+      - text: Posts
+        href: posts.qmd
       - text: "Resume"
-        file: Viraj_Chordiya_Resume.pdf
+        file: cv_viraj_chordiya.pdf
       - icon: github
         href: https://github.com/viraj-550
-      - icon: linkedin
-        href: https://www.linkedin.com/in/virajchordiya/
+  page-navigation: true
+  back-to-top-navigation: true
+  # announcement:   # Announcements
+  #   icon: info-circle
+  #   dismissable: true
+  #   content: "**Alert** - this is some information that you should pay attention to"
+  #   position: below-navbar
+
 format:
   html:
-    theme: minty
+    theme: 
+      - yeti # from minty
+      - custom_theme.scss
     css: styles.css
-
-editor: visual
+    grid:
+      sidebar-width: 250px
+      body-width: 1200px  # Increased back to 1200px for wider research cards
+      margin-width: 100px  # Reduced margins to give more space to content
+      gutter-width: 1.5rem

@@ -46,8 +46,8 @@ Subsequently, we perform the following analysis to construct an optimal portfoli
 -   **VaR Forecasting**: Employing advanced numerical methods, we forecast Value-at-Risk for various portfolios comprising of SPXL and BAC. Our findings reveal that VaR is responsive to varying proportions of SPXL within the portfolio. Notably, we uncover that VaR tends to rise as the allocation to SPXL increases.
 
 In essence, our project serves as a comprehensive exploration of the dynamic interplay between these financial assets, offering valuable insights and strategies for optimizing portfolio performance while diligently managing risks in an ever-evolving financial landscape.
-
 :::
+
 ```{r warnings = FALSE, include = TRUE}
 # Importing Packages
 
@@ -71,10 +71,11 @@ library(modelsummary)
 ------------------------------------------------------------------------
 
 # Data
+
 ::: justify
 We collect ten years daily OHLC data of Direxion Daily S&P 500 Bull 3X Shares (SPXL) and Bank of America Corp (NYSE: BAC). SPXL is a three times leveraged ETF mirroring the S&P 500 index. Hence, it provides a 300% of the S&P 500 index's daily return. The data is collected from Yahoo finance for period 2012/11 - 2022/11 using the `getSymbol()` function from the `quantmod` library. The table represents the summary statistics of daily adjusted closing stock price, and log returns of both the instruments.
-
 :::
+
 ```{r}
 
 # Assigning Date
@@ -111,6 +112,7 @@ datasummary_df(summary_df,
 ::: justify
 There are a total of 2517 observations in total. Prices and log returns of both the financial instruments are asymmetric. SPXL daily prices are extremely skewed to the right, while SPXL returns are extremely skewed to the left. Moreover, BAC daily prices are slightly skewed to the right while the returns are slightly skewed to the left. The excess kurtosis for the log returns of both assets show that returns are not normally distributed.
 :::
+
 ## Time series graphs and distribution plots
 
 ```{r}
@@ -139,9 +141,11 @@ plot1 / plot2
 ------------------------------------------------------------------------
 
 ## Exploratory Data Analysis
+
 ::: justify
 Firstly, we check for weak stationarity by investigating the time series plots of log returns of both the financial instruments. Next, we conduct the Augmented Dickey Fuller (ADF) test to check for the presence of unit root.
 :::
+
 ```{r}
 # Plotting log returns
 
@@ -171,11 +175,13 @@ plot_spxl_r / plot_bac_r
 adf.test(daily_df$SPXL_r)
 adf.test(daily_df$BAC_r)
 ```
+
 ::: justify
 Upon visual inspection, it looks like both the log returns are stationary. Moreover, from the ADF test, we fail to reject the null hypothesis of non-stationarity at 1% confidence.
 
 In order to look for time dependency and volatility clustering of log returns of SPLX and BAC, From the graphs, it is evident that both series display time varying volatility. Moreover, volatility clusters together. For better analysis, we need to model the nonconstant volatility.
 :::
+
 ```{r ggplot}
 # ACF plots
 ggacf <- function(x, ci=0.95, type="correlation", xlab="Lag", ylab=NULL,
@@ -212,14 +218,17 @@ bac_acf2 <- ggacf(daily_df$BAC_r ** 2, main = "BAC Squared")
 
 (spxl_acf + spxl_acf2) / (bac_acf + bac_acf2)
 ```
+
 ::: justify
 From the log return graphs, it is evident that both series display time varying volatility. Moreover, ACF plots of squared series of both stocks show significant serial correlation. For better analysis, we need to model time dependence and non-constant volatility.
 :::
+
 ------------------------------------------------------------------------
 
 # Time Series Model
 
 ## AR(1)-GARCH(1,1) Model
+
 ::: justify
 In order to model autocorelation and volatility clustering, we combine an AR(1) model that has a nonconstant conditional mean but a constant conditional variance with a GARCH(1,1) model that has conditional mean and the variance of data depends on the past. Additionally, in a GARCH model, conditional standard deviation exhibits more persistent periods of low and high volatility.
 
@@ -229,6 +238,7 @@ $$ X_t = \mu + \phi X_{t-1} + e_t, \quad e_t =  \sigma_{t}\varepsilon_{t}, \quad
 
 where, $X_t$ is the daily log returns of SPXL and $\tilde X_t$ is the daily log returns of BAC.
 :::
+
 ```{r , echo = TRUE, eval = TRUE, results="hide"}
 
 spxl <- as.vector(daily_df$SPXL_r)
@@ -245,11 +255,13 @@ bac_fit <- ugarchfit(bac_spec, data = bac)
 ```
 
 ## Residual Copula Modelling
+
 ::: justify
 In order to work with a portfolio of Direxion Daily S&P 500 Bull 3X Shares (SPXL) and Bank of America Corp (BAC), we need to model both the series as a copula to extract the dependence structure between the two financial instruments. In the project, we particulary study the dependent structure of the standardized residuals of an $AR(1) - GARCH(1,1)$ model fitted to both the series.
 
 First, we fit a Student t distribution to both $\varepsilon_t$ and $\tilde \varepsilon_t$ using the `fitdistr()` function from the `MASS` library.
 :::
+
 ```{r warning=FALSE}
 # Standardized Residuals
 
@@ -278,11 +290,13 @@ qqplot(sort(bac_res), x2, xlab="Standardized Residuals",
        ylab="t-quantiles",
        main = "BAC Residual t-plot, DF = 5")
 ```
+
 ::: justify
 A t-distribution with df = 5 fits well to the SPXL and BAC residuals. The qqplot for both the instruments is a straight line except for a few outliers. Given that the total number of observations (n = 2517) is high enough, the outliers are a small fraction of the sample.
 
 Second, we transform the residuals into marginal t - distributions and fit t-copula, Gaussian copula, Gumbel Copula, Clayton and Frank copulas. We select the best fit copula by minimizing AIC. We select t-copula as it minimizes AIC.
 :::
+
 ```{r}
 
 # Transform residues into uniform distribution
@@ -350,11 +364,13 @@ aic_frank
 ------------------------------------------------------------------------
 
 ## Residual Analysis
+
 ::: justify
 We conduct a residual analysis on the standardized residuals $\varepsilon_t$ and $\tilde \varepsilon$ to check the fit of the $AR(1) + GARCH(1,1)$ model.
 
 First, we inspect the standardized residuals and squared standardized residuals for autocorrelation. The figure below plots the `acf()` function for the four series.
 :::
+
 ```{r}
 spxl_res_acf <- ggacf(spxl_res, main = "SPXL Std. Residuals")
 spxl_res_acf2 <- ggacf(spxl_res ** 2, main = "Squared SPXL Std. Residuals")
@@ -363,6 +379,7 @@ bac_res_acf2 <- ggacf(bac_res ** 2, main = "Squared BAC Std. Residuals")
 
 (spxl_res_acf + spxl_res_acf2) / (bac_res_acf + bac_res_acf2)
 ```
+
 ::: justify
 The AR(1) + GARCH(1,1) model fits very well to SPXL and BAC. The standardized residuals and the squared standardized residuals of both the models show no significant serial correlation at 95% confidence.
 
@@ -379,12 +396,15 @@ show(bac_fit)
 ```{r}
 bac_fit
 ```
+
 ::: justify
 The weighted versions of the Ljung-Box test and their p-values all indicate that the estimated $AR(1) + GARCH(1,1)$ model for the conditional mean and variance is adequate for removing serial correlation from the series and squared series.
 :::
+
 ------------------------------------------------------------------------
 
 # Applications to Portfolio Risk Management
+
 ::: justify
 In this section, we apply the $AR(1) + GARCH(1,1)$ along with t-Copula residuals to forecast one-step ahead Value-at-Risk at 99% level on the following portfolio consisting of SPXL and BAC with weight $\rho$:
 
@@ -400,6 +420,7 @@ Initially, we forecast one step ahead $\sigma_{n+1}$ and $\tilde \sigma_{n + 1}$
 
 $$\big{\{}\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{i}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{i})\big{\}}_{i = 1}^b$$ In order to see how risk depends on share of portfolio $\rho$, we conduct the empirical activity for $\rho = 0.1, \dots, 0.9$.
 :::
+
 ```{r}
 # Copula Simulation 
 
@@ -467,6 +488,7 @@ var_sample <- var_sample[, c("SPXL Portfolio Weight", "VaR ($)")]
 datasummary_df(var_sample,
                title = "Table 2. One-Step Ahead VaR forecast for a $1 million portfolio with varying weights")
 ```
+
 ::: justify
 The table reports the Value-at-Risk at 99% level for a portfolio value of \$1,000,000. It is evident from the table that as SPXL's proportion in the portfolio increases ($\rho$), the Value-at-Risk increases. These results are in line with expectations as Direxion Daily S&P 500 Bull 3X Shares is a 300% leveraged instrument based on the S&P 500 index. When $\rho = 0.2$, there is a 1% percent chance that the loss would be greater than `r as.numeric(var_sample[2,1])` the next day on a \$1,000,000 investment. Similarly, When $\rho = 0.9$, there is a 1% percent chance that the loss would be greater than `r as.numeric(var_sample[9,1])` the next day on a \$1,000,000 investment.
 :::

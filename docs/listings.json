@@ -7,10 +7,34 @@
     ]
   },
   {
+    "listing": "/index.html",
+    "items": [
+      "/research/insurance-alm/index.html"
+    ]
+  },
+  {
+    "listing": "/index_backup.html",
+    "items": [
+      "/research/insurance-alm/index.html"
+    ]
+  },
+  {
+    "listing": "/research.html",
+    "items": [
+      "/research/insurance-alm/index.html"
+    ]
+  },
+  {
     "listing": "/projects.html",
     "items": [
       "/projects/smartcard/index.html",
       "/projects/garch-var/index.html"
+    ]
+  },
+  {
+    "listing": "/index_clean.html",
+    "items": [
+      "/research/insurance-alm/index.html"
     ]
   }
 ]

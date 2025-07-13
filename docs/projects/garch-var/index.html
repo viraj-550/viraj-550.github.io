@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,48 +49,20 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -129,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -138,63 +116,93 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Viraj R. Chordiya - Balancing Risk and Reward: Copula-GARCH Framework for Portfolio Optimiziation">
 <meta property="og:description" content="A Comprehensive Study of SPXL ETF and BAC Stock for VaR Insights">
-<meta property="og:site-name" content="Viraj R. Chordiya">
+<meta property="og:site_name" content="Viraj R. Chordiya">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Viraj R. Chordiya</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">
- <span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html">
- <span class="menu-text">Projects</span></a>
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Viraj_Chordiya_Resume.pdf">
- <span class="menu-text">Resume</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv_viraj_chordiya.pdf"> 
+<span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/viraj-550"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/viraj-550"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/virajchordiya/"><i class="bi bi-linkedin" role="img">
-</i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -265,9 +273,7 @@ div.csl-indent {
 
 
 
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_7f9daa0631fbca3732e40c758250ecdb">
 
-</div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-2_9df224eb0a723eaf4212c38051eb794e">
 <style type="text/css">
 .justify {
@@ -291,7 +297,7 @@ div.csl-indent {
 <p>In essence, our project serves as a comprehensive exploration of the dynamic interplay between these financial assets, offering valuable insights and strategies for optimizing portfolio performance while diligently managing risks in an ever-evolving financial landscape.</p>
 </section>
 <div class="cell" data-warnings="false" data-hash="index_cache/html/unnamed-chunk-3_14a0498fec8605376002717cc0233b2b">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Importing Packages</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
@@ -319,7 +325,7 @@ div.csl-indent {
 <p>We collect ten years daily OHLC data of Direxion Daily S&amp;P 500 Bull 3X Shares (SPXL) and Bank of America Corp (NYSE: BAC). SPXL is a three times leveraged ETF mirroring the S&amp;P 500 index. Hence, it provides a 300% of the S&amp;P 500 index’s daily return. The data is collected from Yahoo finance for period 2012/11 - 2022/11 using the <code>getSymbol()</code> function from the <code>quantmod</code> library. The table represents the summary statistics of daily adjusted closing stock price, and log returns of both the instruments.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-4_7b0576d5d1bbecb367bfa559f8dad29f">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Assigning Date</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
@@ -343,7 +349,7 @@ div.csl-indent {
 </details>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-5_d4b8e782ade91b70402506381a0e30c5">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">describe</span>(daily_df, <span class="at">ranges =</span> F)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">colnames</span>(summary_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Variable"</span>, <span class="st">"N"</span>, <span class="st">"Mean"</span>, <span class="st">"Std"</span>, <span class="st">"Skew"</span>, <span class="st">"Kurtosis"</span>, <span class="st">"S.E."</span>)</span>
@@ -352,60 +358,62 @@ div.csl-indent {
 <span id="cb3-5"><a href="#cb3-5"></a>               <span class="at">title =</span> <span class="st">"Table 1. Summary Statistics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Table 1. Summary Statistics</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> &nbsp;Variable </th>
-   <th style="text-align:left;"> N </th>
-   <th style="text-align:left;"> Mean </th>
-   <th style="text-align:left;"> Std </th>
-   <th style="text-align:left;"> Skew </th>
-   <th style="text-align:left;"> Kurtosis </th>
-   <th style="text-align:left;"> S.E. </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">&nbsp;Variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">N</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mean</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Std</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Skew</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Kurtosis</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">S.E.</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> SPXL </td>
-   <td style="text-align:left;"> 2517.00 </td>
-   <td style="text-align:left;"> 42.77 </td>
-   <td style="text-align:left;"> 31.46 </td>
-   <td style="text-align:left;"> 1.24 </td>
-   <td style="text-align:left;"> 0.85 </td>
-   <td style="text-align:left;"> 0.63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BAC </td>
-   <td style="text-align:left;"> 2517.00 </td>
-   <td style="text-align:left;"> 22.13 </td>
-   <td style="text-align:left;"> 9.52 </td>
-   <td style="text-align:left;"> 0.59 </td>
-   <td style="text-align:left;"> -0.56 </td>
-   <td style="text-align:left;"> 0.19 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SPXL Returns </td>
-   <td style="text-align:left;"> 2517.00 </td>
-   <td style="text-align:left;"> 0.00 </td>
-   <td style="text-align:left;"> 0.03 </td>
-   <td style="text-align:left;"> -1.52 </td>
-   <td style="text-align:left;"> 20.38 </td>
-   <td style="text-align:left;"> 0.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> BAC Returns </td>
-   <td style="text-align:left;"> 2517.00 </td>
-   <td style="text-align:left;"> 0.00 </td>
-   <td style="text-align:left;"> 0.02 </td>
-   <td style="text-align:left;"> -0.07 </td>
-   <td style="text-align:left;"> 9.85 </td>
-   <td style="text-align:left;"> 0.00 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">SPXL</td>
+<td style="text-align: left;">2517.00</td>
+<td style="text-align: left;">42.77</td>
+<td style="text-align: left;">31.46</td>
+<td style="text-align: left;">1.24</td>
+<td style="text-align: left;">0.85</td>
+<td style="text-align: left;">0.63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BAC</td>
+<td style="text-align: left;">2517.00</td>
+<td style="text-align: left;">22.13</td>
+<td style="text-align: left;">9.52</td>
+<td style="text-align: left;">0.59</td>
+<td style="text-align: left;">-0.56</td>
+<td style="text-align: left;">0.19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SPXL Returns</td>
+<td style="text-align: left;">2517.00</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">-1.52</td>
+<td style="text-align: left;">20.38</td>
+<td style="text-align: left;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BAC Returns</td>
+<td style="text-align: left;">2517.00</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">0.02</td>
+<td style="text-align: left;">-0.07</td>
+<td style="text-align: left;">9.85</td>
+<td style="text-align: left;">0.00</td>
+</tr>
 </tbody>
 </table>
 
+
+</div>
 </div>
 </div>
 <div class="justify">
@@ -414,7 +422,7 @@ div.csl-indent {
 <section id="time-series-graphs-and-distribution-plots" class="level2">
 <h2 class="anchored" data-anchor-id="time-series-graphs-and-distribution-plots">Time series graphs and distribution plots</h2>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-6_4061a1e3e0c42834c4ff5df766adc8be">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spxl_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> SPXL.Adjusted))<span class="sc">+</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
@@ -437,7 +445,11 @@ div.csl-indent {
 <span id="cb4-19"><a href="#cb4-19"></a>plot1 <span class="sc">/</span> plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -448,7 +460,7 @@ div.csl-indent {
 <p>Firstly, we check for weak stationarity by investigating the time series plots of log returns of both the financial instruments. Next, we conduct the Augmented Dickey Fuller (ADF) test to check for the presence of unit root.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-7_975cd0cc916495be92ecebe969af1ea6">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Plotting log returns</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
@@ -473,11 +485,15 @@ div.csl-indent {
 <span id="cb5-21"><a href="#cb5-21"></a>plot_spxl_r <span class="sc">/</span> plot_bac_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-8_261cbe0788d2e78929062e1f35fc4c20">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">adf.test</span>(daily_df<span class="sc">$</span>SPXL_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -489,7 +505,7 @@ data:  daily_df$SPXL_r
 Dickey-Fuller = -13.314, Lag order = 13, p-value = 0.01
 alternative hypothesis: stationary</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">adf.test</span>(daily_df<span class="sc">$</span>BAC_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -507,7 +523,7 @@ alternative hypothesis: stationary</code></pre>
 <p>In order to look for time dependency and volatility clustering of log returns of SPLX and BAC, From the graphs, it is evident that both series display time varying volatility. Moreover, volatility clusters together. For better analysis, we need to model the nonconstant volatility.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/ggplot_f42e486540279a1383db9c796d37cf2b">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># ACF plots</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>ggacf <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">ci=</span><span class="fl">0.95</span>, <span class="at">type=</span><span class="st">"correlation"</span>, <span class="at">xlab=</span><span class="st">"Lag"</span>, <span class="at">ylab=</span><span class="cn">NULL</span>,</span>
@@ -545,7 +561,11 @@ alternative hypothesis: stationary</code></pre>
 <span id="cb10-34"><a href="#cb10-34"></a>(spxl_acf <span class="sc">+</span> spxl_acf2) <span class="sc">/</span> (bac_acf <span class="sc">+</span> bac_acf2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/ggplot-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/ggplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="justify">
@@ -565,7 +585,7 @@ alternative hypothesis: stationary</code></pre>
 <p>where, <span class="math inline">\(X_t\)</span> is the daily log returns of SPXL and <span class="math inline">\(\tilde X_t\)</span> is the daily log returns of BAC.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-9_0d156f5b2d1245cbe65302f55b20aa03">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>spxl <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(daily_df<span class="sc">$</span>SPXL_r)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>bac <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(daily_df<span class="sc">$</span>BAC_r)</span>
@@ -588,7 +608,7 @@ alternative hypothesis: stationary</code></pre>
 <p>First, we fit a Student t distribution to both <span class="math inline">\(\varepsilon_t\)</span> and <span class="math inline">\(\tilde \varepsilon_t\)</span> using the <code>fitdistr()</code> function from the <code>MASS</code> library.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-10_f8b52886c9f8bb76b809ee7cc8d96253">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Standardized Residuals</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>
@@ -601,7 +621,7 @@ alternative hypothesis: stationary</code></pre>
 </details>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-11_df46f682ba29de961f42e49ffbd6094e">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Fitting t-density plots</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
@@ -619,7 +639,11 @@ alternative hypothesis: stationary</code></pre>
 <span id="cb13-14"><a href="#cb13-14"></a>       <span class="at">main =</span> <span class="st">"BAC Residual t-plot, DF = 5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="justify">
@@ -627,7 +651,7 @@ alternative hypothesis: stationary</code></pre>
 <p>Second, we transform the residuals into marginal t - distributions and fit t-copula, Gaussian copula, Gumbel Copula, Clayton and Frank copulas. We select the best fit copula by minimizing AIC. We select t-copula as it minimizes AIC.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-12_ea3fe627f31948898f6b410543554cdc">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Transform residues into uniform distribution</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
@@ -643,7 +667,7 @@ alternative hypothesis: stationary</code></pre>
 </details>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-13_c76f7d7d52598f1ed8f3cf7d9d74cb3a">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Fit t-Copula</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>Ct <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
@@ -658,7 +682,7 @@ alternative hypothesis: stationary</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1516.131</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Gaussian Copula</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>Cgauss <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">normalCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat, </span>
@@ -672,7 +696,7 @@ alternative hypothesis: stationary</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1411.64</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Gumbel Copula</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>C_gumbel <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">gumbelCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span>U_hat,</span>
@@ -685,7 +709,7 @@ alternative hypothesis: stationary</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1388.308</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Clayton Copula</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
@@ -699,7 +723,7 @@ alternative hypothesis: stationary</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1213.358</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Frank Copula</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
@@ -724,7 +748,7 @@ alternative hypothesis: stationary</code></pre>
 <p>First, we inspect the standardized residuals and squared standardized residuals for autocorrelation. The figure below plots the <code>acf()</code> function for the four series.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-14_cd3b887009af14180973be0fdb0e2168">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>spxl_res_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res, <span class="at">main =</span> <span class="st">"SPXL Std. Residuals"</span>)</span>
 <span id="cb25-2"><a href="#cb25-2"></a>spxl_res_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Squared SPXL Std. Residuals"</span>)</span>
@@ -734,7 +758,11 @@ alternative hypothesis: stationary</code></pre>
 <span id="cb25-6"><a href="#cb25-6"></a>(spxl_res_acf <span class="sc">+</span> spxl_res_acf2) <span class="sc">/</span> (bac_res_acf <span class="sc">+</span> bac_res_acf2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="justify">
@@ -742,7 +770,7 @@ alternative hypothesis: stationary</code></pre>
 <p>Next we look at the following box tests to check autocorrelation</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-15_dff0dae2dc763b95b42e36587bdb0bbc">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">show</span>(spxl_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -843,7 +871,7 @@ Adjusted Pearson Goodness-of-Fit Test:
 
 Elapsed time : 0.519062 </code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">show</span>(bac_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -946,7 +974,7 @@ Elapsed time : 0.2202091 </code></pre>
 </div>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-16_18d26e29d9a5b61eaf10d9ff4c16fe87">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>bac_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1066,7 +1094,7 @@ Elapsed time : 0.2202091 </code></pre>
 <p><span class="math display">\[\big{\{}\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{i}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{i})\big{\}}_{i = 1}^b\]</span> In order to see how risk depends on share of portfolio <span class="math inline">\(\rho\)</span>, we conduct the empirical activity for <span class="math inline">\(\rho = 0.1, \dots, 0.9\)</span>.</p>
 </div>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-17_de1bee2b6169e275641e82b33b665a15">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Copula Simulation </span></span>
 <span id="cb32-2"><a href="#cb32-2"></a></span>
@@ -1135,7 +1163,6 @@ Elapsed time : 0.2202091 </code></pre>
 <span id="cb32-65"><a href="#cb32-65"></a>               <span class="at">title =</span> <span class="st">"Table 2. One-Step Ahead VaR forecast for a $1 million portfolio with varying weights"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Table 2. One-Step Ahead VaR forecast for a $1 million portfolio with varying weights</caption>
  <thead>
@@ -1200,8 +1227,8 @@ Elapsed time : 0.2202091 </code></pre>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-ruppert_statistics_2015" class="csl-entry" role="doc-biblioentry">
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ruppert_statistics_2015" class="csl-entry" role="listitem">
 Ruppert, David, and David S. Matteson. 2015. <em>Statistics and Data Analysis for Financial Engineering: With <span>R</span> Examples</em>. Second edition. Springer Texts in Statistics. New York Heidelberg Dordrecht London: Springer.
 </div>
 </div></section></div></main> <!-- /main -->
@@ -1232,9 +1259,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1321,10 +1362,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1334,8 +1392,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1347,9 +1414,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1410,13 +1713,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb33-19"><a href="#cb33-19"></a><span class="co">---</span></span>
 <span id="cb33-20"><a href="#cb33-20"></a></span>
 <span id="cb33-21"><a href="#cb33-21"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb33-22"><a href="#cb33-22"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.width=</span><span class="dv">12</span>, <span class="at">fig.height=</span><span class="dv">8</span>) </span>
+<span id="cb33-22"><a href="#cb33-22"></a><span class="in">knitr::opts_chunk$set(fig.width=12, fig.height=8) </span></span>
 <span id="cb33-23"><a href="#cb33-23"></a><span class="in">```</span></span>
 <span id="cb33-24"><a href="#cb33-24"></a></span>
 <span id="cb33-25"><a href="#cb33-25"></a><span class="in">```{css, echo = FALSE}</span></span>
-<span id="cb33-26"><a href="#cb33-26"></a><span class="op">.</span><span class="fu">justify</span> <span class="op">{</span></span>
-<span id="cb33-27"><a href="#cb33-27"></a>  text<span class="op">-</span>align<span class="op">:</span> justify <span class="op">!</span>important</span>
-<span id="cb33-28"><a href="#cb33-28"></a><span class="op">}</span></span>
+<span id="cb33-26"><a href="#cb33-26"></a><span class="in">.justify {</span></span>
+<span id="cb33-27"><a href="#cb33-27"></a><span class="in">  text-align: justify !important</span></span>
+<span id="cb33-28"><a href="#cb33-28"></a><span class="in">}</span></span>
 <span id="cb33-29"><a href="#cb33-29"></a><span class="in">```</span></span>
 <span id="cb33-30"><a href="#cb33-30"></a></span>
 <span id="cb33-31"><a href="#cb33-31"></a>::: justify</span>
@@ -1437,430 +1740,453 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb33-46"><a href="#cb33-46"></a><span class="ss">-   </span>**VaR Forecasting**: Employing advanced numerical methods, we forecast Value-at-Risk for various portfolios comprising of SPXL and BAC. Our findings reveal that VaR is responsive to varying proportions of SPXL within the portfolio. Notably, we uncover that VaR tends to rise as the allocation to SPXL increases.</span>
 <span id="cb33-47"><a href="#cb33-47"></a></span>
 <span id="cb33-48"><a href="#cb33-48"></a>In essence, our project serves as a comprehensive exploration of the dynamic interplay between these financial assets, offering valuable insights and strategies for optimizing portfolio performance while diligently managing risks in an ever-evolving financial landscape.</span>
-<span id="cb33-49"><a href="#cb33-49"></a></span>
-<span id="cb33-50"><a href="#cb33-50"></a>:::</span>
+<span id="cb33-49"><a href="#cb33-49"></a>:::</span>
+<span id="cb33-50"><a href="#cb33-50"></a></span>
 <span id="cb33-51"><a href="#cb33-51"></a><span class="in">```{r warnings = FALSE, include = TRUE}</span></span>
-<span id="cb33-52"><a href="#cb33-52"></a><span class="co"># Importing Packages</span></span>
+<span id="cb33-52"><a href="#cb33-52"></a><span class="in"># Importing Packages</span></span>
 <span id="cb33-53"><a href="#cb33-53"></a></span>
-<span id="cb33-54"><a href="#cb33-54"></a><span class="fu">library</span>(quantmod)</span>
-<span id="cb33-55"><a href="#cb33-55"></a><span class="fu">library</span>(xts)</span>
-<span id="cb33-56"><a href="#cb33-56"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb33-57"><a href="#cb33-57"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb33-58"><a href="#cb33-58"></a><span class="fu">library</span>(fGarch)</span>
-<span id="cb33-59"><a href="#cb33-59"></a><span class="fu">library</span>(sn)</span>
-<span id="cb33-60"><a href="#cb33-60"></a><span class="fu">library</span>(copula)</span>
-<span id="cb33-61"><a href="#cb33-61"></a><span class="fu">library</span>(ks)</span>
-<span id="cb33-62"><a href="#cb33-62"></a><span class="fu">library</span>(stargazer)</span>
-<span id="cb33-63"><a href="#cb33-63"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb33-64"><a href="#cb33-64"></a><span class="fu">library</span>(rugarch)</span>
-<span id="cb33-65"><a href="#cb33-65"></a><span class="fu">library</span>(psych)</span>
-<span id="cb33-66"><a href="#cb33-66"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-67"><a href="#cb33-67"></a><span class="fu">library</span>(tseries)</span>
-<span id="cb33-68"><a href="#cb33-68"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb33-54"><a href="#cb33-54"></a><span class="in">library(quantmod)</span></span>
+<span id="cb33-55"><a href="#cb33-55"></a><span class="in">library(xts)</span></span>
+<span id="cb33-56"><a href="#cb33-56"></a><span class="in">library(gridExtra)</span></span>
+<span id="cb33-57"><a href="#cb33-57"></a><span class="in">library(MASS)</span></span>
+<span id="cb33-58"><a href="#cb33-58"></a><span class="in">library(fGarch)</span></span>
+<span id="cb33-59"><a href="#cb33-59"></a><span class="in">library(sn)</span></span>
+<span id="cb33-60"><a href="#cb33-60"></a><span class="in">library(copula)</span></span>
+<span id="cb33-61"><a href="#cb33-61"></a><span class="in">library(ks)</span></span>
+<span id="cb33-62"><a href="#cb33-62"></a><span class="in">library(stargazer)</span></span>
+<span id="cb33-63"><a href="#cb33-63"></a><span class="in">library(patchwork)</span></span>
+<span id="cb33-64"><a href="#cb33-64"></a><span class="in">library(rugarch)</span></span>
+<span id="cb33-65"><a href="#cb33-65"></a><span class="in">library(psych)</span></span>
+<span id="cb33-66"><a href="#cb33-66"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb33-67"><a href="#cb33-67"></a><span class="in">library(tseries)</span></span>
+<span id="cb33-68"><a href="#cb33-68"></a><span class="in">library(modelsummary)</span></span>
 <span id="cb33-69"><a href="#cb33-69"></a><span class="in">```</span></span>
 <span id="cb33-70"><a href="#cb33-70"></a></span>
 <span id="cb33-71"><a href="#cb33-71"></a>------------------------------------------------------------------------</span>
 <span id="cb33-72"><a href="#cb33-72"></a></span>
 <span id="cb33-73"><a href="#cb33-73"></a><span class="fu"># Data</span></span>
-<span id="cb33-74"><a href="#cb33-74"></a>::: justify</span>
-<span id="cb33-75"><a href="#cb33-75"></a>We collect ten years daily OHLC data of Direxion Daily S&amp;P 500 Bull 3X Shares (SPXL) and Bank of America Corp (NYSE: BAC). SPXL is a three times leveraged ETF mirroring the S&amp;P 500 index. Hence, it provides a 300% of the S&amp;P 500 index's daily return. The data is collected from Yahoo finance for period 2012/11 - 2022/11 using the <span class="in">`getSymbol()`</span> function from the <span class="in">`quantmod`</span> library. The table represents the summary statistics of daily adjusted closing stock price, and log returns of both the instruments.</span>
-<span id="cb33-76"><a href="#cb33-76"></a></span>
+<span id="cb33-74"><a href="#cb33-74"></a></span>
+<span id="cb33-75"><a href="#cb33-75"></a>::: justify</span>
+<span id="cb33-76"><a href="#cb33-76"></a>We collect ten years daily OHLC data of Direxion Daily S&amp;P 500 Bull 3X Shares (SPXL) and Bank of America Corp (NYSE: BAC). SPXL is a three times leveraged ETF mirroring the S&amp;P 500 index. Hence, it provides a 300% of the S&amp;P 500 index's daily return. The data is collected from Yahoo finance for period 2012/11 - 2022/11 using the <span class="in">`getSymbol()`</span> function from the <span class="in">`quantmod`</span> library. The table represents the summary statistics of daily adjusted closing stock price, and log returns of both the instruments.</span>
 <span id="cb33-77"><a href="#cb33-77"></a>:::</span>
-<span id="cb33-80"><a href="#cb33-80"></a><span class="in">```{r}</span></span>
-<span id="cb33-81"><a href="#cb33-81"></a><span class="co"># Assigning Date</span></span>
-<span id="cb33-82"><a href="#cb33-82"></a></span>
-<span id="cb33-83"><a href="#cb33-83"></a>start <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2012-11-09"</span>)</span>
-<span id="cb33-84"><a href="#cb33-84"></a>end <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2022-11-10"</span>)</span>
-<span id="cb33-85"><a href="#cb33-85"></a></span>
-<span id="cb33-86"><a href="#cb33-86"></a>spxl_df <span class="ot">&lt;-</span> <span class="fu">getSymbols</span>(<span class="st">"SPXL"</span>, <span class="at">from =</span> start, <span class="at">to =</span> end, <span class="at">src =</span> <span class="st">"yahoo"</span>,</span>
-<span id="cb33-87"><a href="#cb33-87"></a>                       <span class="at">auto.assign =</span> F)</span>
-<span id="cb33-88"><a href="#cb33-88"></a>bac_df <span class="ot">&lt;-</span> <span class="fu">getSymbols</span>(<span class="st">"BAC"</span>, <span class="at">from =</span> start, <span class="at">to =</span> end, <span class="at">src =</span> <span class="st">"yahoo"</span>,</span>
-<span id="cb33-89"><a href="#cb33-89"></a>                       <span class="at">auto.assign =</span> F)</span>
-<span id="cb33-90"><a href="#cb33-90"></a></span>
+<span id="cb33-78"><a href="#cb33-78"></a></span>
+<span id="cb33-81"><a href="#cb33-81"></a><span class="in">```{r}</span></span>
+<span id="cb33-82"><a href="#cb33-82"></a><span class="co"># Assigning Date</span></span>
+<span id="cb33-83"><a href="#cb33-83"></a></span>
+<span id="cb33-84"><a href="#cb33-84"></a>start <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2012-11-09"</span>)</span>
+<span id="cb33-85"><a href="#cb33-85"></a>end <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2022-11-10"</span>)</span>
+<span id="cb33-86"><a href="#cb33-86"></a></span>
+<span id="cb33-87"><a href="#cb33-87"></a>spxl_df <span class="ot">&lt;-</span> <span class="fu">getSymbols</span>(<span class="st">"SPXL"</span>, <span class="at">from =</span> start, <span class="at">to =</span> end, <span class="at">src =</span> <span class="st">"yahoo"</span>,</span>
+<span id="cb33-88"><a href="#cb33-88"></a>                       <span class="at">auto.assign =</span> F)</span>
+<span id="cb33-89"><a href="#cb33-89"></a>bac_df <span class="ot">&lt;-</span> <span class="fu">getSymbols</span>(<span class="st">"BAC"</span>, <span class="at">from =</span> start, <span class="at">to =</span> end, <span class="at">src =</span> <span class="st">"yahoo"</span>,</span>
+<span id="cb33-90"><a href="#cb33-90"></a>                       <span class="at">auto.assign =</span> F)</span>
 <span id="cb33-91"><a href="#cb33-91"></a></span>
-<span id="cb33-92"><a href="#cb33-92"></a>daily_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_df<span class="sc">$</span>SPXL.Adjusted, bac_df<span class="sc">$</span>BAC.Adjusted)</span>
-<span id="cb33-93"><a href="#cb33-93"></a></span>
-<span id="cb33-94"><a href="#cb33-94"></a><span class="fu">colnames</span>(daily_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL"</span>, <span class="st">"BAC"</span>)</span>
-<span id="cb33-95"><a href="#cb33-95"></a></span>
-<span id="cb33-96"><a href="#cb33-96"></a>daily_df<span class="sc">$</span>SPXL_r <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(daily_df<span class="sc">$</span>SPXL))</span>
-<span id="cb33-97"><a href="#cb33-97"></a>daily_df<span class="sc">$</span>BAC_r <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(daily_df<span class="sc">$</span>BAC))</span>
-<span id="cb33-98"><a href="#cb33-98"></a></span>
-<span id="cb33-99"><a href="#cb33-99"></a>daily_df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(daily_df)</span>
-<span id="cb33-100"><a href="#cb33-100"></a></span>
-<span id="cb33-101"><a href="#cb33-101"></a><span class="in">```</span></span>
-<span id="cb33-102"><a href="#cb33-102"></a></span>
-<span id="cb33-105"><a href="#cb33-105"></a><span class="in">```{r}</span></span>
-<span id="cb33-106"><a href="#cb33-106"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">describe</span>(daily_df, <span class="at">ranges =</span> F)</span>
-<span id="cb33-107"><a href="#cb33-107"></a><span class="fu">colnames</span>(summary_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Variable"</span>, <span class="st">"N"</span>, <span class="st">"Mean"</span>, <span class="st">"Std"</span>, <span class="st">"Skew"</span>, <span class="st">"Kurtosis"</span>, <span class="st">"S.E."</span>)</span>
-<span id="cb33-108"><a href="#cb33-108"></a>summary_df<span class="sc">$</span>Variable <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL"</span>, <span class="st">"BAC"</span>, <span class="st">"SPXL Returns"</span>, <span class="st">"BAC Returns"</span>)</span>
-<span id="cb33-109"><a href="#cb33-109"></a><span class="fu">datasummary_df</span>(summary_df,</span>
-<span id="cb33-110"><a href="#cb33-110"></a>               <span class="at">title =</span> <span class="st">"Table 1. Summary Statistics"</span>)</span>
-<span id="cb33-111"><a href="#cb33-111"></a><span class="in">```</span></span>
-<span id="cb33-112"><a href="#cb33-112"></a></span>
-<span id="cb33-113"><a href="#cb33-113"></a>::: justify</span>
-<span id="cb33-114"><a href="#cb33-114"></a>There are a total of 2517 observations in total. Prices and log returns of both the financial instruments are asymmetric. SPXL daily prices are extremely skewed to the right, while SPXL returns are extremely skewed to the left. Moreover, BAC daily prices are slightly skewed to the right while the returns are slightly skewed to the left. The excess kurtosis for the log returns of both assets show that returns are not normally distributed.</span>
-<span id="cb33-115"><a href="#cb33-115"></a>:::</span>
-<span id="cb33-116"><a href="#cb33-116"></a><span class="fu">## Time series graphs and distribution plots</span></span>
+<span id="cb33-92"><a href="#cb33-92"></a></span>
+<span id="cb33-93"><a href="#cb33-93"></a>daily_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_df<span class="sc">$</span>SPXL.Adjusted, bac_df<span class="sc">$</span>BAC.Adjusted)</span>
+<span id="cb33-94"><a href="#cb33-94"></a></span>
+<span id="cb33-95"><a href="#cb33-95"></a><span class="fu">colnames</span>(daily_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL"</span>, <span class="st">"BAC"</span>)</span>
+<span id="cb33-96"><a href="#cb33-96"></a></span>
+<span id="cb33-97"><a href="#cb33-97"></a>daily_df<span class="sc">$</span>SPXL_r <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(daily_df<span class="sc">$</span>SPXL))</span>
+<span id="cb33-98"><a href="#cb33-98"></a>daily_df<span class="sc">$</span>BAC_r <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">log</span>(daily_df<span class="sc">$</span>BAC))</span>
+<span id="cb33-99"><a href="#cb33-99"></a></span>
+<span id="cb33-100"><a href="#cb33-100"></a>daily_df <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(daily_df)</span>
+<span id="cb33-101"><a href="#cb33-101"></a></span>
+<span id="cb33-102"><a href="#cb33-102"></a><span class="in">```</span></span>
+<span id="cb33-103"><a href="#cb33-103"></a></span>
+<span id="cb33-106"><a href="#cb33-106"></a><span class="in">```{r}</span></span>
+<span id="cb33-107"><a href="#cb33-107"></a>summary_df <span class="ot">&lt;-</span> <span class="fu">describe</span>(daily_df, <span class="at">ranges =</span> F)</span>
+<span id="cb33-108"><a href="#cb33-108"></a><span class="fu">colnames</span>(summary_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Variable"</span>, <span class="st">"N"</span>, <span class="st">"Mean"</span>, <span class="st">"Std"</span>, <span class="st">"Skew"</span>, <span class="st">"Kurtosis"</span>, <span class="st">"S.E."</span>)</span>
+<span id="cb33-109"><a href="#cb33-109"></a>summary_df<span class="sc">$</span>Variable <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL"</span>, <span class="st">"BAC"</span>, <span class="st">"SPXL Returns"</span>, <span class="st">"BAC Returns"</span>)</span>
+<span id="cb33-110"><a href="#cb33-110"></a><span class="fu">datasummary_df</span>(summary_df,</span>
+<span id="cb33-111"><a href="#cb33-111"></a>               <span class="at">title =</span> <span class="st">"Table 1. Summary Statistics"</span>)</span>
+<span id="cb33-112"><a href="#cb33-112"></a><span class="in">```</span></span>
+<span id="cb33-113"><a href="#cb33-113"></a></span>
+<span id="cb33-114"><a href="#cb33-114"></a>::: justify</span>
+<span id="cb33-115"><a href="#cb33-115"></a>There are a total of 2517 observations in total. Prices and log returns of both the financial instruments are asymmetric. SPXL daily prices are extremely skewed to the right, while SPXL returns are extremely skewed to the left. Moreover, BAC daily prices are slightly skewed to the right while the returns are slightly skewed to the left. The excess kurtosis for the log returns of both assets show that returns are not normally distributed.</span>
+<span id="cb33-116"><a href="#cb33-116"></a>:::</span>
 <span id="cb33-117"><a href="#cb33-117"></a></span>
-<span id="cb33-120"><a href="#cb33-120"></a><span class="in">```{r}</span></span>
-<span id="cb33-121"><a href="#cb33-121"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spxl_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> SPXL.Adjusted))<span class="sc">+</span></span>
-<span id="cb33-122"><a href="#cb33-122"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
-<span id="cb33-123"><a href="#cb33-123"></a>  <span class="fu">ggtitle</span>(<span class="st">"SPXL Daily Price"</span>) <span class="sc">+</span>   </span>
-<span id="cb33-124"><a href="#cb33-124"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
-<span id="cb33-125"><a href="#cb33-125"></a>  <span class="fu">ylab</span>(<span class="st">"Price($)"</span>) <span class="sc">+</span> </span>
-<span id="cb33-126"><a href="#cb33-126"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb33-127"><a href="#cb33-127"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span></span>
-<span id="cb33-128"><a href="#cb33-128"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb33-129"><a href="#cb33-129"></a></span>
-<span id="cb33-130"><a href="#cb33-130"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bac_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> BAC.Adjusted))<span class="sc">+</span></span>
-<span id="cb33-131"><a href="#cb33-131"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkorange2"</span>) <span class="sc">+</span> </span>
-<span id="cb33-132"><a href="#cb33-132"></a>  <span class="fu">ggtitle</span>(<span class="st">"BAC Daily Price"</span>) <span class="sc">+</span>   </span>
-<span id="cb33-133"><a href="#cb33-133"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
-<span id="cb33-134"><a href="#cb33-134"></a>  <span class="fu">ylab</span>(<span class="st">"Price($)"</span>) <span class="sc">+</span> </span>
-<span id="cb33-135"><a href="#cb33-135"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb33-136"><a href="#cb33-136"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
-<span id="cb33-137"><a href="#cb33-137"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb33-138"><a href="#cb33-138"></a></span>
-<span id="cb33-139"><a href="#cb33-139"></a>plot1 <span class="sc">/</span> plot2</span>
-<span id="cb33-140"><a href="#cb33-140"></a><span class="in">```</span></span>
-<span id="cb33-141"><a href="#cb33-141"></a></span>
-<span id="cb33-142"><a href="#cb33-142"></a>------------------------------------------------------------------------</span>
+<span id="cb33-118"><a href="#cb33-118"></a><span class="fu">## Time series graphs and distribution plots</span></span>
+<span id="cb33-119"><a href="#cb33-119"></a></span>
+<span id="cb33-122"><a href="#cb33-122"></a><span class="in">```{r}</span></span>
+<span id="cb33-123"><a href="#cb33-123"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spxl_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> SPXL.Adjusted))<span class="sc">+</span></span>
+<span id="cb33-124"><a href="#cb33-124"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb33-125"><a href="#cb33-125"></a>  <span class="fu">ggtitle</span>(<span class="st">"SPXL Daily Price"</span>) <span class="sc">+</span>   </span>
+<span id="cb33-126"><a href="#cb33-126"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb33-127"><a href="#cb33-127"></a>  <span class="fu">ylab</span>(<span class="st">"Price($)"</span>) <span class="sc">+</span> </span>
+<span id="cb33-128"><a href="#cb33-128"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb33-129"><a href="#cb33-129"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span></span>
+<span id="cb33-130"><a href="#cb33-130"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb33-131"><a href="#cb33-131"></a></span>
+<span id="cb33-132"><a href="#cb33-132"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bac_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> BAC.Adjusted))<span class="sc">+</span></span>
+<span id="cb33-133"><a href="#cb33-133"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkorange2"</span>) <span class="sc">+</span> </span>
+<span id="cb33-134"><a href="#cb33-134"></a>  <span class="fu">ggtitle</span>(<span class="st">"BAC Daily Price"</span>) <span class="sc">+</span>   </span>
+<span id="cb33-135"><a href="#cb33-135"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb33-136"><a href="#cb33-136"></a>  <span class="fu">ylab</span>(<span class="st">"Price($)"</span>) <span class="sc">+</span> </span>
+<span id="cb33-137"><a href="#cb33-137"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb33-138"><a href="#cb33-138"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
+<span id="cb33-139"><a href="#cb33-139"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb33-140"><a href="#cb33-140"></a></span>
+<span id="cb33-141"><a href="#cb33-141"></a>plot1 <span class="sc">/</span> plot2</span>
+<span id="cb33-142"><a href="#cb33-142"></a><span class="in">```</span></span>
 <span id="cb33-143"><a href="#cb33-143"></a></span>
-<span id="cb33-144"><a href="#cb33-144"></a><span class="fu">## Exploratory Data Analysis</span></span>
-<span id="cb33-145"><a href="#cb33-145"></a>::: justify</span>
-<span id="cb33-146"><a href="#cb33-146"></a>Firstly, we check for weak stationarity by investigating the time series plots of log returns of both the financial instruments. Next, we conduct the Augmented Dickey Fuller (ADF) test to check for the presence of unit root.</span>
-<span id="cb33-147"><a href="#cb33-147"></a>:::</span>
-<span id="cb33-150"><a href="#cb33-150"></a><span class="in">```{r}</span></span>
-<span id="cb33-151"><a href="#cb33-151"></a><span class="co"># Plotting log returns</span></span>
-<span id="cb33-152"><a href="#cb33-152"></a></span>
-<span id="cb33-153"><a href="#cb33-153"></a>plot_spxl_r <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(daily_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> SPXL_r))<span class="sc">+</span></span>
-<span id="cb33-154"><a href="#cb33-154"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
-<span id="cb33-155"><a href="#cb33-155"></a>  <span class="fu">ggtitle</span>(<span class="st">"SPXL Log Returns"</span>) <span class="sc">+</span>   </span>
-<span id="cb33-156"><a href="#cb33-156"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
-<span id="cb33-157"><a href="#cb33-157"></a>  <span class="fu">ylab</span>(<span class="st">"Log Returns"</span>) <span class="sc">+</span> </span>
-<span id="cb33-158"><a href="#cb33-158"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb33-159"><a href="#cb33-159"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
-<span id="cb33-160"><a href="#cb33-160"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb33-161"><a href="#cb33-161"></a></span>
-<span id="cb33-162"><a href="#cb33-162"></a>plot_bac_r <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(daily_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> BAC_r))<span class="sc">+</span></span>
-<span id="cb33-163"><a href="#cb33-163"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkorange2"</span>) <span class="sc">+</span> </span>
-<span id="cb33-164"><a href="#cb33-164"></a>  <span class="fu">ggtitle</span>(<span class="st">"BAC Log Returns"</span>) <span class="sc">+</span>   </span>
-<span id="cb33-165"><a href="#cb33-165"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
-<span id="cb33-166"><a href="#cb33-166"></a>  <span class="fu">ylab</span>(<span class="st">"Log Returns"</span>) <span class="sc">+</span> </span>
-<span id="cb33-167"><a href="#cb33-167"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb33-168"><a href="#cb33-168"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
-<span id="cb33-169"><a href="#cb33-169"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb33-170"><a href="#cb33-170"></a></span>
-<span id="cb33-171"><a href="#cb33-171"></a>plot_spxl_r <span class="sc">/</span> plot_bac_r</span>
-<span id="cb33-172"><a href="#cb33-172"></a></span>
-<span id="cb33-173"><a href="#cb33-173"></a><span class="in">```</span></span>
+<span id="cb33-144"><a href="#cb33-144"></a>------------------------------------------------------------------------</span>
+<span id="cb33-145"><a href="#cb33-145"></a></span>
+<span id="cb33-146"><a href="#cb33-146"></a><span class="fu">## Exploratory Data Analysis</span></span>
+<span id="cb33-147"><a href="#cb33-147"></a></span>
+<span id="cb33-148"><a href="#cb33-148"></a>::: justify</span>
+<span id="cb33-149"><a href="#cb33-149"></a>Firstly, we check for weak stationarity by investigating the time series plots of log returns of both the financial instruments. Next, we conduct the Augmented Dickey Fuller (ADF) test to check for the presence of unit root.</span>
+<span id="cb33-150"><a href="#cb33-150"></a>:::</span>
+<span id="cb33-151"><a href="#cb33-151"></a></span>
+<span id="cb33-154"><a href="#cb33-154"></a><span class="in">```{r}</span></span>
+<span id="cb33-155"><a href="#cb33-155"></a><span class="co"># Plotting log returns</span></span>
+<span id="cb33-156"><a href="#cb33-156"></a></span>
+<span id="cb33-157"><a href="#cb33-157"></a>plot_spxl_r <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(daily_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> SPXL_r))<span class="sc">+</span></span>
+<span id="cb33-158"><a href="#cb33-158"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb33-159"><a href="#cb33-159"></a>  <span class="fu">ggtitle</span>(<span class="st">"SPXL Log Returns"</span>) <span class="sc">+</span>   </span>
+<span id="cb33-160"><a href="#cb33-160"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb33-161"><a href="#cb33-161"></a>  <span class="fu">ylab</span>(<span class="st">"Log Returns"</span>) <span class="sc">+</span> </span>
+<span id="cb33-162"><a href="#cb33-162"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb33-163"><a href="#cb33-163"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
+<span id="cb33-164"><a href="#cb33-164"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb33-165"><a href="#cb33-165"></a></span>
+<span id="cb33-166"><a href="#cb33-166"></a>plot_bac_r <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(daily_df, <span class="fu">aes</span>(<span class="at">x =</span> Index, <span class="at">y =</span> BAC_r))<span class="sc">+</span></span>
+<span id="cb33-167"><a href="#cb33-167"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkorange2"</span>) <span class="sc">+</span> </span>
+<span id="cb33-168"><a href="#cb33-168"></a>  <span class="fu">ggtitle</span>(<span class="st">"BAC Log Returns"</span>) <span class="sc">+</span>   </span>
+<span id="cb33-169"><a href="#cb33-169"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb33-170"><a href="#cb33-170"></a>  <span class="fu">ylab</span>(<span class="st">"Log Returns"</span>) <span class="sc">+</span> </span>
+<span id="cb33-171"><a href="#cb33-171"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb33-172"><a href="#cb33-172"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%y-%m"</span>, <span class="at">date_breaks =</span> <span class="st">"1 year"</span>) <span class="sc">+</span> </span>
+<span id="cb33-173"><a href="#cb33-173"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb33-174"><a href="#cb33-174"></a></span>
-<span id="cb33-175"><a href="#cb33-175"></a><span class="in">```{r warning=FALSE}</span></span>
-<span id="cb33-176"><a href="#cb33-176"></a><span class="fu">adf.test</span>(daily_df<span class="sc">$</span>SPXL_r)</span>
-<span id="cb33-177"><a href="#cb33-177"></a><span class="fu">adf.test</span>(daily_df<span class="sc">$</span>BAC_r)</span>
-<span id="cb33-178"><a href="#cb33-178"></a><span class="in">```</span></span>
-<span id="cb33-179"><a href="#cb33-179"></a>::: justify</span>
-<span id="cb33-180"><a href="#cb33-180"></a>Upon visual inspection, it looks like both the log returns are stationary. Moreover, from the ADF test, we fail to reject the null hypothesis of non-stationarity at 1% confidence.</span>
-<span id="cb33-181"><a href="#cb33-181"></a></span>
-<span id="cb33-182"><a href="#cb33-182"></a>In order to look for time dependency and volatility clustering of log returns of SPLX and BAC, From the graphs, it is evident that both series display time varying volatility. Moreover, volatility clusters together. For better analysis, we need to model the nonconstant volatility.</span>
-<span id="cb33-183"><a href="#cb33-183"></a>:::</span>
-<span id="cb33-184"><a href="#cb33-184"></a><span class="in">```{r ggplot}</span></span>
-<span id="cb33-185"><a href="#cb33-185"></a><span class="co"># ACF plots</span></span>
-<span id="cb33-186"><a href="#cb33-186"></a>ggacf <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">ci=</span><span class="fl">0.95</span>, <span class="at">type=</span><span class="st">"correlation"</span>, <span class="at">xlab=</span><span class="st">"Lag"</span>, <span class="at">ylab=</span><span class="cn">NULL</span>,</span>
-<span id="cb33-187"><a href="#cb33-187"></a>                  <span class="at">ylim=</span><span class="cn">NULL</span>, <span class="at">main=</span><span class="cn">NULL</span>, <span class="at">ci.col=</span><span class="st">"blue"</span>, <span class="at">lag.max=</span><span class="cn">NULL</span>) {</span>
-<span id="cb33-188"><a href="#cb33-188"></a></span>
-<span id="cb33-189"><a href="#cb33-189"></a>    x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span>
-<span id="cb33-190"><a href="#cb33-190"></a></span>
-<span id="cb33-191"><a href="#cb33-191"></a>    x.acf <span class="ot">&lt;-</span> <span class="fu">acf</span>(x, <span class="at">plot=</span>F, <span class="at">lag.max=</span>lag.max, <span class="at">type=</span>type)</span>
-<span id="cb33-192"><a href="#cb33-192"></a></span>
-<span id="cb33-193"><a href="#cb33-193"></a>    ci.line <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span> <span class="sc">-</span> ci) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(x.acf<span class="sc">$</span>n.used)</span>
+<span id="cb33-175"><a href="#cb33-175"></a>plot_spxl_r <span class="sc">/</span> plot_bac_r</span>
+<span id="cb33-176"><a href="#cb33-176"></a></span>
+<span id="cb33-177"><a href="#cb33-177"></a><span class="in">```</span></span>
+<span id="cb33-178"><a href="#cb33-178"></a></span>
+<span id="cb33-179"><a href="#cb33-179"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb33-180"><a href="#cb33-180"></a><span class="in">adf.test(daily_df$SPXL_r)</span></span>
+<span id="cb33-181"><a href="#cb33-181"></a><span class="in">adf.test(daily_df$BAC_r)</span></span>
+<span id="cb33-182"><a href="#cb33-182"></a><span class="in">```</span></span>
+<span id="cb33-183"><a href="#cb33-183"></a></span>
+<span id="cb33-184"><a href="#cb33-184"></a>::: justify</span>
+<span id="cb33-185"><a href="#cb33-185"></a>Upon visual inspection, it looks like both the log returns are stationary. Moreover, from the ADF test, we fail to reject the null hypothesis of non-stationarity at 1% confidence.</span>
+<span id="cb33-186"><a href="#cb33-186"></a></span>
+<span id="cb33-187"><a href="#cb33-187"></a>In order to look for time dependency and volatility clustering of log returns of SPLX and BAC, From the graphs, it is evident that both series display time varying volatility. Moreover, volatility clusters together. For better analysis, we need to model the nonconstant volatility.</span>
+<span id="cb33-188"><a href="#cb33-188"></a>:::</span>
+<span id="cb33-189"><a href="#cb33-189"></a></span>
+<span id="cb33-190"><a href="#cb33-190"></a><span class="in">```{r ggplot}</span></span>
+<span id="cb33-191"><a href="#cb33-191"></a><span class="in"># ACF plots</span></span>
+<span id="cb33-192"><a href="#cb33-192"></a><span class="in">ggacf &lt;- function(x, ci=0.95, type="correlation", xlab="Lag", ylab=NULL,</span></span>
+<span id="cb33-193"><a href="#cb33-193"></a><span class="in">                  ylim=NULL, main=NULL, ci.col="blue", lag.max=NULL) {</span></span>
 <span id="cb33-194"><a href="#cb33-194"></a></span>
-<span id="cb33-195"><a href="#cb33-195"></a>    d.acf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">lag=</span>x.acf<span class="sc">$</span>lag, <span class="at">acf=</span>x.acf<span class="sc">$</span>acf)</span>
+<span id="cb33-195"><a href="#cb33-195"></a><span class="in">    x &lt;- as.data.frame(x)</span></span>
 <span id="cb33-196"><a href="#cb33-196"></a></span>
-<span id="cb33-197"><a href="#cb33-197"></a>    g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(d.acf, <span class="fu">aes</span>(<span class="at">x=</span>lag, <span class="at">y=</span>acf)) <span class="sc">+</span></span>
-<span id="cb33-198"><a href="#cb33-198"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb33-199"><a href="#cb33-199"></a>        <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend=</span>lag, <span class="at">yend=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb33-200"><a href="#cb33-200"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept=</span>ci.line, <span class="at">color=</span>ci.col, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb33-201"><a href="#cb33-201"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="sc">-</span>ci.line, <span class="at">color=</span>ci.col, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb33-202"><a href="#cb33-202"></a>        <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb33-203"><a href="#cb33-203"></a>        <span class="fu">xlab</span>(<span class="st">"Lag"</span>) <span class="sc">+</span></span>
-<span id="cb33-204"><a href="#cb33-204"></a>        <span class="fu">ggtitle</span>(<span class="fu">ifelse</span>(<span class="fu">is.null</span>(main), <span class="st">""</span>, main)) <span class="sc">+</span></span>
-<span id="cb33-205"><a href="#cb33-205"></a>        <span class="cf">if</span> (<span class="fu">is.null</span>(ylab))</span>
-<span id="cb33-206"><a href="#cb33-206"></a>            <span class="fu">ylab</span>(<span class="fu">ifelse</span>(type<span class="sc">==</span><span class="st">"partial"</span>, <span class="st">"PACF"</span>, <span class="st">"ACF"</span>))</span>
-<span id="cb33-207"><a href="#cb33-207"></a>        <span class="cf">else</span></span>
-<span id="cb33-208"><a href="#cb33-208"></a>            <span class="fu">ylab</span>(ylab)</span>
-<span id="cb33-209"><a href="#cb33-209"></a></span>
-<span id="cb33-210"><a href="#cb33-210"></a>    g</span>
-<span id="cb33-211"><a href="#cb33-211"></a>}</span>
-<span id="cb33-212"><a href="#cb33-212"></a></span>
-<span id="cb33-213"><a href="#cb33-213"></a>spxl_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(daily_df<span class="sc">$</span>SPXL_r, <span class="at">main =</span> <span class="st">"SPXL"</span>)</span>
-<span id="cb33-214"><a href="#cb33-214"></a>spxl_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(daily_df<span class="sc">$</span>SPXL_r <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"SPXL Squared"</span>)</span>
-<span id="cb33-215"><a href="#cb33-215"></a>bac_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(daily_df<span class="sc">$</span>BAC_r, <span class="at">main =</span> <span class="st">"BAC"</span>)</span>
-<span id="cb33-216"><a href="#cb33-216"></a>bac_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(daily_df<span class="sc">$</span>BAC_r <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"BAC Squared"</span>)</span>
-<span id="cb33-217"><a href="#cb33-217"></a></span>
-<span id="cb33-218"><a href="#cb33-218"></a>(spxl_acf <span class="sc">+</span> spxl_acf2) <span class="sc">/</span> (bac_acf <span class="sc">+</span> bac_acf2)</span>
-<span id="cb33-219"><a href="#cb33-219"></a><span class="in">```</span></span>
-<span id="cb33-220"><a href="#cb33-220"></a>::: justify</span>
-<span id="cb33-221"><a href="#cb33-221"></a>From the log return graphs, it is evident that both series display time varying volatility. Moreover, ACF plots of squared series of both stocks show significant serial correlation. For better analysis, we need to model time dependence and non-constant volatility.</span>
-<span id="cb33-222"><a href="#cb33-222"></a>:::</span>
-<span id="cb33-223"><a href="#cb33-223"></a>------------------------------------------------------------------------</span>
-<span id="cb33-224"><a href="#cb33-224"></a></span>
-<span id="cb33-225"><a href="#cb33-225"></a><span class="fu"># Time Series Model</span></span>
+<span id="cb33-197"><a href="#cb33-197"></a><span class="in">    x.acf &lt;- acf(x, plot=F, lag.max=lag.max, type=type)</span></span>
+<span id="cb33-198"><a href="#cb33-198"></a></span>
+<span id="cb33-199"><a href="#cb33-199"></a><span class="in">    ci.line &lt;- qnorm((1 - ci) / 2) / sqrt(x.acf$n.used)</span></span>
+<span id="cb33-200"><a href="#cb33-200"></a></span>
+<span id="cb33-201"><a href="#cb33-201"></a><span class="in">    d.acf &lt;- data.frame(lag=x.acf$lag, acf=x.acf$acf)</span></span>
+<span id="cb33-202"><a href="#cb33-202"></a></span>
+<span id="cb33-203"><a href="#cb33-203"></a><span class="in">    g &lt;- ggplot(d.acf, aes(x=lag, y=acf)) +</span></span>
+<span id="cb33-204"><a href="#cb33-204"></a><span class="in">        geom_hline(yintercept=0) +</span></span>
+<span id="cb33-205"><a href="#cb33-205"></a><span class="in">        geom_segment(aes(xend=lag, yend=0)) +</span></span>
+<span id="cb33-206"><a href="#cb33-206"></a><span class="in">        geom_hline(yintercept=ci.line, color=ci.col, linetype="dashed") +</span></span>
+<span id="cb33-207"><a href="#cb33-207"></a><span class="in">        geom_hline(yintercept=-ci.line, color=ci.col, linetype="dashed") +</span></span>
+<span id="cb33-208"><a href="#cb33-208"></a><span class="in">        theme_bw() +</span></span>
+<span id="cb33-209"><a href="#cb33-209"></a><span class="in">        xlab("Lag") +</span></span>
+<span id="cb33-210"><a href="#cb33-210"></a><span class="in">        ggtitle(ifelse(is.null(main), "", main)) +</span></span>
+<span id="cb33-211"><a href="#cb33-211"></a><span class="in">        if (is.null(ylab))</span></span>
+<span id="cb33-212"><a href="#cb33-212"></a><span class="in">            ylab(ifelse(type=="partial", "PACF", "ACF"))</span></span>
+<span id="cb33-213"><a href="#cb33-213"></a><span class="in">        else</span></span>
+<span id="cb33-214"><a href="#cb33-214"></a><span class="in">            ylab(ylab)</span></span>
+<span id="cb33-215"><a href="#cb33-215"></a></span>
+<span id="cb33-216"><a href="#cb33-216"></a><span class="in">    g</span></span>
+<span id="cb33-217"><a href="#cb33-217"></a><span class="in">}</span></span>
+<span id="cb33-218"><a href="#cb33-218"></a></span>
+<span id="cb33-219"><a href="#cb33-219"></a><span class="in">spxl_acf &lt;- ggacf(daily_df$SPXL_r, main = "SPXL")</span></span>
+<span id="cb33-220"><a href="#cb33-220"></a><span class="in">spxl_acf2 &lt;- ggacf(daily_df$SPXL_r ** 2, main = "SPXL Squared")</span></span>
+<span id="cb33-221"><a href="#cb33-221"></a><span class="in">bac_acf &lt;- ggacf(daily_df$BAC_r, main = "BAC")</span></span>
+<span id="cb33-222"><a href="#cb33-222"></a><span class="in">bac_acf2 &lt;- ggacf(daily_df$BAC_r ** 2, main = "BAC Squared")</span></span>
+<span id="cb33-223"><a href="#cb33-223"></a></span>
+<span id="cb33-224"><a href="#cb33-224"></a><span class="in">(spxl_acf + spxl_acf2) / (bac_acf + bac_acf2)</span></span>
+<span id="cb33-225"><a href="#cb33-225"></a><span class="in">```</span></span>
 <span id="cb33-226"><a href="#cb33-226"></a></span>
-<span id="cb33-227"><a href="#cb33-227"></a><span class="fu">## AR(1)-GARCH(1,1) Model</span></span>
-<span id="cb33-228"><a href="#cb33-228"></a>::: justify</span>
-<span id="cb33-229"><a href="#cb33-229"></a>In order to model autocorelation and volatility clustering, we combine an AR(1) model that has a nonconstant conditional mean but a constant conditional variance with a GARCH(1,1) model that has conditional mean and the variance of data depends on the past. Additionally, in a GARCH model, conditional standard deviation exhibits more persistent periods of low and high volatility.</span>
+<span id="cb33-227"><a href="#cb33-227"></a>::: justify</span>
+<span id="cb33-228"><a href="#cb33-228"></a>From the log return graphs, it is evident that both series display time varying volatility. Moreover, ACF plots of squared series of both stocks show significant serial correlation. For better analysis, we need to model time dependence and non-constant volatility.</span>
+<span id="cb33-229"><a href="#cb33-229"></a>:::</span>
 <span id="cb33-230"><a href="#cb33-230"></a></span>
-<span id="cb33-231"><a href="#cb33-231"></a>The $AR(1) - GARCH(1,1)$ is model is as follows:</span>
+<span id="cb33-231"><a href="#cb33-231"></a>------------------------------------------------------------------------</span>
 <span id="cb33-232"><a href="#cb33-232"></a></span>
-<span id="cb33-233"><a href="#cb33-233"></a>$$ X_t = \mu + \phi X_{t-1} + e_t, \quad e_t =  \sigma_{t}\varepsilon_{t}, \quad \sigma^2_t = \omega + \alpha e^2_{t-1} + \beta \sigma^2_{t-1} $$ $$ \tilde X_t = \tilde \mu + \tilde \phi \tilde X_{t-1} + \tilde e_t, \quad \tilde e_t =  \tilde \sigma_{t}\tilde \varepsilon_{t}, \quad \tilde \sigma^2_t = \tilde \omega + \tilde \alpha \tilde e^2_{t-1} + \tilde \beta \tilde \sigma^2_{t-1} $$</span>
+<span id="cb33-233"><a href="#cb33-233"></a><span class="fu"># Time Series Model</span></span>
 <span id="cb33-234"><a href="#cb33-234"></a></span>
-<span id="cb33-235"><a href="#cb33-235"></a>where, $X_t$ is the daily log returns of SPXL and $\tilde X_t$ is the daily log returns of BAC.</span>
-<span id="cb33-236"><a href="#cb33-236"></a>:::</span>
-<span id="cb33-237"><a href="#cb33-237"></a><span class="in">```{r , echo = TRUE, eval = TRUE, results="hide"}</span></span>
-<span id="cb33-238"><a href="#cb33-238"></a></span>
-<span id="cb33-239"><a href="#cb33-239"></a>spxl <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(daily_df<span class="sc">$</span>SPXL_r)</span>
-<span id="cb33-240"><a href="#cb33-240"></a>bac <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(daily_df<span class="sc">$</span>BAC_r)</span>
+<span id="cb33-235"><a href="#cb33-235"></a><span class="fu">## AR(1)-GARCH(1,1) Model</span></span>
+<span id="cb33-236"><a href="#cb33-236"></a></span>
+<span id="cb33-237"><a href="#cb33-237"></a>::: justify</span>
+<span id="cb33-238"><a href="#cb33-238"></a>In order to model autocorelation and volatility clustering, we combine an AR(1) model that has a nonconstant conditional mean but a constant conditional variance with a GARCH(1,1) model that has conditional mean and the variance of data depends on the past. Additionally, in a GARCH model, conditional standard deviation exhibits more persistent periods of low and high volatility.</span>
+<span id="cb33-239"><a href="#cb33-239"></a></span>
+<span id="cb33-240"><a href="#cb33-240"></a>The $AR(1) - GARCH(1,1)$ is model is as follows:</span>
 <span id="cb33-241"><a href="#cb33-241"></a></span>
-<span id="cb33-242"><a href="#cb33-242"></a><span class="co"># Fitting an AR(1) + GARCH(1,1) Model</span></span>
-<span id="cb33-243"><a href="#cb33-243"></a>spxl_spec <span class="ot">&lt;-</span> <span class="fu">ugarchspec</span>(<span class="at">mean.model=</span><span class="fu">list</span>(<span class="at">armaOrder=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>)),</span>
-<span id="cb33-244"><a href="#cb33-244"></a>                        <span class="at">variance.model=</span><span class="fu">list</span>(<span class="at">garchOrder=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)))</span>
-<span id="cb33-245"><a href="#cb33-245"></a>spxl_fit <span class="ot">&lt;-</span> <span class="fu">ugarchfit</span>(spxl_spec, <span class="at">data =</span> spxl)</span>
+<span id="cb33-242"><a href="#cb33-242"></a>$$ X_t = \mu + \phi X_{t-1} + e_t, \quad e_t =  \sigma_{t}\varepsilon_{t}, \quad \sigma^2_t = \omega + \alpha e^2_{t-1} + \beta \sigma^2_{t-1} $$ $$ \tilde X_t = \tilde \mu + \tilde \phi \tilde X_{t-1} + \tilde e_t, \quad \tilde e_t =  \tilde \sigma_{t}\tilde \varepsilon_{t}, \quad \tilde \sigma^2_t = \tilde \omega + \tilde \alpha \tilde e^2_{t-1} + \tilde \beta \tilde \sigma^2_{t-1} $$</span>
+<span id="cb33-243"><a href="#cb33-243"></a></span>
+<span id="cb33-244"><a href="#cb33-244"></a>where, $X_t$ is the daily log returns of SPXL and $\tilde X_t$ is the daily log returns of BAC.</span>
+<span id="cb33-245"><a href="#cb33-245"></a>:::</span>
 <span id="cb33-246"><a href="#cb33-246"></a></span>
-<span id="cb33-247"><a href="#cb33-247"></a>bac_spec <span class="ot">&lt;-</span> <span class="fu">ugarchspec</span>(<span class="at">mean.model=</span><span class="fu">list</span>(<span class="at">armaOrder=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>)),</span>
-<span id="cb33-248"><a href="#cb33-248"></a>                        <span class="at">variance.model=</span><span class="fu">list</span>(<span class="at">garchOrder=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)))</span>
-<span id="cb33-249"><a href="#cb33-249"></a>bac_fit <span class="ot">&lt;-</span> <span class="fu">ugarchfit</span>(bac_spec, <span class="at">data =</span> bac)</span>
-<span id="cb33-250"><a href="#cb33-250"></a><span class="in">```</span></span>
+<span id="cb33-247"><a href="#cb33-247"></a><span class="in">```{r , echo = TRUE, eval = TRUE, results="hide"}</span></span>
+<span id="cb33-248"><a href="#cb33-248"></a></span>
+<span id="cb33-249"><a href="#cb33-249"></a><span class="in">spxl &lt;- as.vector(daily_df$SPXL_r)</span></span>
+<span id="cb33-250"><a href="#cb33-250"></a><span class="in">bac &lt;- as.vector(daily_df$BAC_r)</span></span>
 <span id="cb33-251"><a href="#cb33-251"></a></span>
-<span id="cb33-252"><a href="#cb33-252"></a><span class="fu">## Residual Copula Modelling</span></span>
-<span id="cb33-253"><a href="#cb33-253"></a>::: justify</span>
-<span id="cb33-254"><a href="#cb33-254"></a>In order to work with a portfolio of Direxion Daily S&amp;P 500 Bull 3X Shares (SPXL) and Bank of America Corp (BAC), we need to model both the series as a copula to extract the dependence structure between the two financial instruments. In the project, we particulary study the dependent structure of the standardized residuals of an $AR(1) - GARCH(1,1)$ model fitted to both the series.</span>
-<span id="cb33-255"><a href="#cb33-255"></a></span>
-<span id="cb33-256"><a href="#cb33-256"></a>First, we fit a Student t distribution to both $\varepsilon_t$ and $\tilde \varepsilon_t$ using the <span class="in">`fitdistr()`</span> function from the <span class="in">`MASS`</span> library.</span>
-<span id="cb33-257"><a href="#cb33-257"></a>:::</span>
-<span id="cb33-258"><a href="#cb33-258"></a><span class="in">```{r warning=FALSE}</span></span>
-<span id="cb33-259"><a href="#cb33-259"></a><span class="co"># Standardized Residuals</span></span>
-<span id="cb33-260"><a href="#cb33-260"></a></span>
-<span id="cb33-261"><a href="#cb33-261"></a>spxl_res <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">residuals</span>(spxl_fit, <span class="at">standardize =</span> T))</span>
-<span id="cb33-262"><a href="#cb33-262"></a>bac_res <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">residuals</span>(bac_fit, <span class="at">standardize =</span> T))</span>
+<span id="cb33-252"><a href="#cb33-252"></a><span class="in"># Fitting an AR(1) + GARCH(1,1) Model</span></span>
+<span id="cb33-253"><a href="#cb33-253"></a><span class="in">spxl_spec &lt;- ugarchspec(mean.model=list(armaOrder=c(1,0)),</span></span>
+<span id="cb33-254"><a href="#cb33-254"></a><span class="in">                        variance.model=list(garchOrder=c(1,1)))</span></span>
+<span id="cb33-255"><a href="#cb33-255"></a><span class="in">spxl_fit &lt;- ugarchfit(spxl_spec, data = spxl)</span></span>
+<span id="cb33-256"><a href="#cb33-256"></a></span>
+<span id="cb33-257"><a href="#cb33-257"></a><span class="in">bac_spec &lt;- ugarchspec(mean.model=list(armaOrder=c(1,0)),</span></span>
+<span id="cb33-258"><a href="#cb33-258"></a><span class="in">                        variance.model=list(garchOrder=c(1,1)))</span></span>
+<span id="cb33-259"><a href="#cb33-259"></a><span class="in">bac_fit &lt;- ugarchfit(bac_spec, data = bac)</span></span>
+<span id="cb33-260"><a href="#cb33-260"></a><span class="in">```</span></span>
+<span id="cb33-261"><a href="#cb33-261"></a></span>
+<span id="cb33-262"><a href="#cb33-262"></a><span class="fu">## Residual Copula Modelling</span></span>
 <span id="cb33-263"><a href="#cb33-263"></a></span>
-<span id="cb33-264"><a href="#cb33-264"></a><span class="co"># Fitting t-distribution</span></span>
-<span id="cb33-265"><a href="#cb33-265"></a>spxl_res_t <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(spxl_res, <span class="st">"t"</span>)</span>
-<span id="cb33-266"><a href="#cb33-266"></a>bac_res_t <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(bac_res, <span class="st">"t"</span>)</span>
-<span id="cb33-267"><a href="#cb33-267"></a></span>
-<span id="cb33-268"><a href="#cb33-268"></a><span class="in">```</span></span>
+<span id="cb33-264"><a href="#cb33-264"></a>::: justify</span>
+<span id="cb33-265"><a href="#cb33-265"></a>In order to work with a portfolio of Direxion Daily S&amp;P 500 Bull 3X Shares (SPXL) and Bank of America Corp (BAC), we need to model both the series as a copula to extract the dependence structure between the two financial instruments. In the project, we particulary study the dependent structure of the standardized residuals of an $AR(1) - GARCH(1,1)$ model fitted to both the series.</span>
+<span id="cb33-266"><a href="#cb33-266"></a></span>
+<span id="cb33-267"><a href="#cb33-267"></a>First, we fit a Student t distribution to both $\varepsilon_t$ and $\tilde \varepsilon_t$ using the <span class="in">`fitdistr()`</span> function from the <span class="in">`MASS`</span> library.</span>
+<span id="cb33-268"><a href="#cb33-268"></a>:::</span>
 <span id="cb33-269"><a href="#cb33-269"></a></span>
-<span id="cb33-272"><a href="#cb33-272"></a><span class="in">```{r}</span></span>
-<span id="cb33-273"><a href="#cb33-273"></a><span class="co"># Fitting t-density plots</span></span>
-<span id="cb33-274"><a href="#cb33-274"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb33-275"><a href="#cb33-275"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(spxl_res)</span>
-<span id="cb33-276"><a href="#cb33-276"></a></span>
-<span id="cb33-277"><a href="#cb33-277"></a>x1 <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n)<span class="sc">/</span>(n<span class="sc">+</span><span class="dv">1</span>), <span class="at">df =</span> <span class="dv">5</span>)</span>
-<span id="cb33-278"><a href="#cb33-278"></a>x2 <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n)<span class="sc">/</span>(n<span class="sc">+</span><span class="dv">1</span>), <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb33-270"><a href="#cb33-270"></a><span class="in">```{r warning=FALSE}</span></span>
+<span id="cb33-271"><a href="#cb33-271"></a><span class="in"># Standardized Residuals</span></span>
+<span id="cb33-272"><a href="#cb33-272"></a></span>
+<span id="cb33-273"><a href="#cb33-273"></a><span class="in">spxl_res &lt;- as.vector(residuals(spxl_fit, standardize = T))</span></span>
+<span id="cb33-274"><a href="#cb33-274"></a><span class="in">bac_res &lt;- as.vector(residuals(bac_fit, standardize = T))</span></span>
+<span id="cb33-275"><a href="#cb33-275"></a></span>
+<span id="cb33-276"><a href="#cb33-276"></a><span class="in"># Fitting t-distribution</span></span>
+<span id="cb33-277"><a href="#cb33-277"></a><span class="in">spxl_res_t &lt;- fitdistr(spxl_res, "t")</span></span>
+<span id="cb33-278"><a href="#cb33-278"></a><span class="in">bac_res_t &lt;- fitdistr(bac_res, "t")</span></span>
 <span id="cb33-279"><a href="#cb33-279"></a></span>
-<span id="cb33-280"><a href="#cb33-280"></a><span class="fu">qqplot</span>(<span class="fu">sort</span>(spxl_res), x1, <span class="at">xlab=</span><span class="st">"Standardized Residuals"</span>,</span>
-<span id="cb33-281"><a href="#cb33-281"></a>       <span class="at">ylab=</span><span class="st">"t-quantiles"</span>,</span>
-<span id="cb33-282"><a href="#cb33-282"></a>       <span class="at">main =</span> <span class="st">"SPXL Residual t-plot, DF = 5"</span>)</span>
-<span id="cb33-283"><a href="#cb33-283"></a></span>
-<span id="cb33-284"><a href="#cb33-284"></a><span class="fu">qqplot</span>(<span class="fu">sort</span>(bac_res), x2, <span class="at">xlab=</span><span class="st">"Standardized Residuals"</span>,</span>
-<span id="cb33-285"><a href="#cb33-285"></a>       <span class="at">ylab=</span><span class="st">"t-quantiles"</span>,</span>
-<span id="cb33-286"><a href="#cb33-286"></a>       <span class="at">main =</span> <span class="st">"BAC Residual t-plot, DF = 5"</span>)</span>
-<span id="cb33-287"><a href="#cb33-287"></a><span class="in">```</span></span>
-<span id="cb33-288"><a href="#cb33-288"></a>::: justify</span>
-<span id="cb33-289"><a href="#cb33-289"></a>A t-distribution with df = 5 fits well to the SPXL and BAC residuals. The qqplot for both the instruments is a straight line except for a few outliers. Given that the total number of observations (n = 2517) is high enough, the outliers are a small fraction of the sample.</span>
-<span id="cb33-290"><a href="#cb33-290"></a></span>
-<span id="cb33-291"><a href="#cb33-291"></a>Second, we transform the residuals into marginal t - distributions and fit t-copula, Gaussian copula, Gumbel Copula, Clayton and Frank copulas. We select the best fit copula by minimizing AIC. We select t-copula as it minimizes AIC.</span>
-<span id="cb33-292"><a href="#cb33-292"></a>:::</span>
-<span id="cb33-295"><a href="#cb33-295"></a><span class="in">```{r}</span></span>
-<span id="cb33-296"><a href="#cb33-296"></a><span class="co"># Transform residues into uniform distribution</span></span>
-<span id="cb33-297"><a href="#cb33-297"></a></span>
-<span id="cb33-298"><a href="#cb33-298"></a>spxl_uniform <span class="ot">&lt;-</span> <span class="fu">pt</span>(spxl_res, <span class="at">df =</span> spxl_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
-<span id="cb33-299"><a href="#cb33-299"></a>bac_uniform <span class="ot">&lt;-</span> <span class="fu">pt</span>(bac_res, <span class="at">df =</span> bac_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
+<span id="cb33-280"><a href="#cb33-280"></a><span class="in">```</span></span>
+<span id="cb33-281"><a href="#cb33-281"></a></span>
+<span id="cb33-284"><a href="#cb33-284"></a><span class="in">```{r}</span></span>
+<span id="cb33-285"><a href="#cb33-285"></a><span class="co"># Fitting t-density plots</span></span>
+<span id="cb33-286"><a href="#cb33-286"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb33-287"><a href="#cb33-287"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(spxl_res)</span>
+<span id="cb33-288"><a href="#cb33-288"></a></span>
+<span id="cb33-289"><a href="#cb33-289"></a>x1 <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n)<span class="sc">/</span>(n<span class="sc">+</span><span class="dv">1</span>), <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb33-290"><a href="#cb33-290"></a>x2 <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n)<span class="sc">/</span>(n<span class="sc">+</span><span class="dv">1</span>), <span class="at">df =</span> <span class="dv">5</span>)</span>
+<span id="cb33-291"><a href="#cb33-291"></a></span>
+<span id="cb33-292"><a href="#cb33-292"></a><span class="fu">qqplot</span>(<span class="fu">sort</span>(spxl_res), x1, <span class="at">xlab=</span><span class="st">"Standardized Residuals"</span>,</span>
+<span id="cb33-293"><a href="#cb33-293"></a>       <span class="at">ylab=</span><span class="st">"t-quantiles"</span>,</span>
+<span id="cb33-294"><a href="#cb33-294"></a>       <span class="at">main =</span> <span class="st">"SPXL Residual t-plot, DF = 5"</span>)</span>
+<span id="cb33-295"><a href="#cb33-295"></a></span>
+<span id="cb33-296"><a href="#cb33-296"></a><span class="fu">qqplot</span>(<span class="fu">sort</span>(bac_res), x2, <span class="at">xlab=</span><span class="st">"Standardized Residuals"</span>,</span>
+<span id="cb33-297"><a href="#cb33-297"></a>       <span class="at">ylab=</span><span class="st">"t-quantiles"</span>,</span>
+<span id="cb33-298"><a href="#cb33-298"></a>       <span class="at">main =</span> <span class="st">"BAC Residual t-plot, DF = 5"</span>)</span>
+<span id="cb33-299"><a href="#cb33-299"></a><span class="in">```</span></span>
 <span id="cb33-300"><a href="#cb33-300"></a></span>
-<span id="cb33-301"><a href="#cb33-301"></a>U_hat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_uniform, bac_uniform)</span>
-<span id="cb33-302"><a href="#cb33-302"></a><span class="fu">colnames</span>(U_hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL_U"</span>, <span class="st">"BAC_U"</span>)</span>
+<span id="cb33-301"><a href="#cb33-301"></a>::: justify</span>
+<span id="cb33-302"><a href="#cb33-302"></a>A t-distribution with df = 5 fits well to the SPXL and BAC residuals. The qqplot for both the instruments is a straight line except for a few outliers. Given that the total number of observations (n = 2517) is high enough, the outliers are a small fraction of the sample.</span>
 <span id="cb33-303"><a href="#cb33-303"></a></span>
-<span id="cb33-304"><a href="#cb33-304"></a>tau <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">cor.test</span>(spxl_uniform, bac_uniform, </span>
-<span id="cb33-305"><a href="#cb33-305"></a>                           <span class="at">method=</span><span class="st">"kendall"</span>)<span class="sc">$</span>estimate)</span>
-<span id="cb33-306"><a href="#cb33-306"></a>omega <span class="ot">&lt;-</span> <span class="fu">sin</span>(tau <span class="sc">*</span> pi<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb33-307"><a href="#cb33-307"></a></span>
-<span id="cb33-308"><a href="#cb33-308"></a><span class="in">```</span></span>
-<span id="cb33-309"><a href="#cb33-309"></a></span>
-<span id="cb33-312"><a href="#cb33-312"></a><span class="in">```{r}</span></span>
-<span id="cb33-313"><a href="#cb33-313"></a><span class="co"># Fit t-Copula</span></span>
-<span id="cb33-314"><a href="#cb33-314"></a>Ct <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
-<span id="cb33-315"><a href="#cb33-315"></a>                <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">start =</span> <span class="fu">c</span>(omega, <span class="dv">10</span>))</span>
-<span id="cb33-316"><a href="#cb33-316"></a></span>
-<span id="cb33-317"><a href="#cb33-317"></a><span class="co"># Log-Likelihood</span></span>
-<span id="cb33-318"><a href="#cb33-318"></a>log_lik_t <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Ct<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat, </span>
-<span id="cb33-319"><a href="#cb33-319"></a>                          <span class="at">copula =</span> <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
-<span id="cb33-320"><a href="#cb33-320"></a>aic_t <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Ct<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">abs</span>(log_lik_t))</span>
-<span id="cb33-321"><a href="#cb33-321"></a>aic_t</span>
-<span id="cb33-322"><a href="#cb33-322"></a></span>
-<span id="cb33-323"><a href="#cb33-323"></a><span class="co"># Gaussian Copula</span></span>
-<span id="cb33-324"><a href="#cb33-324"></a>Cgauss <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">normalCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat, </span>
-<span id="cb33-325"><a href="#cb33-325"></a>                    <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">start=</span><span class="fu">c</span>(omega))</span>
-<span id="cb33-326"><a href="#cb33-326"></a>log_lik_gauss <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Cgauss<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat, </span>
-<span id="cb33-327"><a href="#cb33-327"></a>                          <span class="at">copula =</span> <span class="fu">normalCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
-<span id="cb33-328"><a href="#cb33-328"></a></span>
-<span id="cb33-329"><a href="#cb33-329"></a>aic_gauss <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Cgauss<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span><span class="fu">abs</span>(log_lik_gauss))</span>
-<span id="cb33-330"><a href="#cb33-330"></a>aic_gauss</span>
-<span id="cb33-331"><a href="#cb33-331"></a></span>
-<span id="cb33-332"><a href="#cb33-332"></a><span class="co"># Gumbel Copula</span></span>
-<span id="cb33-333"><a href="#cb33-333"></a>C_gumbel <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">gumbelCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span>U_hat,</span>
-<span id="cb33-334"><a href="#cb33-334"></a>                      <span class="at">method =</span> <span class="st">"ml"</span>)</span>
-<span id="cb33-335"><a href="#cb33-335"></a>log_lik_gumbel <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> C_gumbel<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
-<span id="cb33-336"><a href="#cb33-336"></a>                               <span class="at">copula =</span> <span class="fu">gumbelCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
-<span id="cb33-337"><a href="#cb33-337"></a>aic_gumbel <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(C_gumbel<span class="sc">@</span>estimate)) <span class="sc">-</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">abs</span>(log_lik_gumbel))</span>
-<span id="cb33-338"><a href="#cb33-338"></a>aic_gumbel</span>
-<span id="cb33-339"><a href="#cb33-339"></a></span>
-<span id="cb33-340"><a href="#cb33-340"></a><span class="co"># Clayton Copula</span></span>
-<span id="cb33-341"><a href="#cb33-341"></a></span>
-<span id="cb33-342"><a href="#cb33-342"></a>C_clayton <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">claytonCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
-<span id="cb33-343"><a href="#cb33-343"></a>                      <span class="at">method =</span> <span class="st">"ml"</span>)</span>
-<span id="cb33-344"><a href="#cb33-344"></a>log_lik_clayton <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> C_clayton<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
-<span id="cb33-345"><a href="#cb33-345"></a>                                <span class="at">copula =</span> <span class="fu">claytonCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
-<span id="cb33-346"><a href="#cb33-346"></a>aic_clayton <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(C_clayton<span class="sc">@</span>estimate)) <span class="sc">-</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">abs</span>(log_lik_clayton))</span>
-<span id="cb33-347"><a href="#cb33-347"></a>aic_clayton</span>
-<span id="cb33-348"><a href="#cb33-348"></a></span>
-<span id="cb33-349"><a href="#cb33-349"></a><span class="co"># Frank Copula</span></span>
-<span id="cb33-350"><a href="#cb33-350"></a></span>
-<span id="cb33-351"><a href="#cb33-351"></a>Cfrank <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">frankCopula</span>(<span class="dv">1</span>, <span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
-<span id="cb33-352"><a href="#cb33-352"></a>                    <span class="at">method =</span> <span class="st">"ml"</span>)</span>
+<span id="cb33-304"><a href="#cb33-304"></a>Second, we transform the residuals into marginal t - distributions and fit t-copula, Gaussian copula, Gumbel Copula, Clayton and Frank copulas. We select the best fit copula by minimizing AIC. We select t-copula as it minimizes AIC.</span>
+<span id="cb33-305"><a href="#cb33-305"></a>:::</span>
+<span id="cb33-306"><a href="#cb33-306"></a></span>
+<span id="cb33-309"><a href="#cb33-309"></a><span class="in">```{r}</span></span>
+<span id="cb33-310"><a href="#cb33-310"></a><span class="co"># Transform residues into uniform distribution</span></span>
+<span id="cb33-311"><a href="#cb33-311"></a></span>
+<span id="cb33-312"><a href="#cb33-312"></a>spxl_uniform <span class="ot">&lt;-</span> <span class="fu">pt</span>(spxl_res, <span class="at">df =</span> spxl_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
+<span id="cb33-313"><a href="#cb33-313"></a>bac_uniform <span class="ot">&lt;-</span> <span class="fu">pt</span>(bac_res, <span class="at">df =</span> bac_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
+<span id="cb33-314"><a href="#cb33-314"></a></span>
+<span id="cb33-315"><a href="#cb33-315"></a>U_hat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_uniform, bac_uniform)</span>
+<span id="cb33-316"><a href="#cb33-316"></a><span class="fu">colnames</span>(U_hat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"SPXL_U"</span>, <span class="st">"BAC_U"</span>)</span>
+<span id="cb33-317"><a href="#cb33-317"></a></span>
+<span id="cb33-318"><a href="#cb33-318"></a>tau <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">cor.test</span>(spxl_uniform, bac_uniform, </span>
+<span id="cb33-319"><a href="#cb33-319"></a>                           <span class="at">method=</span><span class="st">"kendall"</span>)<span class="sc">$</span>estimate)</span>
+<span id="cb33-320"><a href="#cb33-320"></a>omega <span class="ot">&lt;-</span> <span class="fu">sin</span>(tau <span class="sc">*</span> pi<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb33-321"><a href="#cb33-321"></a></span>
+<span id="cb33-322"><a href="#cb33-322"></a><span class="in">```</span></span>
+<span id="cb33-323"><a href="#cb33-323"></a></span>
+<span id="cb33-326"><a href="#cb33-326"></a><span class="in">```{r}</span></span>
+<span id="cb33-327"><a href="#cb33-327"></a><span class="co"># Fit t-Copula</span></span>
+<span id="cb33-328"><a href="#cb33-328"></a>Ct <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
+<span id="cb33-329"><a href="#cb33-329"></a>                <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">start =</span> <span class="fu">c</span>(omega, <span class="dv">10</span>))</span>
+<span id="cb33-330"><a href="#cb33-330"></a></span>
+<span id="cb33-331"><a href="#cb33-331"></a><span class="co"># Log-Likelihood</span></span>
+<span id="cb33-332"><a href="#cb33-332"></a>log_lik_t <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Ct<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat, </span>
+<span id="cb33-333"><a href="#cb33-333"></a>                          <span class="at">copula =</span> <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
+<span id="cb33-334"><a href="#cb33-334"></a>aic_t <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Ct<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">abs</span>(log_lik_t))</span>
+<span id="cb33-335"><a href="#cb33-335"></a>aic_t</span>
+<span id="cb33-336"><a href="#cb33-336"></a></span>
+<span id="cb33-337"><a href="#cb33-337"></a><span class="co"># Gaussian Copula</span></span>
+<span id="cb33-338"><a href="#cb33-338"></a>Cgauss <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">normalCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat, </span>
+<span id="cb33-339"><a href="#cb33-339"></a>                    <span class="at">method =</span> <span class="st">"ml"</span>, <span class="at">start=</span><span class="fu">c</span>(omega))</span>
+<span id="cb33-340"><a href="#cb33-340"></a>log_lik_gauss <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Cgauss<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat, </span>
+<span id="cb33-341"><a href="#cb33-341"></a>                          <span class="at">copula =</span> <span class="fu">normalCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
+<span id="cb33-342"><a href="#cb33-342"></a></span>
+<span id="cb33-343"><a href="#cb33-343"></a>aic_gauss <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Cgauss<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span><span class="fu">abs</span>(log_lik_gauss))</span>
+<span id="cb33-344"><a href="#cb33-344"></a>aic_gauss</span>
+<span id="cb33-345"><a href="#cb33-345"></a></span>
+<span id="cb33-346"><a href="#cb33-346"></a><span class="co"># Gumbel Copula</span></span>
+<span id="cb33-347"><a href="#cb33-347"></a>C_gumbel <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">gumbelCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span>U_hat,</span>
+<span id="cb33-348"><a href="#cb33-348"></a>                      <span class="at">method =</span> <span class="st">"ml"</span>)</span>
+<span id="cb33-349"><a href="#cb33-349"></a>log_lik_gumbel <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> C_gumbel<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
+<span id="cb33-350"><a href="#cb33-350"></a>                               <span class="at">copula =</span> <span class="fu">gumbelCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
+<span id="cb33-351"><a href="#cb33-351"></a>aic_gumbel <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(C_gumbel<span class="sc">@</span>estimate)) <span class="sc">-</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">abs</span>(log_lik_gumbel))</span>
+<span id="cb33-352"><a href="#cb33-352"></a>aic_gumbel</span>
 <span id="cb33-353"><a href="#cb33-353"></a></span>
-<span id="cb33-354"><a href="#cb33-354"></a>log_lik_frank <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Cfrank<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
-<span id="cb33-355"><a href="#cb33-355"></a>                              <span class="at">copula =</span> <span class="fu">frankCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
-<span id="cb33-356"><a href="#cb33-356"></a>aic_frank <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Cfrank<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span><span class="fu">abs</span>(log_lik_frank))</span>
-<span id="cb33-357"><a href="#cb33-357"></a>aic_frank</span>
-<span id="cb33-358"><a href="#cb33-358"></a><span class="in">```</span></span>
-<span id="cb33-359"><a href="#cb33-359"></a></span>
-<span id="cb33-360"><a href="#cb33-360"></a>------------------------------------------------------------------------</span>
-<span id="cb33-361"><a href="#cb33-361"></a></span>
-<span id="cb33-362"><a href="#cb33-362"></a><span class="fu">## Residual Analysis</span></span>
-<span id="cb33-363"><a href="#cb33-363"></a>::: justify</span>
-<span id="cb33-364"><a href="#cb33-364"></a>We conduct a residual analysis on the standardized residuals $\varepsilon_t$ and $\tilde \varepsilon$ to check the fit of the $AR(1) + GARCH(1,1)$ model.</span>
-<span id="cb33-365"><a href="#cb33-365"></a></span>
-<span id="cb33-366"><a href="#cb33-366"></a>First, we inspect the standardized residuals and squared standardized residuals for autocorrelation. The figure below plots the <span class="in">`acf()`</span> function for the four series.</span>
-<span id="cb33-367"><a href="#cb33-367"></a>:::</span>
-<span id="cb33-370"><a href="#cb33-370"></a><span class="in">```{r}</span></span>
-<span id="cb33-371"><a href="#cb33-371"></a>spxl_res_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res, <span class="at">main =</span> <span class="st">"SPXL Std. Residuals"</span>)</span>
-<span id="cb33-372"><a href="#cb33-372"></a>spxl_res_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Squared SPXL Std. Residuals"</span>)</span>
-<span id="cb33-373"><a href="#cb33-373"></a>bac_res_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(bac_res, <span class="at">main =</span> <span class="st">"BAC Std. Residuals"</span>)</span>
-<span id="cb33-374"><a href="#cb33-374"></a>bac_res_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(bac_res <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Squared BAC Std. Residuals"</span>)</span>
+<span id="cb33-354"><a href="#cb33-354"></a><span class="co"># Clayton Copula</span></span>
+<span id="cb33-355"><a href="#cb33-355"></a></span>
+<span id="cb33-356"><a href="#cb33-356"></a>C_clayton <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">claytonCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
+<span id="cb33-357"><a href="#cb33-357"></a>                      <span class="at">method =</span> <span class="st">"ml"</span>)</span>
+<span id="cb33-358"><a href="#cb33-358"></a>log_lik_clayton <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> C_clayton<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
+<span id="cb33-359"><a href="#cb33-359"></a>                                <span class="at">copula =</span> <span class="fu">claytonCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
+<span id="cb33-360"><a href="#cb33-360"></a>aic_clayton <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(C_clayton<span class="sc">@</span>estimate)) <span class="sc">-</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">abs</span>(log_lik_clayton))</span>
+<span id="cb33-361"><a href="#cb33-361"></a>aic_clayton</span>
+<span id="cb33-362"><a href="#cb33-362"></a></span>
+<span id="cb33-363"><a href="#cb33-363"></a><span class="co"># Frank Copula</span></span>
+<span id="cb33-364"><a href="#cb33-364"></a></span>
+<span id="cb33-365"><a href="#cb33-365"></a>Cfrank <span class="ot">&lt;-</span> <span class="fu">fitCopula</span>(<span class="at">copula =</span> <span class="fu">frankCopula</span>(<span class="dv">1</span>, <span class="at">dim =</span> <span class="dv">2</span>), <span class="at">data =</span> U_hat,</span>
+<span id="cb33-366"><a href="#cb33-366"></a>                    <span class="at">method =</span> <span class="st">"ml"</span>)</span>
+<span id="cb33-367"><a href="#cb33-367"></a></span>
+<span id="cb33-368"><a href="#cb33-368"></a>log_lik_frank <span class="ot">&lt;-</span> <span class="fu">loglikCopula</span>(<span class="at">param =</span> Cfrank<span class="sc">@</span>estimate, <span class="at">u =</span> U_hat,</span>
+<span id="cb33-369"><a href="#cb33-369"></a>                              <span class="at">copula =</span> <span class="fu">frankCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>))</span>
+<span id="cb33-370"><a href="#cb33-370"></a>aic_frank <span class="ot">&lt;-</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(Cfrank<span class="sc">@</span>estimate)) <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span><span class="fu">abs</span>(log_lik_frank))</span>
+<span id="cb33-371"><a href="#cb33-371"></a>aic_frank</span>
+<span id="cb33-372"><a href="#cb33-372"></a><span class="in">```</span></span>
+<span id="cb33-373"><a href="#cb33-373"></a></span>
+<span id="cb33-374"><a href="#cb33-374"></a>------------------------------------------------------------------------</span>
 <span id="cb33-375"><a href="#cb33-375"></a></span>
-<span id="cb33-376"><a href="#cb33-376"></a>(spxl_res_acf <span class="sc">+</span> spxl_res_acf2) <span class="sc">/</span> (bac_res_acf <span class="sc">+</span> bac_res_acf2)</span>
-<span id="cb33-377"><a href="#cb33-377"></a><span class="in">```</span></span>
+<span id="cb33-376"><a href="#cb33-376"></a><span class="fu">## Residual Analysis</span></span>
+<span id="cb33-377"><a href="#cb33-377"></a></span>
 <span id="cb33-378"><a href="#cb33-378"></a>::: justify</span>
-<span id="cb33-379"><a href="#cb33-379"></a>The AR(1) + GARCH(1,1) model fits very well to SPXL and BAC. The standardized residuals and the squared standardized residuals of both the models show no significant serial correlation at 95% confidence.</span>
+<span id="cb33-379"><a href="#cb33-379"></a>We conduct a residual analysis on the standardized residuals $\varepsilon_t$ and $\tilde \varepsilon$ to check the fit of the $AR(1) + GARCH(1,1)$ model.</span>
 <span id="cb33-380"><a href="#cb33-380"></a></span>
-<span id="cb33-381"><a href="#cb33-381"></a>Next we look at the following box tests to check autocorrelation</span>
+<span id="cb33-381"><a href="#cb33-381"></a>First, we inspect the standardized residuals and squared standardized residuals for autocorrelation. The figure below plots the <span class="in">`acf()`</span> function for the four series.</span>
 <span id="cb33-382"><a href="#cb33-382"></a>:::</span>
 <span id="cb33-383"><a href="#cb33-383"></a></span>
 <span id="cb33-386"><a href="#cb33-386"></a><span class="in">```{r}</span></span>
-<span id="cb33-387"><a href="#cb33-387"></a><span class="fu">show</span>(spxl_fit)</span>
-<span id="cb33-388"><a href="#cb33-388"></a></span>
-<span id="cb33-389"><a href="#cb33-389"></a><span class="fu">show</span>(bac_fit)</span>
-<span id="cb33-390"><a href="#cb33-390"></a><span class="in">```</span></span>
+<span id="cb33-387"><a href="#cb33-387"></a>spxl_res_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res, <span class="at">main =</span> <span class="st">"SPXL Std. Residuals"</span>)</span>
+<span id="cb33-388"><a href="#cb33-388"></a>spxl_res_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(spxl_res <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Squared SPXL Std. Residuals"</span>)</span>
+<span id="cb33-389"><a href="#cb33-389"></a>bac_res_acf <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(bac_res, <span class="at">main =</span> <span class="st">"BAC Std. Residuals"</span>)</span>
+<span id="cb33-390"><a href="#cb33-390"></a>bac_res_acf2 <span class="ot">&lt;-</span> <span class="fu">ggacf</span>(bac_res <span class="sc">**</span> <span class="dv">2</span>, <span class="at">main =</span> <span class="st">"Squared BAC Std. Residuals"</span>)</span>
 <span id="cb33-391"><a href="#cb33-391"></a></span>
-<span id="cb33-394"><a href="#cb33-394"></a><span class="in">```{r}</span></span>
-<span id="cb33-395"><a href="#cb33-395"></a>bac_fit</span>
-<span id="cb33-396"><a href="#cb33-396"></a><span class="in">```</span></span>
-<span id="cb33-397"><a href="#cb33-397"></a>::: justify</span>
-<span id="cb33-398"><a href="#cb33-398"></a>The weighted versions of the Ljung-Box test and their p-values all indicate that the estimated $AR(1) + GARCH(1,1)$ model for the conditional mean and variance is adequate for removing serial correlation from the series and squared series.</span>
+<span id="cb33-392"><a href="#cb33-392"></a>(spxl_res_acf <span class="sc">+</span> spxl_res_acf2) <span class="sc">/</span> (bac_res_acf <span class="sc">+</span> bac_res_acf2)</span>
+<span id="cb33-393"><a href="#cb33-393"></a><span class="in">```</span></span>
+<span id="cb33-394"><a href="#cb33-394"></a></span>
+<span id="cb33-395"><a href="#cb33-395"></a>::: justify</span>
+<span id="cb33-396"><a href="#cb33-396"></a>The AR(1) + GARCH(1,1) model fits very well to SPXL and BAC. The standardized residuals and the squared standardized residuals of both the models show no significant serial correlation at 95% confidence.</span>
+<span id="cb33-397"><a href="#cb33-397"></a></span>
+<span id="cb33-398"><a href="#cb33-398"></a>Next we look at the following box tests to check autocorrelation</span>
 <span id="cb33-399"><a href="#cb33-399"></a>:::</span>
-<span id="cb33-400"><a href="#cb33-400"></a>------------------------------------------------------------------------</span>
-<span id="cb33-401"><a href="#cb33-401"></a></span>
-<span id="cb33-402"><a href="#cb33-402"></a><span class="fu"># Applications to Portfolio Risk Management</span></span>
-<span id="cb33-403"><a href="#cb33-403"></a>::: justify</span>
-<span id="cb33-404"><a href="#cb33-404"></a>In this section, we apply the $AR(1) + GARCH(1,1)$ along with t-Copula residuals to forecast one-step ahead Value-at-Risk at 99% level on the following portfolio consisting of SPXL and BAC with weight $\rho$:</span>
+<span id="cb33-400"><a href="#cb33-400"></a></span>
+<span id="cb33-403"><a href="#cb33-403"></a><span class="in">```{r}</span></span>
+<span id="cb33-404"><a href="#cb33-404"></a><span class="fu">show</span>(spxl_fit)</span>
 <span id="cb33-405"><a href="#cb33-405"></a></span>
-<span id="cb33-406"><a href="#cb33-406"></a>$$\rho X_{n + 1} + (1-\rho) \tilde X_{n+1}$$</span>
-<span id="cb33-407"><a href="#cb33-407"></a></span>
-<span id="cb33-408"><a href="#cb33-408"></a>where, $\rho = <span class="sc">\{</span>0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9<span class="sc">\}</span>$</span>
-<span id="cb33-409"><a href="#cb33-409"></a></span>
-<span id="cb33-410"><a href="#cb33-410"></a>To forecast VaR, we solve the following equation:</span>
-<span id="cb33-411"><a href="#cb33-411"></a></span>
-<span id="cb33-412"><a href="#cb33-412"></a>$$0.99 = P(\rho X_{n + 1} + (1-\rho) \tilde X_{n+1} \leq x | \mathcal{F})$$ $$0.99 = P(\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{n+1}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{n+1}) \leq x | \mathcal{F})$$</span>
-<span id="cb33-413"><a href="#cb33-413"></a></span>
-<span id="cb33-414"><a href="#cb33-414"></a>Initially, we forecast one step ahead $\sigma_{n+1}$ and $\tilde \sigma_{n + 1}$ using the <span class="in">`ugarchforecast()`</span> function. At this point, we have estimated all the unknowns in the $AR(1) + GARCH(1,1)$ model. In order to solve the above equation numerically, we draw a random sample of size $b = 10000$ from the fitted t-Copula and make transformations to get $\varepsilon_i$ and $\tilde \varepsilon_i$, $i = 1, \dots, b$ Lastly, we calculate VaR at 99% by calculating the 99th quantile of the following sample</span>
-<span id="cb33-415"><a href="#cb33-415"></a></span>
-<span id="cb33-416"><a href="#cb33-416"></a>$$\big{<span class="sc">\{</span>}\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{i}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{i})\big{<span class="sc">\}</span>}_{i = 1}^b$$ In order to see how risk depends on share of portfolio $\rho$, we conduct the empirical activity for $\rho = 0.1, \dots, 0.9$.</span>
+<span id="cb33-406"><a href="#cb33-406"></a><span class="fu">show</span>(bac_fit)</span>
+<span id="cb33-407"><a href="#cb33-407"></a><span class="in">```</span></span>
+<span id="cb33-408"><a href="#cb33-408"></a></span>
+<span id="cb33-411"><a href="#cb33-411"></a><span class="in">```{r}</span></span>
+<span id="cb33-412"><a href="#cb33-412"></a>bac_fit</span>
+<span id="cb33-413"><a href="#cb33-413"></a><span class="in">```</span></span>
+<span id="cb33-414"><a href="#cb33-414"></a></span>
+<span id="cb33-415"><a href="#cb33-415"></a>::: justify</span>
+<span id="cb33-416"><a href="#cb33-416"></a>The weighted versions of the Ljung-Box test and their p-values all indicate that the estimated $AR(1) + GARCH(1,1)$ model for the conditional mean and variance is adequate for removing serial correlation from the series and squared series.</span>
 <span id="cb33-417"><a href="#cb33-417"></a>:::</span>
-<span id="cb33-420"><a href="#cb33-420"></a><span class="in">```{r}</span></span>
-<span id="cb33-421"><a href="#cb33-421"></a><span class="co"># Copula Simulation </span></span>
+<span id="cb33-418"><a href="#cb33-418"></a></span>
+<span id="cb33-419"><a href="#cb33-419"></a>------------------------------------------------------------------------</span>
+<span id="cb33-420"><a href="#cb33-420"></a></span>
+<span id="cb33-421"><a href="#cb33-421"></a><span class="fu"># Applications to Portfolio Risk Management</span></span>
 <span id="cb33-422"><a href="#cb33-422"></a></span>
-<span id="cb33-423"><a href="#cb33-423"></a>b <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb33-424"><a href="#cb33-424"></a>rho <span class="ot">=</span> Ct<span class="sc">@</span>estimate[<span class="dv">1</span>]</span>
-<span id="cb33-425"><a href="#cb33-425"></a>df <span class="ot">=</span> Ct<span class="sc">@</span>estimate[<span class="dv">2</span>]</span>
-<span id="cb33-426"><a href="#cb33-426"></a>simulate <span class="ot">&lt;-</span> <span class="fu">rCopula</span>(b, <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>, rho, <span class="at">df =</span> df))</span>
-<span id="cb33-427"><a href="#cb33-427"></a>spxl_marginal <span class="ot">&lt;-</span> <span class="fu">qt</span>(simulate[, <span class="dv">1</span>], <span class="at">df =</span> spxl_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
-<span id="cb33-428"><a href="#cb33-428"></a>bac_marginal <span class="ot">&lt;-</span> <span class="fu">qt</span>(simulate[, <span class="dv">2</span>], <span class="at">df =</span> bac_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
+<span id="cb33-423"><a href="#cb33-423"></a>::: justify</span>
+<span id="cb33-424"><a href="#cb33-424"></a>In this section, we apply the $AR(1) + GARCH(1,1)$ along with t-Copula residuals to forecast one-step ahead Value-at-Risk at 99% level on the following portfolio consisting of SPXL and BAC with weight $\rho$:</span>
+<span id="cb33-425"><a href="#cb33-425"></a></span>
+<span id="cb33-426"><a href="#cb33-426"></a>$$\rho X_{n + 1} + (1-\rho) \tilde X_{n+1}$$</span>
+<span id="cb33-427"><a href="#cb33-427"></a></span>
+<span id="cb33-428"><a href="#cb33-428"></a>where, $\rho = <span class="sc">\{</span>0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9<span class="sc">\}</span>$</span>
 <span id="cb33-429"><a href="#cb33-429"></a></span>
-<span id="cb33-430"><a href="#cb33-430"></a><span class="co"># dataframe with transformed marginals</span></span>
-<span id="cb33-431"><a href="#cb33-431"></a>sim <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_marginal, bac_marginal)</span>
-<span id="cb33-432"><a href="#cb33-432"></a></span>
-<span id="cb33-433"><a href="#cb33-433"></a><span class="co"># Forecasting sigmas</span></span>
-<span id="cb33-434"><a href="#cb33-434"></a></span>
-<span id="cb33-435"><a href="#cb33-435"></a>spxl_pred <span class="ot">&lt;-</span> <span class="fu">ugarchforecast</span>(spxl_fit, <span class="at">n.ahead =</span> <span class="dv">1</span>)</span>
-<span id="cb33-436"><a href="#cb33-436"></a>bac_pred <span class="ot">&lt;-</span> <span class="fu">ugarchforecast</span>(bac_fit, <span class="at">n.ahead =</span> <span class="dv">1</span>)</span>
-<span id="cb33-437"><a href="#cb33-437"></a>spxl_sigma <span class="ot">&lt;-</span> <span class="fu">sigma</span>(spxl_pred) <span class="co"># sigma_{t + 1}</span></span>
-<span id="cb33-438"><a href="#cb33-438"></a>bac_sigma <span class="ot">&lt;-</span> <span class="fu">sigma</span>(bac_pred) <span class="co"># sigma_{t + 1}</span></span>
-<span id="cb33-439"><a href="#cb33-439"></a></span>
-<span id="cb33-440"><a href="#cb33-440"></a><span class="co"># Vectorize parameters</span></span>
-<span id="cb33-441"><a href="#cb33-441"></a>s_mu <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(spxl_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">1</span>]), b)</span>
-<span id="cb33-442"><a href="#cb33-442"></a>s_ar <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(spxl_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">2</span>]), b)</span>
-<span id="cb33-443"><a href="#cb33-443"></a>s_last <span class="ot">&lt;-</span> <span class="fu">rep</span>(spxl[<span class="fu">length</span>(spxl)], b)</span>
-<span id="cb33-444"><a href="#cb33-444"></a>s_sd <span class="ot">&lt;-</span> <span class="fu">rep</span>(spxl_sigma, b)</span>
-<span id="cb33-445"><a href="#cb33-445"></a></span>
-<span id="cb33-446"><a href="#cb33-446"></a>b_mu <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(bac_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">1</span>]), b)</span>
-<span id="cb33-447"><a href="#cb33-447"></a>b_ar <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(bac_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">2</span>]), b)</span>
-<span id="cb33-448"><a href="#cb33-448"></a>b_last <span class="ot">&lt;-</span> <span class="fu">rep</span>(bac[<span class="fu">length</span>(bac)], b)</span>
-<span id="cb33-449"><a href="#cb33-449"></a>b_sd <span class="ot">&lt;-</span> <span class="fu">rep</span>(bac_sigma, b)</span>
+<span id="cb33-430"><a href="#cb33-430"></a>To forecast VaR, we solve the following equation:</span>
+<span id="cb33-431"><a href="#cb33-431"></a></span>
+<span id="cb33-432"><a href="#cb33-432"></a>$$0.99 = P(\rho X_{n + 1} + (1-\rho) \tilde X_{n+1} \leq x | \mathcal{F})$$ $$0.99 = P(\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{n+1}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{n+1}) \leq x | \mathcal{F})$$</span>
+<span id="cb33-433"><a href="#cb33-433"></a></span>
+<span id="cb33-434"><a href="#cb33-434"></a>Initially, we forecast one step ahead $\sigma_{n+1}$ and $\tilde \sigma_{n + 1}$ using the <span class="in">`ugarchforecast()`</span> function. At this point, we have estimated all the unknowns in the $AR(1) + GARCH(1,1)$ model. In order to solve the above equation numerically, we draw a random sample of size $b = 10000$ from the fitted t-Copula and make transformations to get $\varepsilon_i$ and $\tilde \varepsilon_i$, $i = 1, \dots, b$ Lastly, we calculate VaR at 99% by calculating the 99th quantile of the following sample</span>
+<span id="cb33-435"><a href="#cb33-435"></a></span>
+<span id="cb33-436"><a href="#cb33-436"></a>$$\big{<span class="sc">\{</span>}\rho(\mu + \phi X_{n} + \sigma_{n+1}\varepsilon_{i}) + (1-\rho) (\tilde\mu + \tilde\phi \tilde X_{n} + \tilde \sigma_{n+1} \tilde \varepsilon_{i})\big{<span class="sc">\}</span>}_{i = 1}^b$$ In order to see how risk depends on share of portfolio $\rho$, we conduct the empirical activity for $\rho = 0.1, \dots, 0.9$.</span>
+<span id="cb33-437"><a href="#cb33-437"></a>:::</span>
+<span id="cb33-438"><a href="#cb33-438"></a></span>
+<span id="cb33-441"><a href="#cb33-441"></a><span class="in">```{r}</span></span>
+<span id="cb33-442"><a href="#cb33-442"></a><span class="co"># Copula Simulation </span></span>
+<span id="cb33-443"><a href="#cb33-443"></a></span>
+<span id="cb33-444"><a href="#cb33-444"></a>b <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb33-445"><a href="#cb33-445"></a>rho <span class="ot">=</span> Ct<span class="sc">@</span>estimate[<span class="dv">1</span>]</span>
+<span id="cb33-446"><a href="#cb33-446"></a>df <span class="ot">=</span> Ct<span class="sc">@</span>estimate[<span class="dv">2</span>]</span>
+<span id="cb33-447"><a href="#cb33-447"></a>simulate <span class="ot">&lt;-</span> <span class="fu">rCopula</span>(b, <span class="fu">tCopula</span>(<span class="at">dim =</span> <span class="dv">2</span>, rho, <span class="at">df =</span> df))</span>
+<span id="cb33-448"><a href="#cb33-448"></a>spxl_marginal <span class="ot">&lt;-</span> <span class="fu">qt</span>(simulate[, <span class="dv">1</span>], <span class="at">df =</span> spxl_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
+<span id="cb33-449"><a href="#cb33-449"></a>bac_marginal <span class="ot">&lt;-</span> <span class="fu">qt</span>(simulate[, <span class="dv">2</span>], <span class="at">df =</span> bac_res_t<span class="sc">$</span>estimate[<span class="dv">3</span>])</span>
 <span id="cb33-450"><a href="#cb33-450"></a></span>
-<span id="cb33-451"><a href="#cb33-451"></a></span>
-<span id="cb33-452"><a href="#cb33-452"></a>s <span class="ot">&lt;-</span> s_mu <span class="sc">+</span> (s_ar <span class="sc">*</span> s_last) <span class="sc">+</span> (s_sd <span class="sc">*</span> sim[, <span class="dv">1</span>])</span>
-<span id="cb33-453"><a href="#cb33-453"></a>ba <span class="ot">&lt;-</span> b_mu <span class="sc">+</span> (b_ar <span class="sc">*</span> b_last) <span class="sc">+</span> (b_sd <span class="sc">*</span> sim[, <span class="dv">2</span>])</span>
-<span id="cb33-454"><a href="#cb33-454"></a>pred_sample <span class="ot">&lt;-</span> <span class="fu">cbind</span>(s, ba)</span>
-<span id="cb33-455"><a href="#cb33-455"></a>rhos <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
-<span id="cb33-456"><a href="#cb33-456"></a>var_sample <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb33-457"><a href="#cb33-457"></a></span>
-<span id="cb33-458"><a href="#cb33-458"></a>alpha <span class="ot">&lt;-</span>  <span class="fl">0.01</span> <span class="co"># 99th percentile</span></span>
-<span id="cb33-459"><a href="#cb33-459"></a></span>
-<span id="cb33-460"><a href="#cb33-460"></a>portfolio_value <span class="ot">&lt;-</span> <span class="dv">1000000</span></span>
-<span id="cb33-461"><a href="#cb33-461"></a></span>
-<span id="cb33-462"><a href="#cb33-462"></a><span class="cf">for</span> (i <span class="cf">in</span> rhos){</span>
-<span id="cb33-463"><a href="#cb33-463"></a>  </span>
-<span id="cb33-464"><a href="#cb33-464"></a>  s_rho <span class="ot">&lt;-</span> s <span class="sc">*</span> <span class="fu">rep</span>(i, b)</span>
-<span id="cb33-465"><a href="#cb33-465"></a>  b_rho <span class="ot">&lt;-</span> ba <span class="sc">*</span> <span class="fu">rep</span>(<span class="dv">1</span> <span class="sc">-</span> i, b)</span>
-<span id="cb33-466"><a href="#cb33-466"></a>  </span>
-<span id="cb33-467"><a href="#cb33-467"></a>  sample <span class="ot">&lt;-</span>  s_rho <span class="sc">+</span> b_rho</span>
-<span id="cb33-468"><a href="#cb33-468"></a>  q <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(sample, alpha))</span>
-<span id="cb33-469"><a href="#cb33-469"></a>  VaR <span class="ot">&lt;-</span> <span class="sc">-</span> portfolio_value <span class="sc">*</span> q</span>
-<span id="cb33-470"><a href="#cb33-470"></a>  var_sample <span class="ot">&lt;-</span> <span class="fu">rbind</span>(var_sample, VaR)</span>
-<span id="cb33-471"><a href="#cb33-471"></a>}</span>
+<span id="cb33-451"><a href="#cb33-451"></a><span class="co"># dataframe with transformed marginals</span></span>
+<span id="cb33-452"><a href="#cb33-452"></a>sim <span class="ot">&lt;-</span> <span class="fu">cbind</span>(spxl_marginal, bac_marginal)</span>
+<span id="cb33-453"><a href="#cb33-453"></a></span>
+<span id="cb33-454"><a href="#cb33-454"></a><span class="co"># Forecasting sigmas</span></span>
+<span id="cb33-455"><a href="#cb33-455"></a></span>
+<span id="cb33-456"><a href="#cb33-456"></a>spxl_pred <span class="ot">&lt;-</span> <span class="fu">ugarchforecast</span>(spxl_fit, <span class="at">n.ahead =</span> <span class="dv">1</span>)</span>
+<span id="cb33-457"><a href="#cb33-457"></a>bac_pred <span class="ot">&lt;-</span> <span class="fu">ugarchforecast</span>(bac_fit, <span class="at">n.ahead =</span> <span class="dv">1</span>)</span>
+<span id="cb33-458"><a href="#cb33-458"></a>spxl_sigma <span class="ot">&lt;-</span> <span class="fu">sigma</span>(spxl_pred) <span class="co"># sigma_{t + 1}</span></span>
+<span id="cb33-459"><a href="#cb33-459"></a>bac_sigma <span class="ot">&lt;-</span> <span class="fu">sigma</span>(bac_pred) <span class="co"># sigma_{t + 1}</span></span>
+<span id="cb33-460"><a href="#cb33-460"></a></span>
+<span id="cb33-461"><a href="#cb33-461"></a><span class="co"># Vectorize parameters</span></span>
+<span id="cb33-462"><a href="#cb33-462"></a>s_mu <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(spxl_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">1</span>]), b)</span>
+<span id="cb33-463"><a href="#cb33-463"></a>s_ar <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(spxl_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">2</span>]), b)</span>
+<span id="cb33-464"><a href="#cb33-464"></a>s_last <span class="ot">&lt;-</span> <span class="fu">rep</span>(spxl[<span class="fu">length</span>(spxl)], b)</span>
+<span id="cb33-465"><a href="#cb33-465"></a>s_sd <span class="ot">&lt;-</span> <span class="fu">rep</span>(spxl_sigma, b)</span>
+<span id="cb33-466"><a href="#cb33-466"></a></span>
+<span id="cb33-467"><a href="#cb33-467"></a>b_mu <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(bac_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">1</span>]), b)</span>
+<span id="cb33-468"><a href="#cb33-468"></a>b_ar <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">as.numeric</span>(bac_fit<span class="sc">@</span>fit<span class="sc">$</span>coef[<span class="dv">2</span>]), b)</span>
+<span id="cb33-469"><a href="#cb33-469"></a>b_last <span class="ot">&lt;-</span> <span class="fu">rep</span>(bac[<span class="fu">length</span>(bac)], b)</span>
+<span id="cb33-470"><a href="#cb33-470"></a>b_sd <span class="ot">&lt;-</span> <span class="fu">rep</span>(bac_sigma, b)</span>
+<span id="cb33-471"><a href="#cb33-471"></a></span>
 <span id="cb33-472"><a href="#cb33-472"></a></span>
-<span id="cb33-473"><a href="#cb33-473"></a>var_sample<span class="sc">$</span><span class="st">`</span><span class="at">SPXL Portfolio Weight</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p = 0.1"</span>, <span class="st">"p = 0.2"</span>, <span class="st">"p = 0.3"</span>, <span class="st">"p = 0.4"</span>, </span>
-<span id="cb33-474"><a href="#cb33-474"></a>                           <span class="st">"p = 0.5"</span>, <span class="st">"p = 0.6"</span>, <span class="st">"p = 0.7"</span>, <span class="st">"p = 0.8"</span>, </span>
-<span id="cb33-475"><a href="#cb33-475"></a>                           <span class="st">"p = 0.9"</span>)</span>
-<span id="cb33-476"><a href="#cb33-476"></a></span>
-<span id="cb33-477"><a href="#cb33-477"></a></span>
+<span id="cb33-473"><a href="#cb33-473"></a>s <span class="ot">&lt;-</span> s_mu <span class="sc">+</span> (s_ar <span class="sc">*</span> s_last) <span class="sc">+</span> (s_sd <span class="sc">*</span> sim[, <span class="dv">1</span>])</span>
+<span id="cb33-474"><a href="#cb33-474"></a>ba <span class="ot">&lt;-</span> b_mu <span class="sc">+</span> (b_ar <span class="sc">*</span> b_last) <span class="sc">+</span> (b_sd <span class="sc">*</span> sim[, <span class="dv">2</span>])</span>
+<span id="cb33-475"><a href="#cb33-475"></a>pred_sample <span class="ot">&lt;-</span> <span class="fu">cbind</span>(s, ba)</span>
+<span id="cb33-476"><a href="#cb33-476"></a>rhos <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb33-477"><a href="#cb33-477"></a>var_sample <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
 <span id="cb33-478"><a href="#cb33-478"></a></span>
-<span id="cb33-479"><a href="#cb33-479"></a><span class="fu">colnames</span>(var_sample) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"VaR ($)"</span>, <span class="st">"SPXL Portfolio Weight"</span>)</span>
+<span id="cb33-479"><a href="#cb33-479"></a>alpha <span class="ot">&lt;-</span>  <span class="fl">0.01</span> <span class="co"># 99th percentile</span></span>
 <span id="cb33-480"><a href="#cb33-480"></a></span>
-<span id="cb33-481"><a href="#cb33-481"></a><span class="co"># Reordering columns</span></span>
-<span id="cb33-482"><a href="#cb33-482"></a>var_sample <span class="ot">&lt;-</span> var_sample[, <span class="fu">c</span>(<span class="st">"SPXL Portfolio Weight"</span>, <span class="st">"VaR ($)"</span>)]</span>
-<span id="cb33-483"><a href="#cb33-483"></a></span>
-<span id="cb33-484"><a href="#cb33-484"></a><span class="fu">datasummary_df</span>(var_sample,</span>
-<span id="cb33-485"><a href="#cb33-485"></a>               <span class="at">title =</span> <span class="st">"Table 2. One-Step Ahead VaR forecast for a $1 million portfolio with varying weights"</span>)</span>
-<span id="cb33-486"><a href="#cb33-486"></a><span class="in">```</span></span>
-<span id="cb33-487"><a href="#cb33-487"></a>::: justify</span>
-<span id="cb33-488"><a href="#cb33-488"></a>The table reports the Value-at-Risk at 99% level for a portfolio value of \$1,000,000. It is evident from the table that as SPXL's proportion in the portfolio increases ($\rho$), the Value-at-Risk increases. These results are in line with expectations as Direxion Daily S&amp;P 500 Bull 3X Shares is a 300% leveraged instrument based on the S&amp;P 500 index. When $\rho = 0.2$, there is a 1% percent chance that the loss would be greater than <span class="in">`r as.numeric(var_sample[2,1])`</span> the next day on a \$1,000,000 investment. Similarly, When $\rho = 0.9$, there is a 1% percent chance that the loss would be greater than <span class="in">`r as.numeric(var_sample[9,1])`</span> the next day on a \$1,000,000 investment.</span>
-<span id="cb33-489"><a href="#cb33-489"></a>:::</span>
-<span id="cb33-490"><a href="#cb33-490"></a></span>
-<span id="cb33-491"><a href="#cb33-491"></a><span class="fu"># Reference</span></span>
+<span id="cb33-481"><a href="#cb33-481"></a>portfolio_value <span class="ot">&lt;-</span> <span class="dv">1000000</span></span>
+<span id="cb33-482"><a href="#cb33-482"></a></span>
+<span id="cb33-483"><a href="#cb33-483"></a><span class="cf">for</span> (i <span class="cf">in</span> rhos){</span>
+<span id="cb33-484"><a href="#cb33-484"></a>  </span>
+<span id="cb33-485"><a href="#cb33-485"></a>  s_rho <span class="ot">&lt;-</span> s <span class="sc">*</span> <span class="fu">rep</span>(i, b)</span>
+<span id="cb33-486"><a href="#cb33-486"></a>  b_rho <span class="ot">&lt;-</span> ba <span class="sc">*</span> <span class="fu">rep</span>(<span class="dv">1</span> <span class="sc">-</span> i, b)</span>
+<span id="cb33-487"><a href="#cb33-487"></a>  </span>
+<span id="cb33-488"><a href="#cb33-488"></a>  sample <span class="ot">&lt;-</span>  s_rho <span class="sc">+</span> b_rho</span>
+<span id="cb33-489"><a href="#cb33-489"></a>  q <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantile</span>(sample, alpha))</span>
+<span id="cb33-490"><a href="#cb33-490"></a>  VaR <span class="ot">&lt;-</span> <span class="sc">-</span> portfolio_value <span class="sc">*</span> q</span>
+<span id="cb33-491"><a href="#cb33-491"></a>  var_sample <span class="ot">&lt;-</span> <span class="fu">rbind</span>(var_sample, VaR)</span>
+<span id="cb33-492"><a href="#cb33-492"></a>}</span>
+<span id="cb33-493"><a href="#cb33-493"></a></span>
+<span id="cb33-494"><a href="#cb33-494"></a>var_sample<span class="sc">$</span><span class="st">`</span><span class="at">SPXL Portfolio Weight</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"p = 0.1"</span>, <span class="st">"p = 0.2"</span>, <span class="st">"p = 0.3"</span>, <span class="st">"p = 0.4"</span>, </span>
+<span id="cb33-495"><a href="#cb33-495"></a>                           <span class="st">"p = 0.5"</span>, <span class="st">"p = 0.6"</span>, <span class="st">"p = 0.7"</span>, <span class="st">"p = 0.8"</span>, </span>
+<span id="cb33-496"><a href="#cb33-496"></a>                           <span class="st">"p = 0.9"</span>)</span>
+<span id="cb33-497"><a href="#cb33-497"></a></span>
+<span id="cb33-498"><a href="#cb33-498"></a></span>
+<span id="cb33-499"><a href="#cb33-499"></a></span>
+<span id="cb33-500"><a href="#cb33-500"></a><span class="fu">colnames</span>(var_sample) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"VaR ($)"</span>, <span class="st">"SPXL Portfolio Weight"</span>)</span>
+<span id="cb33-501"><a href="#cb33-501"></a></span>
+<span id="cb33-502"><a href="#cb33-502"></a><span class="co"># Reordering columns</span></span>
+<span id="cb33-503"><a href="#cb33-503"></a>var_sample <span class="ot">&lt;-</span> var_sample[, <span class="fu">c</span>(<span class="st">"SPXL Portfolio Weight"</span>, <span class="st">"VaR ($)"</span>)]</span>
+<span id="cb33-504"><a href="#cb33-504"></a></span>
+<span id="cb33-505"><a href="#cb33-505"></a><span class="fu">datasummary_df</span>(var_sample,</span>
+<span id="cb33-506"><a href="#cb33-506"></a>               <span class="at">title =</span> <span class="st">"Table 2. One-Step Ahead VaR forecast for a $1 million portfolio with varying weights"</span>)</span>
+<span id="cb33-507"><a href="#cb33-507"></a><span class="in">```</span></span>
+<span id="cb33-508"><a href="#cb33-508"></a></span>
+<span id="cb33-509"><a href="#cb33-509"></a>::: justify</span>
+<span id="cb33-510"><a href="#cb33-510"></a>The table reports the Value-at-Risk at 99% level for a portfolio value of \$1,000,000. It is evident from the table that as SPXL's proportion in the portfolio increases ($\rho$), the Value-at-Risk increases. These results are in line with expectations as Direxion Daily S&amp;P 500 Bull 3X Shares is a 300% leveraged instrument based on the S&amp;P 500 index. When $\rho = 0.2$, there is a 1% percent chance that the loss would be greater than <span class="in">`r as.numeric(var_sample[2,1])`</span> the next day on a \$1,000,000 investment. Similarly, When $\rho = 0.9$, there is a 1% percent chance that the loss would be greater than <span class="in">`r as.numeric(var_sample[9,1])`</span> the next day on a \$1,000,000 investment.</span>
+<span id="cb33-511"><a href="#cb33-511"></a>:::</span>
+<span id="cb33-512"><a href="#cb33-512"></a></span>
+<span id="cb33-513"><a href="#cb33-513"></a><span class="fu"># Reference</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

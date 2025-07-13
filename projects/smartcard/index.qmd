@@ -30,10 +30,9 @@ nocite: |
 
 Developing countries often face challenges in efficiently delivering social assistance programs due to issues such as leakages and corruption. This study focuses on the Smartcard program, a biometric payment system implemented in Andhra Pradesh, India, to enhance the delivery of social welfare programs. The objective is to expand this program to three other Indian states using synthetic data, with a specific focus on the National Rural Employment Guarantee Scheme (NREGS). The primary goal is to evaluate the impact of the Smartcard program on governance, including reducing leakages, wait times, and corruption.
 
-The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats are selected as promotion locations for Smartcard enrollment. Weekly surveys are conducted to collect data on personal characteristics and program outcomes. The results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects.
+The study employs an instrumental variable design, randomly selecting 500 panchayats as a representative sample. Of these, 250 panchayats will be selected as promotion locations for Smartcard enrollment. Weekly surveys will be conducted to collect data on personal characteristics and program outcomes. The synthetic analysis results suggest that the Smartcard intervention reduces leakages, wait times, and corruption, with statistically significant effects.
 
 This has implications for poverty reduction, enhanced trust in government services, and the potential to improve social welfare delivery systems in similar contexts. The study utilizes a rigorous instrumental variable approach to address potential biases, providing credible estimates of the program's impact.
-
 :::
 
 # Introduction
@@ -48,7 +47,6 @@ Building upon this previous work, our pre-registered study proposes to expand th
 The primary goal of this paper is to evaluate the impact of the Smartcard program on governance. Good governance ensures the efficient and equitable delivery of governmental processes, promoting public welfare. We anticipate a reduction in leakages, corruption, and wait times for the program's beneficiaries. These improvements are expected to enhance overall efficiency, increase earnings, and foster greater trust in government welfare measures.
 
 To evaluate the program's impact on system leakages, wait times, and corruption, we employ an instrumental variable design. Our study involves randomly selecting 500 panchayats from the three states as a representative sample. Following program implementation, we randomly select 250 out of the 500 sample panchayats as the promotion locations. All households previously enrolled in the NREGS program will receive a promotion and information on enrolling in the Smartcard program. Subsequently, we conduct weekly surveys in all 500 panchayats over four weeks, gathering data on personal characteristics, leakages, wait times, and corruption events. By utilizing randomized promotion as a valid instrument, we find that the Smartcard intervention leads to a reduction in leakages, wait times and corruption.
-
 :::
 
 ```{r setup, include = FALSE}
@@ -82,7 +80,6 @@ library(lfe)
 ## Program Theory and Impact Theory Graph
 
 ::: justify
-
 The program theory is that biometric authentication and secure payment systems can improve governance by reducing leakages in the delivery systems and reducing payment delays without adversely affecting program access.
 
 The theory, based on previous research (World Bank 2003; Pritchett 2010, Reinikka and Svensson 2004; Programme Evaluation Organisation 2005; Niehaus and Sukhtankar 2013b) assumes that corruption and leakages are prevalent in government services in developing countries, leading to ineﬀiciencies in assistance delivery systems. By implementing biometric authentication and secure payment systems, the government can ensure that the correct individuals receive the correct payments and services. The Smartcards intervention has a two-fold effect. First, it changes the institutions responsible for managing the funds by eliminating a few intermediaries and moves the point of payment closer to the recipient. Second, it introduces biometric authentication which facilities transparency in the system by providing a secure, tamperproof record of who has received services and payments. This can help to reduce corruption and increase accountability.
@@ -185,13 +182,14 @@ We think that the most important attributes of better governance are reduced wai
 
 -   Measurement of program effect: As the randomized promotion is a valid instrument, the feasible measures would reflect the local average treatment effect of the smartcard program.
 :::
+
 \newpage
 
 # Data and Analysis
 
 ## Identification Strategy
-::: justify
 
+::: justify
 Similar to Muralidharan et al. 2016, we assert causal claims that the Smartcard intervention will lead to reduced leakages, wait times, and corruption for beneficiary households. In earlier leakage-prone systems, the funds were released by the government and flowed through multiple intermediaries to reach the beneficiary. But in the new Smartcard system, the worker can directly receive funds with just a single third-party processing all the transactions. This leads to fewer leakages in the system as people cannot game it by withdrawing money in the name of ghost recipients. Moreover, oﬀicers have fewer chances to engage in corruption as funds are digitally transferred to the end user's bank account. Further, the Smartcard intervention will improve payment logistics by reducing wait times and delays in payment collection. Smartcard holders will not be bothered by cash shortages at the PoS as money would be directly deposited into their accounts. Finally, the biometric cards would aid in quicker verifications at the PoS and reduce wait times in queues.
 
 A host of household-level characteristics influence enrollment into the Smartcard program, reduction in leakages, wait times and corruption events. Some of the observable covariates include location, family size, household literacy rate, religion, assets, and others. Controlling for these covariates is a possible solution, but it does not paint the full causal picture. The NREGS program has a universal access and hence it is fair to provide universal access to the Smartcard program that facilitates the NREGS welfare payments. In this scenario, we suspect that households that enroll into the Smartcard intervention are fundamentally different than the households that do not enroll. For instance, poor households with fewer job opportunities or literate households would be more likely to enroll into the program. There exists a host of household and geographic characteristics that influence enrollment into the program and the outcomes. The universal nature of the program leads to self-selection bias. Additionally, the unobserved household and governmental characteristics lead to omitted variable bias. To tackle these challenges, we introduce the instrumental variable design by using randomized promotion as an instrument. Randomized promotion design closes all the backdoors and provides a local average treatment effect for the compliers that enroll in the Smartcard program after receiving the promotion.
@@ -212,7 +210,6 @@ The general form of the second stage least squares is as follows: $$
 Where $$\text{Outcome }_i = \{\text{Leakage}, \text{Queue Wait Time }, \text{Payment Delay}, \text{Corruption} \}$$
 
 Overall, the instrumental variable approach using randomized promotion provides a rigorous and credible method for estimating the causal effects of the smartcard program on the outcomes of interest, while also addressing potential issues of selection bias and endogeneity.
-
 :::
 
 A DAG for the outcome is as follows:
@@ -261,6 +258,7 @@ ggdag_status(iv_dag,  text = FALSE, use_labels = "name") +
   guides(fill = "none", color = "none") +
   theme_dag()
 ```
+
 ::: justify
 ## Hypotheses
 
@@ -273,14 +271,14 @@ $\textbf{H2}$: The Smartcard program **causes** payment delays (in number of day
 $\textbf{H3}$: The Smartcard program **causes** waiting time in queue (in minutes) to decrease.
 
 $\textbf{H4}$: The Smartcard program **reduces** incidences of corruption.
-
 :::
+
 ## Data
 
 ::: justify
 We propose to use a mix of administrative and survey data to estimate the causal link between the program and the outcomes of interest. We plan to conduct weekly survey for a 4-week period to measure the household level weekly payments received, time spent (in minutes) at the PoS, days between work is completed and payment is received, and corruption incidences. We will compare the weekly payments received to the official disbursement data to estimate the household level leakage in the system, the amount lost in inefficiencies or corruptions. Alongside, we will collect data on household characteristics like number of children, number of females in the household, household literacy rate, religion, assets like farmland, and household head age and gender.
-
 :::
+
 ```{r}
 set.seed(1234)
 
@@ -498,13 +496,15 @@ modelsummary(list("Leakage" = leakage_iv_c, "Wait Time (Queue)" = ttp_iv_c,
 ::: justify
 We can see that the smartcard intervention causes a decrease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households received payment 3 days earlier, on average, as compared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at 1% level. These results reinforce our expectations that the smartcard intervention would negatively affect leakage, wait times and corruption faced by the rural workers.
 :::
+
 ## Robustness Checks
 
 ### Instrument Validity
+
 ::: justify
 Based on the first stage model, we see that there is a strong relationship between the instrument (randomized promotion) and Smartcard enrollment. The randomized promotion is positively correlated with Smartcard enrollment. Moreover, the joint F-statistic of the model is 8608 with a p-value less than 0.01. We can reject the hypothesis that the instrument is weak. We can conclude that the instrument is relevant. Since the promotion panchayats are selected through a randomized process, the instrument is not correlated with any observable or unobservable characteristics of households or location. The instrument satisfies exogeneity. Lastly, there is a clear causal mechanism between the randomized promotion and the outcomes of interest. A promotion can only cause leakages, wait times, and corruption to increase or decrease only if a household enrolls into the Smartcard program after receiving the promotion. Hence, the instrument satisfies exclusion.
-
 :::
+
 ```{r warning=FALSE}
 relevance_check <- lm(smartcard ~  promotion + farm + children +
                         household_literacy_rate + female_member + hindu + 
@@ -515,6 +515,7 @@ modelsummary(list("First Stage IV" = relevance_check),
 ```
 
 # Conclusion and Implications
+
 ::: justify
 From our simulated data analysis, we find that the Smartcard intervention causes a de- crease in leakages by 45.3 rupees for compliers. Moreover, wait time in queue is reduced by 10 minutes. Complier households receive payment 3 days earlier, on average, as com- pared to non-compliers. Lastly, corruption decreased by 0.725 incidences. All estimates are statistically significant at a 1% level. These results reinforce our expectations that the Smartcard intervention would negatively affect leakage, wait times and corruption faced by rural workers.
 
@@ -522,4 +523,5 @@ The Smartcard program has three major implications. Firstly, the Smartcard progr
 
 In conclusion, the successful implementation of the Smartcard intervention would have significant implications for the delivery of social welfare programs, poverty reduction, and contribute towards good governance.
 :::
+
 # Reference

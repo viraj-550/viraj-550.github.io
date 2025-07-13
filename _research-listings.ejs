@@ -1,0 +1,60 @@
+<div class="listing-item research-item">
+  <div class="row">
+    <div class="col-md-4">
+      <% if (typeof(image) !== 'undefined' && image) { %>
+      <a href="<%= path %>">
+        <img src="<%= image %>" class="listing-image" alt="<%= title %>">
+      </a>
+      <% } else { %>
+      <div class="listing-placeholder">
+        <i class="bi bi-file-earmark-text"></i>
+      </div>
+      <% } %>
+    </div>
+    <div class="col-md-8">
+      <% if (typeof(date) !== 'undefined' && date) { %>
+      <div class="listing-date">
+        <i class="bi bi-calendar3"></i> <%= date %>
+      </div>
+      <% } %>
+      
+      <h3 class="listing-title">
+        <a href="<%= path %>"><%= title %></a>
+      </h3>
+      
+      <% if (typeof(description) !== 'undefined' && description) { %>
+      <p class="listing-description"><%= description %></p>
+      <% } %>
+      
+      <% if (typeof(links) !== 'undefined' && links && links.length > 0) { %>
+      <div class="listing-links">
+        <% links.forEach(function(link) { %>
+          <% var btnClass = 'btn-outline-primary'; %>
+          <% var icon = 'bi-link-45deg'; %>
+          <% if (link.name.toLowerCase().includes('pdf') || link.name.toLowerCase().includes('paper')) { %>
+            <% btnClass = 'btn-outline-primary'; icon = 'bi-file-earmark-pdf'; %>
+          <% } else if (link.name.toLowerCase().includes('ssrn')) { %>
+            <% btnClass = 'btn-outline-secondary'; icon = 'bi-journals'; %>
+          <% } else if (link.name.toLowerCase().includes('code') || link.name.toLowerCase().includes('github')) { %>
+            <% btnClass = 'btn-outline-success'; icon = 'bi-code-slash'; %>
+          <% } else if (link.name.toLowerCase().includes('data')) { %>
+            <% btnClass = 'btn-outline-info'; icon = 'bi-database'; %>
+          <% } %>
+          <a href="<%= link.url %>" class="btn <%= btnClass %> btn-sm" target="_blank">
+            <i class="bi <%= icon %>"></i> <%= link.name %>
+          </a>
+        <% }); %>
+        <a href="<%= path %>" class="btn btn-primary btn-sm">
+          <i class="bi bi-arrow-right"></i> Read More
+        </a>
+      </div>
+      <% } else { %>
+      <div class="listing-links">
+        <a href="<%= path %>" class="btn btn-primary btn-sm">
+          <i class="bi bi-arrow-right"></i> Read More
+        </a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

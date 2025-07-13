@@ -1,0 +1,297 @@
+---
+title: "Viraj R. Chordiya"
+page-layout: custom
+title-block-banner: false
+listing:
+  - id: research-posts
+    contents: research
+    sort: "date desc"
+    type: default
+    fields: [image, title, description]
+    max-items: 3
+    feed: false
+    image-align: left
+---
+
+::: {.hero-section}
+::: {.container}
+::: {.hero-content}
+::: {.hero-image}
+![](viraj.jpeg){.profile-img}
+:::
+
+::: {.hero-text}
+# Viraj R. Chordiya
+
+I am a researcher specializing in financial econometrics and data science, with a focus on portfolio optimization and risk management. My work leverages modern statistical methods to derive actionable insights from complex financial data.
+
+::: {.hero-links}
+[{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/virajchordiya/){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa brands twitter >}} Twitter](https://twitter.com/ChordiyaViraj){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa brands github >}} Github](https://github.com/viraj-550){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa file-pdf >}} CV](cv_viraj_chordiya.pdf){.btn .btn-primary .btn-sm target="_blank"}
+:::
+:::
+:::
+:::
+:::
+
+::: {.research-section}
+::: {.container}
+## Recent Research
+
+::: {#research-posts .research-list}
+:::
+
+::: {.text-center .mt-4}
+[View all research →](research.qmd){.btn .btn-outline-primary}
+:::
+:::
+:::
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🔥 Script loaded - adding static research links...');
+  
+  function addLinksToItems() {
+    // Find all research posts
+    let listingItems = document.querySelectorAll('#listing-research-posts .quarto-post');
+    if (listingItems.length === 0) {
+      listingItems = document.querySelectorAll('.quarto-listing .quarto-post');
+    }
+    
+    console.log('🔍 Found', listingItems.length, 'listing items');
+    
+    if (listingItems.length === 0) {
+      console.log('⏳ No items found, retrying in 500ms...');
+      setTimeout(addLinksToItems, 500);
+      return;
+    }
+    
+    // Define links for each research item (based on title matching)
+    const researchLinks = {
+      'Thin Markets, Thick Premiums': [
+        { text: '📄 Paper (PDF)', href: 'https://papers.ssrn.com', class: 'btn-outline-primary' },
+        { text: '📊 SSRN', href: 'https://papers.ssrn.com', class: 'btn-outline-secondary' },
+        { text: '💻 Data & Code', href: 'https://github.com/viraj-550', class: 'btn-outline-success' }
+      ]
+      // Add more research items here as needed
+    };
+    
+    listingItems.forEach(function(item, index) {
+      // Skip if already processed
+      if (item.querySelector('.listing-links')) {
+        console.log('⚠️ Item', index, 'already processed, skipping');
+        return;
+      }
+      
+      console.log('⚙️ Processing item', index);
+      
+      // Find title link and title text
+      const titleLink = item.querySelector('.listing-title a');
+      
+      if (titleLink) {
+        const href = titleLink.getAttribute('href');
+        const titleText = titleLink.textContent.trim();
+        console.log('🔗 Found title:', titleText, '-> Link:', href);
+        
+        // Create links container
+        const linksContainer = document.createElement('div');
+        linksContainer.className = 'listing-links';
+        linksContainer.style.marginTop = '1.5rem';
+        linksContainer.style.paddingTop = '1rem';
+        linksContainer.style.borderTop = '1px solid #e9ecef';
+        linksContainer.style.display = 'flex';
+        linksContainer.style.flexWrap = 'nowrap';
+        linksContainer.style.gap = '0.35rem';
+        linksContainer.style.overflowX = 'auto';
+        
+        // Add specific links for this research item if available
+        if (researchLinks[titleText]) {
+          console.log('📎 Adding predefined links for:', titleText);
+          researchLinks[titleText].forEach(function(linkData, linkIndex) {
+            console.log('➕ Adding link', linkIndex, ':', linkData.text);
+            
+            const linkElement = document.createElement('a');
+            linkElement.href = linkData.href;
+            linkElement.target = '_blank';
+            linkElement.className = 'btn ' + linkData.class;
+            linkElement.style.fontSize = '0.7rem';
+            linkElement.style.padding = '0.25rem 0.5rem';
+            linkElement.style.borderRadius = '4px';
+            linkElement.style.whiteSpace = 'nowrap';
+            linkElement.style.flexShrink = '0';
+            linkElement.style.minHeight = '24px';
+            linkElement.style.lineHeight = '1';
+            linkElement.innerHTML = linkData.text;
+            
+            linksContainer.appendChild(linkElement);
+          });
+        }
+        
+        // Add "Read More" link at the end
+        const readMoreLink = document.createElement('a');
+        readMoreLink.href = href;
+        readMoreLink.className = 'btn btn-primary';
+        readMoreLink.style.fontSize = '0.7rem';
+        readMoreLink.style.padding = '0.25rem 0.5rem';
+        readMoreLink.style.borderRadius = '4px';
+        readMoreLink.style.whiteSpace = 'nowrap';
+        readMoreLink.style.flexShrink = '0';
+        readMoreLink.style.minHeight = '24px';
+        readMoreLink.style.lineHeight = '1';
+        readMoreLink.innerHTML = '<i class="bi bi-arrow-right"></i> Read More';
+        linksContainer.appendChild(readMoreLink);
+        
+        // Insert the links container
+        const bodyDiv = item.querySelector('.body');
+        if (bodyDiv) {
+          bodyDiv.appendChild(linksContainer);
+          console.log('✅ Added links to item', index);
+        } else {
+          console.log('❌ No .body div found for item', index);
+        }
+      } else {
+        console.log('❌ No title link found for item', index);
+      }
+    });
+  }
+  
+  // Start immediately, then retry if needed
+  addLinksToItems();
+  
+  // Also try again after a longer delay in case quarto listing is still loading
+  setTimeout(addLinksToItems, 2000);
+});
+</script>
+
+::: {.hero-links}
+[{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/virajchordiya/){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa brands twitter >}} Twitter](https://twitter.com/ChordiyaViraj){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa brands github >}} Github](https://github.com/viraj-550){.btn .btn-outline-primary .btn-sm target="_blank"}
+[{{< fa file-pdf >}} CV](cv_viraj_chordiya.pdf){.btn .btn-primary .btn-sm target="_blank"}
+:::
+:::
+:::
+:::
+:::
+
+::: {.research-section}
+::: {.container}
+## Recent Research
+
+::: {#research-posts .research-list}
+:::
+
+::: {.text-center .mt-4}
+[View all research →](research.qmd){.btn .btn-outline-primary}
+:::
+:::
+:::
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🔥 Script loaded - adding static research links...');
+  
+  function addLinksToItems() {
+    // Find all research posts
+    let listingItems = document.querySelectorAll('#listing-research-posts .quarto-post');
+    if (listingItems.length === 0) {
+      listingItems = document.querySelectorAll('.quarto-listing .quarto-post');
+    }
+    
+    console.log('🔍 Found', listingItems.length, 'listing items');
+    
+    if (listingItems.length === 0) {
+      console.log('⏳ No items found, retrying in 500ms...');
+      setTimeout(addLinksToItems, 500);
+      return;
+    }
+    
+    // Define links for each research item (based on title matching)
+    const researchLinks = {
+      'Thin Markets, Thick Premiums': [
+        { text: '📄 Paper (PDF)', href: 'https://papers.ssrn.com', class: 'btn-outline-primary' },
+        { text: '📊 SSRN', href: 'https://papers.ssrn.com', class: 'btn-outline-secondary' },
+        { text: '💻 Data & Code', href: 'https://github.com/viraj-550', class: 'btn-outline-success' }
+      ]
+      // Add more research items here as needed
+    };
+    
+    listingItems.forEach(function(item, index) {
+      // Skip if already processed
+      if (item.querySelector('.listing-links')) {
+        console.log('⚠️ Item', index, 'already processed, skipping');
+        return;
+      }
+      
+      console.log('⚙️ Processing item', index);
+      
+      // Find title link and title text
+      const titleLink = item.querySelector('.listing-title a');
+      
+      if (titleLink) {
+        const href = titleLink.getAttribute('href');
+        const titleText = titleLink.textContent.trim();
+        console.log('🔗 Found title:', titleText, '-> Link:', href);
+        
+        // Create links container
+        const linksContainer = document.createElement('div');
+        linksContainer.className = 'listing-links';
+        linksContainer.style.marginTop = '1rem';
+        linksContainer.style.paddingTop = '1rem';
+        linksContainer.style.borderTop = '1px solid #e9ecef';
+        
+        // Add specific links for this research item if available
+        if (researchLinks[titleText]) {
+          console.log('� Adding predefined links for:', titleText);
+          researchLinks[titleText].forEach(function(linkData, linkIndex) {
+            console.log('➕ Adding link', linkIndex, ':', linkData.text);
+            
+            const linkElement = document.createElement('a');
+            linkElement.href = linkData.href;
+            linkElement.target = '_blank';
+            linkElement.className = 'btn btn-sm me-2 mb-2 ' + linkData.class;
+            linkElement.innerHTML = linkData.text;
+            
+            linksContainer.appendChild(linkElement);
+          });
+        }
+        
+        // Add "Read More" link at the end
+        const readMoreLink = document.createElement('a');
+        readMoreLink.href = href;
+        readMoreLink.className = 'btn btn-primary';
+        readMoreLink.style.fontSize = '0.7rem';
+        readMoreLink.style.padding = '0.25rem 0.5rem';
+        readMoreLink.style.borderRadius = '4px';
+        readMoreLink.style.whiteSpace = 'nowrap';
+        readMoreLink.style.flexShrink = '0';
+        readMoreLink.style.minHeight = '24px';
+        readMoreLink.style.lineHeight = '1';
+        readMoreLink.innerHTML = '<i class="bi bi-arrow-right"></i> Read More';
+        linksContainer.appendChild(readMoreLink);
+        
+        // Insert the links container
+        const bodyDiv = item.querySelector('.body');
+        if (bodyDiv) {
+          bodyDiv.appendChild(linksContainer);
+          console.log('✅ Added links to item', index);
+        } else {
+          console.log('❌ No .body div found for item', index);
+        }
+      } else {
+        console.log('❌ No title link found for item', index);
+      }
+    });
+  }
+  
+  // Start immediately, then retry if needed
+  addLinksToItems();
+  
+  // Also try again after a longer delay in case quarto listing is still loading
+  setTimeout(addLinksToItems, 2000);
+});
+</script>
+
+

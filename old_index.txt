@@ -1,0 +1,114 @@
+<!-- ---
+Version 2:
+title: "Viraj R. Chordiya"
+image: viraj.jpeg
+about:
+  template: trestles
+  image-shape: rounded
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/virajchordiya/
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/ChordiyaViraj
+    - icon: github
+      text: Github
+      href: https://github.com/viraj-550
+    - icon: file-earmark-pdf
+      text: CV
+      href: cv_viraj_chordiya.pdf
+listing:
+  - id: research-posts
+    contents: research
+    sort: "date desc"
+    type: default
+    max-items: 3
+    fields: [date, title, description]
+---
+
+I am a researcher specializing in financial econometrics and data science, with a focus on portfolio optimization and risk management. My work leverages modern statistical methods to derive actionable insights from complex financial data.
+
+---
+
+### Recent Research
+
+::: {#recent-research}
+:::
+
+:::{.column-margin}
+[View all research →](research.qmd)
+::: -->
+
+<!-- <div class="research-list">
+
+
+<!-- RESEARCH ITEM 1 -->
+<!-- <div class="research-item">
+  <div class="grid">
+    <div class="g-col-12 g-col-md-6">
+      <a href="research/insurance-alm/index.qmd">
+        <img src="research/insurance-alm/output/bond_issuance_amt_heatmap.png" alt="Variation in Bond Issuance" class="research-image">
+      </a>
+    </div>
+    <div class="g-col-12 g-col-md-6">
+      <h4 class="research-title">
+        <a href="research/insurance-alm/index.qmd">Balancing Risk and Reward: Copula-GARCH Framework</a>
+      </h4>
+      <p class="research-abstract">
+        This study proposes a novel portfolio optimization strategy combining Copula functions with GARCH models to more accurately capture tail dependencies and manage risk. We apply this framework to a portfolio of SPXL ETF and BAC stock, providing new insights for Value-at-Risk (VaR) estimation.
+      </p>
+      <div class="research-links">
+        <a href="#" class="research-link">Paper (PDF)</a>
+        <a href="#" class="research-link">SSRN</a>
+        <a href="#" class="research-link">Code</a>
+        <a href="#" class="research-link">Data</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="view-all-link">
+[View all research →](research.qmd)
+</div> -->
+
+<!-- ---
+
+Version 1: 
+title: "Viraj R. Chordiya"
+image: viraj.jpeg
+about:
+  template: jolla
+  image-shape: rounded
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/virajchordiya/
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/ChordiyaViraj
+    - icon: github
+      text: Github
+      href: https://github.com/viraj-550
+listing:
+  - id: research-posts
+    contents: research
+    sort: "date desc"
+    type: default
+    max-items: 3
+    fields: [date, title, description]
+---
+
+
+Welcome!
+
+# Recent Research
+
+::: {#recent-research}
+:::
+
+:::{.column-margin}
+[View all research →](research.qmd)
+::: -->
