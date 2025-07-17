@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,67 +68,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-research-posts .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-research-posts'] = new List('listing-research-posts', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="academicons-1.9.4/css/academicons.min.css">
 <meta property="og:title" content="Viraj R. Chordiya">
 <meta property="og:site_name" content="Viraj R. Chordiya">
 </head>
@@ -155,14 +96,6 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
-<span class="menu-text">Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
-<span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv_viraj_chordiya.pdf"> 
@@ -223,200 +156,57 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="research-section">
-<section id="recent-research" class="level2 container">
+<div style="margin: 0 10%;">
+<section id="recent-research" class="level2 text-center mt-4">
 <h2 data-anchor-id="recent-research">Recent Research</h2>
-<div id="listing-research-posts" class="research-list quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-date-sort="1751601600000" data-listing-file-modified-sort="1752381458921" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="69">
-<div class="thumbnail">
-<p><a href="./research/insurance-alm/index.html" class="no-external"></a></p><a href="./research/insurance-alm/index.html" class="no-external">
-<p><img src="./research/insurance-alm/output/bond_issuance_amt_heatmap.png" class="thumbnail-image"></p>
-</a><p><a href="./research/insurance-alm/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./research/insurance-alm/index.html" class="no-external">Thin Markets, Thick Premiums</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./research/insurance-alm/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./research/insurance-alm/index.html" class="no-external">This research examines the relationship between market liquidity and insurance premium pricing in specialized insurance markets. Using a comprehensive dataset of insurance…</a>
+</section>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="research/insurance-alm/output/bond_issuance_amt_heatmap.png" class="img-fluid" style="border-radius: 8px;;width:100.0%"></p>
+</div><div class="column" style="padding-left: 2rem;">
+<section id="thin-markets-thick-premiums" class="level3">
+<h3 data-anchor-id="thin-markets-thick-premiums">Thin Markets, Thick Premiums</h3>
+<section id="abstract" class="level4" style="text-align: justify;">
+<h4 style="text-align: justify;" data-anchor-id="abstract">Abstract</h4>
+<p>This study examines how market liquidity affects insurance premium pricing in specialized insurance markets. Using empirical analysis, we find that thinner markets lead to higher premiums, with significant implications for regulatory policy and market efficiency.</p>
+<p><a href="https://papers.ssrn.com" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i> PDF</a> <a href="https://papers.ssrn.com" class="btn btn-outline-primary btn-sm" target="_blank"><i class="ai ai-ssrn"></i> SSRN</a> <a href="https://github.com/viraj-550" class="btn btn-outline-success btn-sm" target="_blank"><i class="fa-solid fa-code" aria-label="code"></i> Data &amp; Code</a> <a href="./research.html" class="btn btn-primary btn-sm">Read More →</a></p>
+</section>
+</section>
 </div>
 </div>
-<div class="metadata">
-<p><a href="./research/insurance-alm/index.html" class="no-external"></a></p><a href="./research/insurance-alm/index.html" class="no-external">
-</a>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="research/insurance-alm/output/bond_issuance_amt_heatmap.png" class="img-fluid" style="border-radius: 8px;;width:100.0%"></p>
+</div><div class="column" style="padding-left: 2rem;">
+<section id="thin-markets-thick-premiums-1" class="level3">
+<h3 data-anchor-id="thin-markets-thick-premiums-1">Thin Markets, Thick Premiums</h3>
+<p><em>Working Paper, 2025</em></p>
+<section id="abstract-1" class="level4" style="text-align: justify;">
+<h4 style="text-align: justify;" data-anchor-id="abstract-1">Abstract</h4>
+<p>This study examines how market liquidity affects insurance premium pricing in specialized insurance markets. Using empirical analysis, we find that thinner markets lead to higher premiums, with significant implications for regulatory policy and market efficiency.</p>
+<!-- *Keywords: Insurance, Market Liquidity, Premium Pricing*  
+*JEL Codes: G22, G12, G14* -->
+<p><strong>Links:</strong> <a href="https://papers.ssrn.com" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i> PDF</a> <a href="https://papers.ssrn.com" class="btn btn-outline-secondary btn-sm" target="_blank"><i class="ai ai-ssrn"></i> SSRN</a></p>
+<p><strong>Resources:</strong> <a href="https://github.com/viraj-550" class="btn btn-outline-success btn-sm" target="_blank"><i class="fa-solid fa-code" aria-label="code"></i> Data &amp; Code</a> <a href="./research.html" class="btn btn-primary btn-sm">Read More →</a></p>
+</section>
+</section>
 </div>
 </div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
+<hr>
 <div class="text-center mt-4">
 <p><a href="./research.html" class="btn btn-outline-primary">View all research →</a></p>
 </div>
-</section>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🔥 Script loaded - adding static research links...');
-  
-  function addLinksToItems() {
-    // Find all research posts
-    let listingItems = document.querySelectorAll('#listing-research-posts .quarto-post');
-    if (listingItems.length === 0) {
-      listingItems = document.querySelectorAll('.quarto-listing .quarto-post');
-    }
-    
-    console.log('🔍 Found', listingItems.length, 'listing items');
-    
-    if (listingItems.length === 0) {
-      console.log('⏳ No items found, retrying in 500ms...');
-      setTimeout(addLinksToItems, 500);
-      return;
-    }
-    
-    // Define research data (title matching with abstracts and links)
-    const researchData = {
-      'Thin Markets, Thick Premiums': {
-        abstract: 'This study examines how market liquidity affects insurance premium pricing in specialized insurance markets. Using empirical analysis, we find that thinner markets lead to higher premiums, with significant implications for regulatory policy and market efficiency.',
-        links: [
-          { text: '📄 Paper (PDF)', href: 'https://papers.ssrn.com', class: 'btn-outline-primary' },
-          { text: '📊 SSRN', href: 'https://papers.ssrn.com', class: 'btn-outline-secondary' },
-          { text: '💻 Data & Code', href: 'https://github.com/viraj-550', class: 'btn-outline-success' }
-        ]
-      }
-      // Add more research items here with their abstracts and links
-    };
-    
-    listingItems.forEach(function(item, index) {
-      // Skip if already processed
-      if (item.querySelector('.listing-links')) {
-        console.log('⚠️ Item', index, 'already processed, skipping');
-        return;
-      }
-      
-      console.log('⚙️ Processing item', index);
-      
-      // Find title link and title text
-      const titleLink = item.querySelector('.listing-title a');
-      
-      if (titleLink) {
-        const href = titleLink.getAttribute('href');
-        const titleText = titleLink.textContent.trim();
-        console.log('🔗 Found title:', titleText, '-> Link:', href);
-        
-        // Check if we have research data for this item
-        const researchInfo = researchData[titleText];
-        
-        // Add abstract section if available
-        if (researchInfo && researchInfo.abstract) {
-          const abstractContainer = document.createElement('div');
-          abstractContainer.className = 'research-abstract';
-          abstractContainer.style.marginTop = '1rem';
-          abstractContainer.style.padding = '1rem';
-          abstractContainer.style.backgroundColor = '#f8f9fa';
-          abstractContainer.style.borderRadius = '8px';
-          abstractContainer.style.borderLeft = '4px solid #0d6efd';
-          
-          const abstractHeading = document.createElement('h4');
-          abstractHeading.textContent = 'Abstract';
-          abstractHeading.style.fontSize = '1rem';
-          abstractHeading.style.fontWeight = '600';
-          abstractHeading.style.color = '#2c3e50';
-          abstractHeading.style.marginBottom = '0.5rem';
-          abstractHeading.style.marginTop = '0';
-          
-          const abstractText = document.createElement('p');
-          abstractText.textContent = researchInfo.abstract;
-          abstractText.style.fontSize = '0.95rem';
-          abstractText.style.lineHeight = '1.5';
-          abstractText.style.color = '#495057';
-          abstractText.style.marginBottom = '0';
-          
-          abstractContainer.appendChild(abstractHeading);
-          abstractContainer.appendChild(abstractText);
-          
-          // Insert abstract after description
-          const bodyDiv = item.querySelector('.body');
-          if (bodyDiv) {
-            bodyDiv.appendChild(abstractContainer);
-          }
-        }
-        
-        // Create links container
-        const linksContainer = document.createElement('div');
-        linksContainer.className = 'listing-links';
-        linksContainer.style.marginTop = '1.5rem';
-        linksContainer.style.paddingTop = '1rem';
-        linksContainer.style.borderTop = '1px solid #e9ecef';
-        linksContainer.style.display = 'flex';
-        linksContainer.style.flexWrap = 'nowrap';
-        linksContainer.style.gap = '0.35rem';
-        linksContainer.style.overflowX = 'auto';
-        
-        // Add specific links for this research item if available
-        if (researchInfo && researchInfo.links) {
-          console.log('📎 Adding predefined links for:', titleText);
-          researchInfo.links.forEach(function(linkData, linkIndex) {
-            console.log('➕ Adding link', linkIndex, ':', linkData.text);
-            
-            const linkElement = document.createElement('a');
-            linkElement.href = linkData.href;
-            linkElement.target = '_blank';
-            linkElement.className = 'btn ' + linkData.class;
-            linkElement.style.fontSize = '0.7rem';
-            linkElement.style.padding = '0.25rem 0.5rem';
-            linkElement.style.borderRadius = '4px';
-            linkElement.style.whiteSpace = 'nowrap';
-            linkElement.style.flexShrink = '0';
-            linkElement.style.minHeight = '24px';
-            linkElement.style.lineHeight = '1';
-            linkElement.innerHTML = linkData.text;
-            
-            linksContainer.appendChild(linkElement);
-          });
-        }
-        
-        // Add "Read More" link at the end
-        const readMoreLink = document.createElement('a');
-        readMoreLink.href = href;
-        readMoreLink.className = 'btn btn-primary';
-        readMoreLink.style.fontSize = '0.7rem';
-        readMoreLink.style.padding = '0.25rem 0.5rem';
-        readMoreLink.style.borderRadius = '4px';
-        readMoreLink.style.whiteSpace = 'nowrap';
-        readMoreLink.style.flexShrink = '0';
-        readMoreLink.style.minHeight = '24px';
-        readMoreLink.style.lineHeight = '1';
-        readMoreLink.innerHTML = '<i class="bi bi-arrow-right"></i> Read More';
-        linksContainer.appendChild(readMoreLink);
-        
-        // Insert the links container
-        const bodyDiv = item.querySelector('.body');
-        if (bodyDiv) {
-          bodyDiv.appendChild(linksContainer);
-          console.log('✅ Added links to item', index);
-        } else {
-          console.log('❌ No .body div found for item', index);
-        }
-      } else {
-        console.log('❌ No title link found for item', index);
-      }
-    });
-  }
-  
-  // Start immediately, then retry if needed
-  addLinksToItems();
-  
-  // Also try again after a longer delay in case quarto listing is still loading
-  setTimeout(addLinksToItems, 2000);
-});
-</script>
-
+<!-- Available Academicons: 
+[<i class="ai ai-ssrn"></i> SSRN](url)
+[<i class="ai ai-arxiv"></i> arXiv](url)
+[<i class="ai ai-google-scholar"></i> Google Scholar](url)
+[<i class="ai ai-researchgate"></i> ResearchGate](url)
+[<i class="ai ai-orcid"></i> ORCID](url)
+[<i class="ai ai-academia"></i> Academia.edu](url)
+[<i class="ai ai-cv"></i> CV](url)
+[<i class="ai ai-dataverse"></i> Dataverse](url) -->
 
 
 
